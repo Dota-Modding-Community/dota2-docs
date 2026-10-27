@@ -1,0 +1,3548 @@
+# Dota Lua enums
+
+
+
+64 enums, 50 compatibility aliases and 8 constants.
+
+## Contents
+
+<details><summary>Enums</summary>
+
+- [ABILITY_TYPES](#ability_types)
+- [AbilityLearnResult_t](#abilitylearnresult_t)
+- [ActivateType](#activatetype)
+- [attackfail](#attackfail)
+- [AttributeDerivedStats](#attributederivedstats)
+- [Attributes](#attributes)
+- [CLICK_BEHAVIORS](#click_behaviors)
+- [ConVarFlags](#convarflags)
+- [DAMAGE_TYPES](#damage_types)
+- [DamageCategory_t](#damagecategory_t)
+- [DOTA_ABILITY_BEHAVIOR](#dota_ability_behavior)
+- [DOTA_GameState](#dota_gamestate)
+- [DOTA_GC_TEAM](#dota_gc_team)
+- [DOTA_HeroPickState](#dota_heropickstate)
+- [DOTA_INVALID_ORDERS](#dota_invalid_orders)
+- [DOTA_MOTION_CONTROLLER_PRIORITY](#dota_motion_controller_priority)
+- [DOTA_OVERHEAD_ALERT](#dota_overhead_alert)
+- [DOTA_RUNES](#dota_runes)
+- [DOTA_SHOP_TYPE](#dota_shop_type)
+- [DOTA_UNIT_TARGET_FLAGS](#dota_unit_target_flags)
+- [DOTA_UNIT_TARGET_TEAM](#dota_unit_target_team)
+- [DOTA_UNIT_TARGET_TYPE](#dota_unit_target_type)
+- [DOTAAbilitySpeakTrigger_t](#dotaabilityspeaktrigger_t)
+- [DOTAConnectionState_t](#dotaconnectionstate_t)
+- [DOTACustomCameraEventFlags_t](#dotacustomcameraeventflags_t)
+- [DOTADamageFlag_t](#dotadamageflag_t)
+- [DotaDefaultUIElement_t](#dotadefaultuielement_t)
+- [DOTAHUDVisibility_t](#dotahudvisibility_t)
+- [DOTAInventoryFlags_t](#dotainventoryflags_t)
+- [DOTALimits_t](#dotalimits_t)
+- [DOTAMinimapEvent_t](#dotaminimapevent_t)
+- [DOTAModifierAttribute_t](#dotamodifierattribute_t)
+- [DOTAMusicStatus_t](#dotamusicstatus_t)
+- [DOTAPostGameColumn_t](#dotapostgamecolumn_t)
+- [DOTAPostGameLayout_t](#dotapostgamelayout_t)
+- [DOTAProjectileAttachment_t](#dotaprojectileattachment_t)
+- [DOTAScriptInventorySlot_t](#dotascriptinventoryslot_t)
+- [DOTASlotType_t](#dotaslottype_t)
+- [DOTASpeechType_t](#dotaspeechtype_t)
+- [DOTATeam_t](#dotateam_t)
+- [DOTAUnitAttackCapability_t](#dotaunitattackcapability_t)
+- [DOTAUnitMoveCapability_t](#dotaunitmovecapability_t)
+- [dotaunitorder_t](#dotaunitorder_t)
+- [EDOTA_ModifyGold_Reason](#edota_modifygold_reason)
+- [EDOTA_ModifyXP_Reason](#edota_modifyxp_reason)
+- [EntityEffects](#entityeffects)
+- [EntityThinkPhase](#entitythinkphase)
+- [EShareAbility](#eshareability)
+- [FindOrder](#findorder)
+- [GameActivity_t](#gameactivity_t)
+- [LuaModifierType](#luamodifiertype)
+- [modifierfunction](#modifierfunction)
+- [modifierpriority](#modifierpriority)
+- [modifierremove](#modifierremove)
+- [modifierstate](#modifierstate)
+- [ParticleAttachment_t](#particleattachment_t)
+- [PseudoRandom](#pseudorandom)
+- [quest_text_replace_values_t](#quest_text_replace_values_t)
+- [ShowGenericPopupType](#showgenericpopuptype)
+- [SourceEngineAnimationEvent](#sourceengineanimationevent)
+- [SourceEngineDamageTypes](#sourceenginedamagetypes)
+- [SourceEngineSoundData](#sourceenginesounddata)
+- [subquest_text_replace_values_t](#subquest_text_replace_values_t)
+- [UnitFilterResult](#unitfilterresult)
+
+</details>
+<details><summary>Compatibility aliases</summary>
+
+- [AbilityBehavior](#abilitybehavior)
+- [AbilityLearnResult](#abilitylearnresult)
+- [AbilitySpeakTrigger](#abilityspeaktrigger)
+- [AbilityTypes](#abilitytypes)
+- [AttackRecord](#attackrecord)
+- [ClickBehaviors](#clickbehaviors)
+- [ConnectionState](#connectionstate)
+- [CustomCameraEventFlags](#customcameraeventflags)
+- [DamageCategory](#damagecategory)
+- [DamageFlag](#damageflag)
+- [DamageTypes](#damagetypes)
+- [DefaultUiElement](#defaultuielement)
+- [DotaTeam](#dotateam)
+- [GameActivity](#gameactivity)
+- [GameState](#gamestate)
+- [GcTeam](#gcteam)
+- [HeroPickState](#heropickstate)
+- [HudVisibility](#hudvisibility)
+- [InvalidOrders](#invalidorders)
+- [InventoryFlags](#inventoryflags)
+- [InventorySlot](#inventoryslot)
+- [ItemShareability](#itemshareability)
+- [LoadoutType](#loadouttype)
+- [LuaModifierMotionType](#luamodifiermotiontype)
+- [MinimapEventType](#minimapeventtype)
+- [ModifierAttribute](#modifierattribute)
+- [ModifierFunction](#modifierfunction)
+- [ModifierPriority](#modifierpriority)
+- [ModifierRemove](#modifierremove)
+- [ModifierState](#modifierstate)
+- [ModifyGoldReason](#modifygoldreason)
+- [ModifyXpReason](#modifyxpreason)
+- [MotionControllerPriority](#motioncontrollerpriority)
+- [MusicStatus](#musicstatus)
+- [OverheadAlert](#overheadalert)
+- [ParticleAttachment](#particleattachment)
+- [PostGameColumn](#postgamecolumn)
+- [PostGameLayout](#postgamelayout)
+- [ProjectileAttachment](#projectileattachment)
+- [QuestTextReplaceValue](#questtextreplacevalue)
+- [RuneType](#runetype)
+- [ShopType](#shoptype)
+- [SpeechType](#speechtype)
+- [SubquestTextReplaceValue](#subquesttextreplacevalue)
+- [UnitAttackCapability](#unitattackcapability)
+- [UnitMoveCapability](#unitmovecapability)
+- [UnitOrder](#unitorder)
+- [UnitTargetFlags](#unittargetflags)
+- [UnitTargetTeam](#unittargetteam)
+- [UnitTargetType](#unittargettype)
+
+</details>
+
+## Constants
+
+| Name | Type / value | Description |
+| --- | --- | --- |
+| `DOTA_ITEM_INVENTORY_SIZE` | `9` |  |
+| `DOTA_ITEM_MAX` | `25` |  |
+| `DOTA_ITEM_STASH_MAX` | `15` |  |
+| `DOTA_ITEM_STASH_MIN` | `9` |  |
+| `DOTA_ITEM_STASH_SIZE` | `6` |  |
+| `DOTA_MAX_ABILITIES` | `40` |  |
+| `FIND_UNITS_EVERYWHERE` | `-1` |  |
+| `SPAWN_GROUP_HANDLE_INVALID` | `0` |  |
+
+## Enums
+
+### ABILITY_TYPES
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `ABILITY_TYPE_BASIC` | `0` |
+| `ABILITY_TYPE_ULTIMATE` | `1` |
+| `ABILITY_TYPE_ATTRIBUTES` | `2` |
+| `ABILITY_TYPE_HIDDEN` | `3` |
+
+### AbilityLearnResult_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `ABILITY_CAN_BE_UPGRADED` | `0` |
+| `ABILITY_CANNOT_BE_UPGRADED_NOT_UPGRADABLE` | `1` |
+| `ABILITY_CANNOT_BE_UPGRADED_AT_MAX` | `2` |
+| `ABILITY_CANNOT_BE_UPGRADED_REQUIRES_LEVEL` | `3` |
+| `ABILITY_NOT_LEARNABLE` | `4` |
+
+### ActivateType
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `ACTIVATE_TYPE_INITIAL_CREATION` | `0` |
+| `ACTIVATE_TYPE_DATAUPDATE_CREATION` | `1` |
+| `ACTIVATE_TYPE_ONRESTORE` | `2` |
+
+### attackfail
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ATTACK_RECORD_FAIL_NO` | `0` |
+| `DOTA_ATTACK_RECORD_FAIL_TERRAIN_MISS` | `1` |
+| `DOTA_ATTACK_RECORD_FAIL_SOURCE_MISS` | `2` |
+| `DOTA_ATTACK_RECORD_FAIL_TARGET_EVADED` | `3` |
+| `DOTA_ATTACK_RECORD_FAIL_TARGET_INVULNERABLE` | `4` |
+| `DOTA_ATTACK_RECORD_FAIL_TARGET_OUT_OF_RANGE` | `5` |
+| `DOTA_ATTACK_RECORD_CANNOT_FAIL` | `6` |
+| `DOTA_ATTACK_RECORD_FAIL_BLOCKED_BY_OBSTRUCTION` | `7` |
+
+### AttributeDerivedStats
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ATTRIBUTE_STRENGTH_DAMAGE` | `0` |
+| `DOTA_ATTRIBUTE_STRENGTH_HP` | `1` |
+| `DOTA_ATTRIBUTE_STRENGTH_HP_REGEN` | `2` |
+| `DOTA_ATTRIBUTE_AGILITY_DAMAGE` | `3` |
+| `DOTA_ATTRIBUTE_AGILITY_ARMOR` | `4` |
+| `DOTA_ATTRIBUTE_AGILITY_ATTACK_SPEED` | `5` |
+| `DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE` | `6` |
+| `DOTA_ATTRIBUTE_INTELLIGENCE_MANA` | `7` |
+| `DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN` | `8` |
+| `DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESIST` | `9` |
+| `DOTA_ATTRIBUTE_ALL_DAMAGE` | `10` |
+
+### Attributes
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ATTRIBUTE_INVALID` | `-1` |
+| `DOTA_ATTRIBUTE_STRENGTH` | `0` |
+| `DOTA_ATTRIBUTE_AGILITY` | `1` |
+| `DOTA_ATTRIBUTE_INTELLECT` | `2` |
+| `DOTA_ATTRIBUTE_ALL` | `3` |
+| `DOTA_ATTRIBUTE_MAX` | `4` |
+
+### CLICK_BEHAVIORS
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_CLICK_BEHAVIOR_NONE` | `0` |
+| `DOTA_CLICK_BEHAVIOR_MOVE` | `1` |
+| `DOTA_CLICK_BEHAVIOR_ATTACK` | `2` |
+| `DOTA_CLICK_BEHAVIOR_CAST` | `3` |
+| `DOTA_CLICK_BEHAVIOR_DROP_ITEM` | `4` |
+| `DOTA_CLICK_BEHAVIOR_DROP_SHOP_ITEM` | `5` |
+| `DOTA_CLICK_BEHAVIOR_DRAG` | `6` |
+| `DOTA_CLICK_BEHAVIOR_LEARN_ABILITY` | `7` |
+| `DOTA_CLICK_BEHAVIOR_PATROL` | `8` |
+| `DOTA_CLICK_BEHAVIOR_VECTOR_CAST` | `9` |
+| `DOTA_CLICK_BEHAVIOR_UNUSED` | `10` |
+| `DOTA_CLICK_BEHAVIOR_RADAR` | `11` |
+| `DOTA_CLICK_BEHAVIOR_LAST` | `12` |
+
+### ConVarFlags
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `FCVAR_NONE` | `0` |
+| `FCVAR_DEVELOPMENTONLY` | `2` |
+| `FCVAR_HIDDEN` | `16` |
+| `FCVAR_PROTECTED` | `32` |
+| `FCVAR_SPONLY` | `64` |
+| `FCVAR_ARCHIVE` | `128` |
+| `FCVAR_NOTIFY` | `256` |
+| `FCVAR_USERINFO` | `512` |
+| `FCVAR_UNLOGGED` | `2048` |
+| `FCVAR_REPLICATED` | `8192` |
+| `FCVAR_CHEAT` | `16384` |
+| `FCVAR_PER_USER` | `32768` |
+| `FCVAR_DEMO` | `65536` |
+| `FCVAR_DONTRECORD` | `131072` |
+| `FCVAR_VCONSOLE_SET_FOCUS` | `134217728` |
+
+### DAMAGE_TYPES
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DAMAGE_TYPE_NONE` | `0` |
+| `DAMAGE_TYPE_PHYSICAL` | `1` |
+| `DAMAGE_TYPE_MAGICAL` | `2` |
+| `DAMAGE_TYPE_PURE` | `4` |
+| `DAMAGE_TYPE_ALL` | `7` |
+| `DAMAGE_TYPE_HP_REMOVAL` | `8` |
+| `DAMAGE_TYPE_ABILITY_DEFINED` | `16` |
+
+### DamageCategory_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_DAMAGE_CATEGORY_SPELL` | `0` |
+| `DOTA_DAMAGE_CATEGORY_ATTACK` | `1` |
+| `DOTA_DAMAGE_CATEGORY_BARRIER` | `2` |
+
+### DOTA_ABILITY_BEHAVIOR
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ABILITY_BEHAVIOR_LAST_RESORT_POINT` | `-2147483648` |
+| `DOTA_ABILITY_BEHAVIOR_AFFECTED_BY_MUTE` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_CAN_SELF_CAST` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_DONT_PROC_OTHER_ABILITIES` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_FORCE_KEYBIND` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_FORCE_NO_INNATE_UI` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_FREE_DRAW_TARGETING` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_IGNORE_INVISIBLE` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_INNATE_UI` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_IS_FAKE_ITEM` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_ITEM_IMBUE` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_NONE` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_OVERSHOOT` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_SUPPRESS_ASSOCIATED_CONSUMABLE` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_UNLOCKED_BY_EFFECT_INDEX` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_UNSWAPPABLE` | `0` |
+| `DOTA_ABILITY_BEHAVIOR_HIDDEN` | `1` |
+| `DOTA_ABILITY_BEHAVIOR_PASSIVE` | `2` |
+| `DOTA_ABILITY_BEHAVIOR_NO_TARGET` | `4` |
+| `DOTA_ABILITY_BEHAVIOR_UNIT_TARGET` | `8` |
+| `DOTA_ABILITY_BEHAVIOR_POINT` | `16` |
+| `DOTA_ABILITY_BEHAVIOR_AOE` | `32` |
+| `DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE` | `64` |
+| `DOTA_ABILITY_BEHAVIOR_CHANNELLED` | `128` |
+| `DOTA_ABILITY_BEHAVIOR_ITEM` | `256` |
+| `DOTA_ABILITY_BEHAVIOR_TOGGLE` | `512` |
+| `DOTA_ABILITY_BEHAVIOR_DIRECTIONAL` | `1024` |
+| `DOTA_ABILITY_BEHAVIOR_IMMEDIATE` | `2048` |
+| `DOTA_ABILITY_BEHAVIOR_AUTOCAST` | `4096` |
+| `DOTA_ABILITY_BEHAVIOR_OPTIONAL_UNIT_TARGET` | `8192` |
+| `DOTA_ABILITY_BEHAVIOR_OPTIONAL_POINT` | `16384` |
+| `DOTA_ABILITY_BEHAVIOR_OPTIONAL_NO_TARGET` | `32768` |
+| `DOTA_ABILITY_BEHAVIOR_AURA` | `65536` |
+| `DOTA_ABILITY_BEHAVIOR_ATTACK` | `131072` |
+| `DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT` | `262144` |
+| `DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES` | `524288` |
+| `DOTA_ABILITY_BEHAVIOR_UNRESTRICTED` | `1048576` |
+| `DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE` | `2097152` |
+| `DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL` | `4194304` |
+| `DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT` | `8388608` |
+| `DOTA_ABILITY_BEHAVIOR_DONT_ALERT_TARGET` | `16777216` |
+| `DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK` | `33554432` |
+| `DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN` | `67108864` |
+| `DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING` | `134217728` |
+| `DOTA_ABILITY_BEHAVIOR_RUNE_TARGET` | `268435456` |
+| `DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL` | `536870912` |
+| `DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING` | `1073741824` |
+
+### DOTA_GameState
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_GAMERULES_STATE_INIT` | `0` |
+| `DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD` | `1` |
+| `DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP` | `2` |
+| `DOTA_GAMERULES_STATE_PLAYER_DRAFT` | `3` |
+| `DOTA_GAMERULES_STATE_HERO_SELECTION` | `4` |
+| `DOTA_GAMERULES_STATE_STRATEGY_TIME` | `5` |
+| `DOTA_GAMERULES_STATE_TEAM_SHOWCASE` | `6` |
+| `DOTA_GAMERULES_STATE_WAIT_FOR_MAP_TO_LOAD` | `7` |
+| `DOTA_GAMERULES_STATE_PRE_GAME` | `8` |
+| `DOTA_GAMERULES_STATE_SCENARIO_SETUP` | `9` |
+| `DOTA_GAMERULES_STATE_GAME_IN_PROGRESS` | `10` |
+| `DOTA_GAMERULES_STATE_POST_GAME` | `11` |
+| `DOTA_GAMERULES_STATE_DISCONNECT` | `12` |
+
+### DOTA_GC_TEAM
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_GC_TEAM_GOOD_GUYS` | `0` |
+| `DOTA_GC_TEAM_BAD_GUYS` | `1` |
+| `DOTA_GC_TEAM_BROADCASTER` | `2` |
+| `DOTA_GC_TEAM_SPECTATOR` | `3` |
+| `DOTA_GC_TEAM_PLAYER_POOL` | `4` |
+| `DOTA_GC_TEAM_NOTEAM` | `5` |
+| `DOTA_GC_TEAM_CUSTOM_1` | `6` |
+| `DOTA_GC_TEAM_CUSTOM_2` | `7` |
+| `DOTA_GC_TEAM_CUSTOM_3` | `8` |
+| `DOTA_GC_TEAM_CUSTOM_4` | `9` |
+| `DOTA_GC_TEAM_CUSTOM_5` | `10` |
+| `DOTA_GC_TEAM_CUSTOM_6` | `11` |
+| `DOTA_GC_TEAM_CUSTOM_7` | `12` |
+| `DOTA_GC_TEAM_CUSTOM_8` | `13` |
+| `DOTA_GC_TEAM_NEUTRALS` | `14` |
+
+### DOTA_HeroPickState
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_HEROPICK_STATE_NONE` | `0` |
+| `DOTA_HEROPICK_STATE_AP_SELECT` | `1` |
+| `DOTA_HEROPICK_STATE_SD_SELECT` | `2` |
+| `DOTA_HEROPICK_STATE_INTRO_SELECT_UNUSED` | `3` |
+| `DOTA_HEROPICK_STATE_RD_SELECT_UNUSED` | `4` |
+| `DOTA_HEROPICK_STATE_CM_INTRO` | `5` |
+| `DOTA_HEROPICK_STATE_CM_CAPTAINPICK` | `6` |
+| `DOTA_HEROPICK_STATE_CM_BAN1` | `7` |
+| `DOTA_HEROPICK_STATE_CM_BAN2` | `8` |
+| `DOTA_HEROPICK_STATE_CM_BAN3` | `9` |
+| `DOTA_HEROPICK_STATE_CM_BAN4` | `10` |
+| `DOTA_HEROPICK_STATE_CM_BAN5` | `11` |
+| `DOTA_HEROPICK_STATE_CM_BAN6` | `12` |
+| `DOTA_HEROPICK_STATE_CM_BAN7` | `13` |
+| `DOTA_HEROPICK_STATE_CM_BAN8` | `14` |
+| `DOTA_HEROPICK_STATE_CM_BAN9` | `15` |
+| `DOTA_HEROPICK_STATE_CM_BAN10` | `16` |
+| `DOTA_HEROPICK_STATE_CM_BAN11` | `17` |
+| `DOTA_HEROPICK_STATE_CM_BAN12` | `18` |
+| `DOTA_HEROPICK_STATE_CM_BAN13` | `19` |
+| `DOTA_HEROPICK_STATE_CM_BAN14` | `20` |
+| `DOTA_HEROPICK_STATE_CM_SELECT1` | `21` |
+| `DOTA_HEROPICK_STATE_CM_SELECT2` | `22` |
+| `DOTA_HEROPICK_STATE_CM_SELECT3` | `23` |
+| `DOTA_HEROPICK_STATE_CM_SELECT4` | `24` |
+| `DOTA_HEROPICK_STATE_CM_SELECT5` | `25` |
+| `DOTA_HEROPICK_STATE_CM_SELECT6` | `26` |
+| `DOTA_HEROPICK_STATE_CM_SELECT7` | `27` |
+| `DOTA_HEROPICK_STATE_CM_SELECT8` | `28` |
+| `DOTA_HEROPICK_STATE_CM_SELECT9` | `29` |
+| `DOTA_HEROPICK_STATE_CM_SELECT10` | `30` |
+| `DOTA_HEROPICK_STATE_CM_PICK` | `31` |
+| `DOTA_HEROPICK_STATE_AR_SELECT` | `32` |
+| `DOTA_HEROPICK_STATE_MO_SELECT` | `33` |
+| `DOTA_HEROPICK_STATE_FH_SELECT` | `34` |
+| `DOTA_HEROPICK_STATE_CD_INTRO` | `35` |
+| `DOTA_HEROPICK_STATE_CD_CAPTAINPICK` | `36` |
+| `DOTA_HEROPICK_STATE_CD_BAN1` | `37` |
+| `DOTA_HEROPICK_STATE_CD_BAN2` | `38` |
+| `DOTA_HEROPICK_STATE_CD_BAN3` | `39` |
+| `DOTA_HEROPICK_STATE_CD_BAN4` | `40` |
+| `DOTA_HEROPICK_STATE_CD_BAN5` | `41` |
+| `DOTA_HEROPICK_STATE_CD_BAN6` | `42` |
+| `DOTA_HEROPICK_STATE_CD_SELECT1` | `43` |
+| `DOTA_HEROPICK_STATE_CD_SELECT2` | `44` |
+| `DOTA_HEROPICK_STATE_CD_SELECT3` | `45` |
+| `DOTA_HEROPICK_STATE_CD_SELECT4` | `46` |
+| `DOTA_HEROPICK_STATE_CD_SELECT5` | `47` |
+| `DOTA_HEROPICK_STATE_CD_SELECT6` | `48` |
+| `DOTA_HEROPICK_STATE_CD_SELECT7` | `49` |
+| `DOTA_HEROPICK_STATE_CD_SELECT8` | `50` |
+| `DOTA_HEROPICK_STATE_CD_SELECT9` | `51` |
+| `DOTA_HEROPICK_STATE_CD_SELECT10` | `52` |
+| `DOTA_HEROPICK_STATE_CD_PICK` | `53` |
+| `DOTA_HEROPICK_STATE_BD_SELECT` | `54` |
+| `DOTA_HERO_PICK_STATE_ABILITY_DRAFT_SELECT` | `55` |
+| `DOTA_HERO_PICK_STATE_ARDM_SELECT` | `56` |
+| `DOTA_HEROPICK_STATE_ALL_DRAFT_SELECT` | `57` |
+| `DOTA_HERO_PICK_STATE_CUSTOMGAME_SELECT` | `58` |
+| `DOTA_HEROPICK_STATE_SELECT_PENALTY` | `59` |
+| `DOTA_HEROPICK_STATE_CUSTOM_PICK_RULES` | `60` |
+| `DOTA_HEROPICK_STATE_SCENARIO_PICK` | `61` |
+| `DOTA_HEROPICK_STATE_COUNT` | `62` |
+
+### DOTA_INVALID_ORDERS
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ORDER_SUCCESS` | `-1` |
+| `DOTA_INVALID_ORDER_NOT_CONTROLLABLE_BY_PLAYER` | `0` |
+| `DOTA_INVALID_ORDER_UNIT_IS_NOT_NPC` | `1` |
+| `DOTA_INVALID_ORDER_BAD_ABILITY_ENTITY` | `2` |
+| `DOTA_INVALID_ORDER_UNRECOGNIZED_ORDER` | `3` |
+| `DOTA_INVALID_ORDER_ABILITY_REQUIRED` | `4` |
+| `DOTA_INVALID_ORDER_NPC_TARGET_REQUIRED` | `5` |
+| `DOTA_INVALID_ORDER_TARGET_TREE_INDEX_NOT_A_TREE` | `6` |
+| `DOTA_INVALID_ORDER_TARGET_ENTITY_INDEX_OUT_OF_RANGE` | `7` |
+| `DOTA_INVALID_ORDER_ABILITY_NOT_AN_ITEM` | `8` |
+| `DOTA_INVALID_ORDER_PHYSICAL_ITEM_TARGET_REQUIRED` | `9` |
+| `DOTA_INVALID_ORDER_RUNE_TARGET_REQUIRED` | `10` |
+| `DOTA_INVALID_ORDER_ABILITY_NOT_OWNED_BY_UNIT` | `11` |
+| `DOTA_INVALID_ORDER_ABILITY_CANT_BE_UPGRADED` | `12` |
+| `DOTA_INVALID_ORDER_NO_POINTS_FOR_ABILITY_UPGRADE` | `13` |
+| `DOTA_INVALID_ORDER_NOT_ENOUGH_MANA` | `14` |
+| `DOTA_INVALID_ORDER_ABILITY_IN_COOLDOWN` | `15` |
+| `DOTA_INVALID_ORDER_ABILITY_NOT_LEARNED` | `16` |
+| `DOTA_INVALID_ORDER_CANT_CAST_PASSIVE_ABILITY` | `17` |
+| `DOTA_INVALID_ORDER_PHANTOM_TARGET` | `18` |
+| `DOTA_INVALID_ORDER_DEAD_TARGET` | `19` |
+| `DOTA_INVALID_ORDER_UNIT_IS_DEAD` | `20` |
+| `DOTA_INVALID_ORDER_TARGET_MAGIC_IMMUNE_ENEMY` | `21` |
+| `DOTA_INVALID_ORDER_TARGET_INVULNERABLE` | `22` |
+| `DOTA_INVALID_ORDER_TARGET_ATTACK_IMMUNE` | `23` |
+| `DOTA_INVALID_ORDER_UNIT_SILENCED` | `24` |
+| `DOTA_INVALID_ORDER_ABILITY_CANT_BE_TOGGLED` | `25` |
+| `DOTA_INVALID_ORDER_TARGET_CANT_BE_SEEN` | `26` |
+| `DOTA_INVALID_ORDER_TARGET_INVISIBLE` | `27` |
+| `DOTA_INVALID_ORDER_HERO_CANT_BE_DENIED` | `28` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_TEAMMATE` | `29` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_ENEMY` | `30` |
+| `DOTA_INVALID_ORDER_UNIT_CANT_MOVE` | `31` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_ATTACK_IMMUNE` | `32` |
+| `DOTA_INVALID_ORDER_PURCHASE_INVALID_ITEM` | `33` |
+| `DOTA_INVALID_ORDER_ITEM_NOT_IN_INVENTORY` | `34` |
+| `DOTA_INVALID_ORDER_ITEM_NOT_IN_UNIT_INVENTORY` | `35` |
+| `DOTA_INVALID_ORDER_TARGET_UNSELECTABLE` | `36` |
+| `DOTA_INVALID_ORDER_ITEM_NOT_IN_ACTIVE_INVENTORY` | `37` |
+| `DOTA_INVALID_ORDER_UNIT_CANT_PICK_UP_RUNES` | `38` |
+| `DOTA_INVALID_ORDER_UNIT_CANT_MANIPULATE_ITEMS` | `39` |
+| `DOTA_INVALID_ORDER_UNIT_IS_ILLUSION` | `40` |
+| `DOTA_INVALID_ORDER_UNIT_CANT_ATTACK` | `41` |
+| `DOTA_INVALID_ORDER_ITEM_CANT_BE_DROPPED` | `42` |
+| `DOTA_INVALID_ORDER_TARGET_TREE_NOT_ACTIVE` | `43` |
+| `DOTA_INVALID_ORDER_ABILITY_CANT_AUTO_CAST` | `44` |
+| `DOTA_INVALID_ORDER_TARGET_POSITION_OFF_MAP` | `45` |
+| `DOTA_INVALID_ORDER_UNIT_CANT_MOVE_TARGET_OUT_OF_RANGE` | `46` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_HERO` | `47` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_OTHER` | `48` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_BUILDING` | `49` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_ANCIENT` | `50` |
+| `DOTA_INVALID_ORDER_ITEM_CANT_BE_MOVED_TO_STASH` | `51` |
+| `DOTA_INVALID_ORDER_ITEM_CANT_BE_MOVED_TO_SLOT` | `52` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_MECHANICAL` | `53` |
+| `DOTA_INVALID_ORDER_CANT_ACCEPT_ATTACK_TARGET` | `54` |
+| `DOTA_INVALID_ORDER_CANT_CAST_NO_CHARGES` | `55` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_CREEP` | `56` |
+| `DOTA_INVALID_ORDER_TARGET_CANT_TAKE_ITEMS` | `57` |
+| `DOTA_INVALID_ORDER_CANT_GIVE_ITEM_TO_ENEMY` | `58` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_COURIER` | `59` |
+| `DOTA_INVALID_ORDER_ABILITY_IS_HIDDEN` | `60` |
+| `DOTA_INVALID_ORDER_ITEM_IN_COOLDOWN` | `61` |
+| `DOTA_INVALID_ORDER_SECRET_SHOP_NOT_IN_RANGE` | `62` |
+| `DOTA_INVALID_ORDER_NOT_ENOUGH_GOLD` | `63` |
+| `DOTA_INVALID_ORDER_PURCHASE_AUTOCOMBINE_RECIPE` | `64` |
+| `DOTA_INVALID_ORDER_CANT_DENY_HEALTH_TOO_HIGH` | `65` |
+| `DOTA_INVALID_ORDER_SIDE_SHOP_NOT_IN_RANGE` | `66` |
+| `DOTA_INVALID_ORDER_HOME_SHOP_NOT_IN_RANGE` | `67` |
+| `DOTA_INVALID_ORDER_CANT_PICK_UP_ITEM` | `68` |
+| `DOTA_INVALID_ORDER_CANT_SELL_NO_SHOP_IN_RANGE` | `69` |
+| `DOTA_INVALID_ORDER_CANT_SELL_ITEM` | `70` |
+| `DOTA_INVALID_ORDER_CANT_SELL_ITEM_WHILE_DEAD` | `71` |
+| `DOTA_INVALID_ORDER_TARGET_CANT_BE_DENIED` | `72` |
+| `DOTA_INVALID_ORDER_ABILITY_DISABLED_BY_ROOT` | `73` |
+| `DOTA_INVALID_ORDER_UNIT_COMMAND_RESTRICTED` | `74` |
+| `DOTA_INVALID_ORDER_UNIT_MUTED` | `75` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_SUMMONED` | `76` |
+| `DOTA_INVALID_ORDER_TARGET_MAGIC_IMMUNE_ALLY` | `77` |
+| `DOTA_INVALID_ORDER_CANT_PURCHASE_DISALLOWED_ITEM` | `78` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_DOMINATED` | `79` |
+| `DOTA_INVALID_ORDER_CAST_CUSTOM` | `80` |
+| `DOTA_INVALID_ORDER_ITEM_NOT_DISASSEMBLABLE` | `81` |
+| `DOTA_INVALID_ORDER_ITEM_OUT_OF_STOCK` | `82` |
+| `DOTA_INVALID_ORDER_ABILITY_CANT_BE_UPGRADED_AT_MAX` | `83` |
+| `DOTA_INVALID_ORDER_ABILITY_INACTIVE` | `84` |
+| `DOTA_INVALID_ORDER_ITEM_NOT_IN_MAIN_INVENTORY` | `85` |
+| `DOTA_INVALID_ORDER_CANT_GLYPH` | `86` |
+| `DOTA_INVALID_ORDER_CANT_DRAG_CHANNELING_ITEM` | `87` |
+| `DOTA_INVALID_ORDER_CANT_BUYBACK_UNIT_NOT_A_HERO` | `88` |
+| `DOTA_INVALID_ORDER_CANT_BUYBACK_UNIT_NOT_DEAD` | `89` |
+| `DOTA_INVALID_ORDER_CANT_BUYBACK_NOT_ENOUGH_GOLD` | `90` |
+| `DOTA_INVALID_ORDER_CANT_BUYBACK_IN_COOLDOWN` | `91` |
+| `DOTA_INVALID_ORDER_CANT_DISASSEMBLE_STASH_OUT_OF_RANGE` | `92` |
+| `DOTA_INVALID_ORDER_CANT_EJECT_ITEM_NOT_IN_STASH` | `93` |
+| `DOTA_INVALID_ORDER_GAME_IS_PAUSED` | `94` |
+| `DOTA_INVALID_ORDER_CANT_CAST_ON_CONSIDERED_HERO` | `95` |
+| `DOTA_INVALID_ORDER_CANT_SHOP_AUTO_BUY_ENABLED` | `96` |
+| `DOTA_INVALID_ORDER_ONLY_DELIBERATE_CHANNELING_CANCEL` | `97` |
+| `DOTA_INVALID_ORDER_CANT_BUYBACK_DEVILS_BARGAIN` | `98` |
+| `DOTA_INVALID_ORDER_CANT_BUYBACK_DISABLED_BY_GAME_MODE` | `99` |
+| `DOTA_INVALID_ORDER_CANT_ABILITY_PING_BAD_TEAM` | `100` |
+| `DOTA_INVALID_ORDER_ABILITY_NOT_POSITIONED` | `101` |
+| `DOTA_INVALID_ORDER_ABILITY_NOT_TARGETTED` | `102` |
+| `DOTA_INVALID_ORDER_ABILITY_REQUIRES_TARGET` | `103` |
+| `DOTA_INVALID_ORDER_CANT_RADAR` | `104` |
+| `DOTA_INVALID_ORDER_NO_COURIER` | `105` |
+| `DOTA_INVALID_ORDER_CUSTOM_SHOP_NOT_IN_RANGE` | `106` |
+| `DOTA_INVALID_ORDER_CANT_CAST_RIVER_PAINT` | `107` |
+| `DOTA_INVALID_ORDER_UNIT_OBSTRUCTED` | `108` |
+| `DOTA_INVALID_ORDER_CANT_CAST_DRAG_REQUIRED` | `109` |
+| `DOTA_INVALID_ORDER_ABILITY_DISABLED_BY_TETHER` | `110` |
+| `DOTA_INVALID_ORDER_ABILITY_NOT_UNLOCKED` | `111` |
+| `DOTA_INVALID_ORDER_CANT_FOUNTAIN_DROP_UNIT_NOT_DEAD` | `112` |
+| `DOTA_INVALID_ORDER_ITEM_NOT_IN_NEUTRAL_ITEM_STASH` | `113` |
+| `DOTA_INVALID_ORDER_ITEM_ALREADY_PURCHASED` | `114` |
+| `DOTA_INVALID_ORDER_BEYOND_PHYSICAL_ITEM_LIMIT` | `115` |
+| `DOTA_INVALID_ORDER_ABILITY_PING_DEAD_ALLY` | `116` |
+| `DOTA_INVALID_ORDER_CANT_LOCKCOMBINE_NEUTRAL_ITEMS` | `117` |
+| `DOTA_INVALID_ORDER_ABILITY_CANT_ALT_CAST` | `118` |
+| `DOTA_INVALID_ORDER_ITEM_CANNOT_BE_CONSUMED` | `119` |
+| `DOTA_INVALID_ORDER_CANT_BUYBACK_CEASELESS_DIRGE` | `120` |
+| `DOTA_INVALID_ORDER_CANT_ATTACK_BUILDINGS` | `121` |
+| `DOTA_INVALID_ORDER_PURCHASE_LEVEL` | `122` |
+| `DOTA_INVALID_ORDER_COUNT` | `123` |
+
+### DOTA_MOTION_CONTROLLER_PRIORITY
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_MOTION_CONTROLLER_PRIORITY_LOWEST` | `0` |
+| `DOTA_MOTION_CONTROLLER_PRIORITY_LOW` | `1` |
+| `DOTA_MOTION_CONTROLLER_PRIORITY_MEDIUM` | `2` |
+| `DOTA_MOTION_CONTROLLER_PRIORITY_HIGH` | `3` |
+| `DOTA_MOTION_CONTROLLER_PRIORITY_HIGHEST` | `4` |
+| `DOTA_MOTION_CONTROLLER_PRIORITY_ULTRA` | `5` |
+
+### DOTA_OVERHEAD_ALERT
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `OVERHEAD_ALERT_GOLD` | `0` |
+| `OVERHEAD_ALERT_DENY` | `1` |
+| `OVERHEAD_ALERT_CRITICAL` | `2` |
+| `OVERHEAD_ALERT_XP` | `3` |
+| `OVERHEAD_ALERT_BONUS_SPELL_DAMAGE` | `4` |
+| `OVERHEAD_ALERT_MISS` | `5` |
+| `OVERHEAD_ALERT_DAMAGE` | `6` |
+| `OVERHEAD_ALERT_EVADE` | `7` |
+| `OVERHEAD_ALERT_BLOCK` | `8` |
+| `OVERHEAD_ALERT_BONUS_POISON_DAMAGE` | `9` |
+| `OVERHEAD_ALERT_HEAL` | `10` |
+| `OVERHEAD_ALERT_MANA_ADD` | `11` |
+| `OVERHEAD_ALERT_MANA_LOSS` | `12` |
+| `OVERHEAD_ALERT_MAGICAL_BLOCK` | `16` |
+| `OVERHEAD_ALERT_INCOMING_DAMAGE` | `17` |
+| `OVERHEAD_ALERT_OUTGOING_DAMAGE` | `18` |
+| `OVERHEAD_ALERT_DISABLE_RESIST` | `19` |
+| `OVERHEAD_ALERT_DEATH` | `20` |
+| `OVERHEAD_ALERT_BLOCKED` | `21` |
+| `OVERHEAD_ALERT_ITEM_RECEIVED` | `22` |
+| `OVERHEAD_ALERT_SHARD` | `23` |
+| `OVERHEAD_ALERT_DEADLY_BLOW` | `24` |
+| `OVERHEAD_ALERT_FORCE_MISS` | `25` |
+| `OVERHEAD_ALERT_AEGIS` | `26` |
+| `OVERHEAD_ALERT_DISPEL` | `27` |
+| `OVERHEAD_ALERT_BONUS_PURE_DAMAGE` | `28` |
+
+### DOTA_RUNES
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_RUNE_INVALID` | `-1` |
+| `DOTA_RUNE_DOUBLEDAMAGE` | `0` |
+| `DOTA_RUNE_HASTE` | `1` |
+| `DOTA_RUNE_ILLUSION` | `2` |
+| `DOTA_RUNE_INVISIBILITY` | `3` |
+| `DOTA_RUNE_REGENERATION` | `4` |
+| `DOTA_RUNE_BOUNTY` | `5` |
+| `DOTA_RUNE_ARCANE` | `6` |
+| `DOTA_RUNE_WATER` | `7` |
+| `DOTA_RUNE_XP` | `8` |
+| `DOTA_RUNE_SHIELD` | `9` |
+| `DOTA_RUNE_COUNT` | `10` |
+
+### DOTA_SHOP_TYPE
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_SHOP_HOME` | `0` |
+| `DOTA_SHOP_SIDE` | `1` |
+| `DOTA_SHOP_SECRET` | `2` |
+| `DOTA_SHOP_GROUND` | `3` |
+| `DOTA_SHOP_SIDE2` | `4` |
+| `DOTA_SHOP_SECRET2` | `5` |
+| `DOTA_SHOP_CUSTOM` | `6` |
+| `DOTA_SHOP_NEUTRALS` | `7` |
+| `DOTA_SHOP_NONE` | `8` |
+
+### DOTA_UNIT_TARGET_FLAGS
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_UNIT_TARGET_FLAG_NONE` | `0` |
+| `DOTA_UNIT_TARGET_FLAG_RANGED_ONLY` | `2` |
+| `DOTA_UNIT_TARGET_FLAG_MELEE_ONLY` | `4` |
+| `DOTA_UNIT_TARGET_FLAG_DEAD` | `8` |
+| `DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES` | `16` |
+| `DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES` | `32` |
+| `DOTA_UNIT_TARGET_FLAG_INVULNERABLE` | `64` |
+| `DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE` | `128` |
+| `DOTA_UNIT_TARGET_FLAG_NO_INVIS` | `256` |
+| `DOTA_UNIT_TARGET_FLAG_CAN_BE_SEEN` | `384` |
+| `DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS` | `512` |
+| `DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED` | `1024` |
+| `DOTA_UNIT_TARGET_FLAG_NOT_DOMINATED` | `2048` |
+| `DOTA_UNIT_TARGET_FLAG_NOT_SUMMONED` | `4096` |
+| `DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS` | `8192` |
+| `DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE` | `16384` |
+| `DOTA_UNIT_TARGET_FLAG_MANA_ONLY` | `32768` |
+| `DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP` | `65536` |
+| `DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO` | `131072` |
+| `DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD` | `262144` |
+| `DOTA_UNIT_TARGET_FLAG_NOT_NIGHTMARED` | `524288` |
+| `DOTA_UNIT_TARGET_FLAG_PREFER_ENEMIES` | `1048576` |
+| `DOTA_UNIT_TARGET_FLAG_RESPECT_OBSTRUCTIONS` | `2097152` |
+
+### DOTA_UNIT_TARGET_TEAM
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_UNIT_TARGET_TEAM_NONE` | `0` |
+| `DOTA_UNIT_TARGET_TEAM_FRIENDLY` | `1` |
+| `DOTA_UNIT_TARGET_TEAM_ENEMY` | `2` |
+| `DOTA_UNIT_TARGET_TEAM_BOTH` | `3` |
+| `DOTA_UNIT_TARGET_TEAM_CUSTOM` | `4` |
+
+### DOTA_UNIT_TARGET_TYPE
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_UNIT_TARGET_NONE` | `0` |
+| `DOTA_UNIT_TARGET_HERO` | `1` |
+| `DOTA_UNIT_TARGET_CREEP` | `2` |
+| `DOTA_UNIT_TARGET_BUILDING` | `4` |
+| `DOTA_UNIT_TARGET_COURIER` | `16` |
+| `DOTA_UNIT_TARGET_BASIC` | `18` |
+| `DOTA_UNIT_TARGET_HEROES_AND_CREEPS` | `19` |
+| `DOTA_UNIT_TARGET_OTHER` | `32` |
+| `DOTA_UNIT_TARGET_ALL` | `55` |
+| `DOTA_UNIT_TARGET_TREE` | `64` |
+| `DOTA_UNIT_TARGET_CUSTOM` | `128` |
+| `DOTA_UNIT_TARGET_SELF` | `256` |
+
+### DOTAAbilitySpeakTrigger_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ABILITY_SPEAK_START_ACTION_PHASE` | `0` |
+| `DOTA_ABILITY_SPEAK_CAST` | `1` |
+
+### DOTAConnectionState_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_CONNECTION_STATE_UNKNOWN` | `0` |
+| `DOTA_CONNECTION_STATE_NOT_YET_CONNECTED` | `1` |
+| `DOTA_CONNECTION_STATE_CONNECTED` | `2` |
+| `DOTA_CONNECTION_STATE_DISCONNECTED` | `3` |
+| `DOTA_CONNECTION_STATE_ABANDONED` | `4` |
+| `DOTA_CONNECTION_STATE_LOADING` | `5` |
+| `DOTA_CONNECTION_STATE_FAILED` | `6` |
+
+### DOTACustomCameraEventFlags_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `k_ECustomCameraEventFlags_Zoom` | `1` |
+| `k_ECustomCameraEventFlags_Position` | `2` |
+| `k_ECustomCameraEventFlags_PositionPlayerHero` | `4` |
+| `k_ECustomCameraEventFlags_Pitch` | `8` |
+| `k_ECustomCameraEventFlags_Yaw` | `16` |
+| `k_ECustomCameraEventFlags_Lock` | `32` |
+| `k_ECustomCameraEventFlags_Unlock` | `64` |
+| `k_ECustomCameraEventFlags_ResetDefault` | `128` |
+| `k_ECustomCameraEventFlags_SpecificPlayer` | `256` |
+| `k_ECustomCameraEventFlags_FadeOut` | `512` |
+| `k_ECustomCameraEventFlags_FadeIn` | `1024` |
+| `k_ECustomCameraEventFlags_LetterboxOn` | `2048` |
+| `k_ECustomCameraEventFlags_LetterboxOff` | `4096` |
+
+### DOTADamageFlag_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_DAMAGE_FLAG_NONE` | `0` |
+| `DOTA_DAMAGE_FLAG_IGNORES_MAGIC_ARMOR` | `1` |
+| `DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR` | `2` |
+| `DOTA_DAMAGE_FLAG_BYPASSES_INVULNERABILITY` | `4` |
+| `DOTA_DAMAGE_FLAG_BYPASSES_PHYSICAL_BLOCK` | `8` |
+| `DOTA_DAMAGE_FLAG_REFLECTION` | `16` |
+| `DOTA_DAMAGE_FLAG_HPLOSS` | `32` |
+| `DOTA_DAMAGE_FLAG_NO_DIRECTOR_EVENT` | `64` |
+| `DOTA_DAMAGE_FLAG_NON_LETHAL` | `128` |
+| `DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS` | `512` |
+| `DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION` | `1024` |
+| `DOTA_DAMAGE_FLAG_DONT_DISPLAY_DAMAGE_IF_SOURCE_HIDDEN` | `2048` |
+| `DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL` | `4096` |
+| `DOTA_DAMAGE_FLAG_PROPERTY_FIRE` | `8192` |
+| `DOTA_DAMAGE_FLAG_IGNORES_BASE_PHYSICAL_ARMOR` | `16384` |
+| `DOTA_DAMAGE_FLAG_SECONDARY_PROJECTILE_ATTACK` | `32768` |
+| `DOTA_DAMAGE_FLAG_FORCE_SPELL_AMPLIFICATION` | `65536` |
+| `DOTA_DAMAGE_FLAG_MAGIC_AUTO_ATTACK` | `131072` |
+| `DOTA_DAMAGE_FLAG_ATTACK_MODIFIER` | `262144` |
+| `DOTA_DAMAGE_FLAG_BYPASSES_ALL_BLOCK` | `524288` |
+| `DOTA_DAMAGE_FLAG_NO_REFLECTION` | `1048576` |
+
+### DotaDefaultUIElement_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_DEFAULT_UI_INVALID` | `-1` |
+| `DOTA_DEFAULT_UI_TOP_TIMEOFDAY` | `0` |
+| `DOTA_DEFAULT_UI_TOP_HEROES` | `1` |
+| `DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD` | `2` |
+| `DOTA_DEFAULT_UI_ACTION_PANEL` | `3` |
+| `DOTA_DEFAULT_UI_ACTION_MINIMAP` | `4` |
+| `DOTA_DEFAULT_UI_INVENTORY_PANEL` | `5` |
+| `DOTA_DEFAULT_UI_INVENTORY_SHOP` | `6` |
+| `DOTA_DEFAULT_UI_INVENTORY_ITEMS` | `7` |
+| `DOTA_DEFAULT_UI_INVENTORY_QUICKBUY` | `8` |
+| `DOTA_DEFAULT_UI_INVENTORY_COURIER` | `9` |
+| `DOTA_DEFAULT_UI_INVENTORY_PROTECT` | `10` |
+| `DOTA_DEFAULT_UI_INVENTORY_GOLD` | `11` |
+| `DOTA_DEFAULT_UI_SHOP_SUGGESTEDITEMS` | `12` |
+| `DOTA_DEFAULT_UI_SHOP_COMMONITEMS` | `13` |
+| `DOTA_DEFAULT_UI_HERO_SELECTION_TEAMS` | `14` |
+| `DOTA_DEFAULT_UI_HERO_SELECTION_GAME_NAME` | `15` |
+| `DOTA_DEFAULT_UI_HERO_SELECTION_CLOCK` | `16` |
+| `DOTA_DEFAULT_UI_HERO_SELECTION_HEADER` | `17` |
+| `DOTA_DEFAULT_UI_TOP_MENU_BUTTONS` | `18` |
+| `DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND` | `19` |
+| `DOTA_DEFAULT_UI_TOP_BAR_RADIANT_TEAM` | `20` |
+| `DOTA_DEFAULT_UI_TOP_BAR_DIRE_TEAM` | `21` |
+| `DOTA_DEFAULT_UI_TOP_BAR_SCORE` | `22` |
+| `DOTA_DEFAULT_UI_ENDGAME` | `23` |
+| `DOTA_DEFAULT_UI_ENDGAME_CHAT` | `24` |
+| `DOTA_DEFAULT_UI_QUICK_STATS` | `25` |
+| `DOTA_DEFAULT_UI_PREGAME_STRATEGYUI` | `26` |
+| `DOTA_DEFAULT_UI_KILLCAM` | `27` |
+| `DOTA_DEFAULT_UI_FIGHT_RECAP` | `28` |
+| `DOTA_DEFAULT_UI_TOP_BAR` | `29` |
+| `DOTA_DEFAULT_UI_CUSTOMUI_BEHIND_HUD_ELEMENTS` | `30` |
+| `DOTA_DEFAULT_UI_AGHANIMS_STATUS` | `31` |
+| `DOTA_DEFAULT_UI_ELEMENT_COUNT` | `32` |
+
+### DOTAHUDVisibility_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_HUD_VISIBILITY_INVALID` | `-1` |
+| `DOTA_HUD_VISIBILITY_TOP_TIMEOFDAY` | `0` |
+| `DOTA_HUD_VISIBILITY_TOP_HEROES` | `1` |
+| `DOTA_HUD_VISIBILITY_TOP_SCOREBOARD` | `2` |
+| `DOTA_HUD_VISIBILITY_ACTION_PANEL` | `3` |
+| `DOTA_HUD_VISIBILITY_ACTION_MINIMAP` | `4` |
+| `DOTA_HUD_VISIBILITY_INVENTORY_PANEL` | `5` |
+| `DOTA_HUD_VISIBILITY_INVENTORY_SHOP` | `6` |
+| `DOTA_HUD_VISIBILITY_INVENTORY_ITEMS` | `7` |
+| `DOTA_HUD_VISIBILITY_INVENTORY_QUICKBUY` | `8` |
+| `DOTA_HUD_VISIBILITY_INVENTORY_COURIER` | `9` |
+| `DOTA_HUD_VISIBILITY_INVENTORY_PROTECT` | `10` |
+| `DOTA_HUD_VISIBILITY_INVENTORY_GOLD` | `11` |
+| `DOTA_HUD_VISIBILITY_SHOP_SUGGESTEDITEMS` | `12` |
+| `DOTA_HUD_VISIBILITY_SHOP_COMMONITEMS` | `13` |
+| `DOTA_HUD_VISIBILITY_HERO_SELECTION_TEAMS` | `14` |
+| `DOTA_HUD_VISIBILITY_HERO_SELECTION_GAME_NAME` | `15` |
+| `DOTA_HUD_VISIBILITY_HERO_SELECTION_CLOCK` | `16` |
+| `DOTA_HUD_VISIBILITY_HERO_SELECTION_HEADER` | `17` |
+| `DOTA_HUD_VISIBILITY_TOP_MENU_BUTTONS` | `18` |
+| `DOTA_HUD_VISIBILITY_TOP_BAR_BACKGROUND` | `19` |
+| `DOTA_HUD_VISIBILITY_TOP_BAR_RADIANT_TEAM` | `20` |
+| `DOTA_HUD_VISIBILITY_TOP_BAR_DIRE_TEAM` | `21` |
+| `DOTA_HUD_VISIBILITY_TOP_BAR_SCORE` | `22` |
+| `DOTA_HUD_VISIBILITY_ENDGAME` | `23` |
+| `DOTA_HUD_VISIBILITY_ENDGAME_CHAT` | `24` |
+| `DOTA_HUD_VISIBILITY_QUICK_STATS` | `25` |
+| `DOTA_HUD_VISIBILITY_PREGAME_STRATEGYUI` | `26` |
+| `DOTA_HUD_VISIBILITY_KILLCAM` | `27` |
+| `DOTA_HUD_VISIBILITY_FIGHT_RECAP` | `28` |
+| `DOTA_HUD_VISIBILITY_TOP_BAR` | `29` |
+| `DOTA_HUD_CUSTOMUI_BEHIND_HUD_ELEMENTS` | `30` |
+| `DOTA_HUD_VISIBILITY_AGHANIMS_STATUS` | `31` |
+| `DOTA_HUD_VISIBILITY_COUNT` | `32` |
+
+### DOTAInventoryFlags_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_INVENTORY_ALLOW_NONE` | `0` |
+| `DOTA_INVENTORY_ALLOW_MAIN` | `1` |
+| `DOTA_INVENTORY_ALLOW_STASH` | `2` |
+| `DOTA_INVENTORY_ALL_ACCESS` | `3` |
+| `DOTA_INVENTORY_ALLOW_DROP_ON_GROUND` | `4` |
+| `DOTA_INVENTORY_ALLOW_DROP_AT_FOUNTAIN` | `8` |
+| `DOTA_INVENTORY_LIMIT_DROP_ON_GROUND` | `16` |
+
+### DOTALimits_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_DEFAULT_MAX_TEAM` | `5` |
+| `DOTA_DEFAULT_MAX_TEAM_PLAYERS` | `10` |
+| `DOTA_MAX_PLAYER_TEAMS` | `10` |
+| `DOTA_MAX_SPECTATOR_LOBBY_SIZE` | `15` |
+| `DOTA_MAX_TEAM` | `24` |
+| `DOTA_MAX_TEAM_PLAYERS` | `24` |
+| `DOTA_MAX_SPECTATOR_TEAM_SIZE` | `40` |
+| `DOTA_MAX_PLAYERS` | `64` |
+
+### DOTAMinimapEvent_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_MINIMAP_EVENT_ANCIENT_UNDER_ATTACK` | `2` |
+| `DOTA_MINIMAP_EVENT_BASE_UNDER_ATTACK` | `4` |
+| `DOTA_MINIMAP_EVENT_BASE_GLYPHED` | `8` |
+| `DOTA_MINIMAP_EVENT_TEAMMATE_UNDER_ATTACK` | `16` |
+| `DOTA_MINIMAP_EVENT_TEAMMATE_TELEPORTING` | `32` |
+| `DOTA_MINIMAP_EVENT_TEAMMATE_DIED` | `64` |
+| `DOTA_MINIMAP_EVENT_TUTORIAL_TASK_ACTIVE` | `128` |
+| `DOTA_MINIMAP_EVENT_TUTORIAL_TASK_FINISHED` | `256` |
+| `DOTA_MINIMAP_EVENT_HINT_LOCATION` | `512` |
+| `DOTA_MINIMAP_EVENT_ENEMY_TELEPORTING` | `1024` |
+| `DOTA_MINIMAP_EVENT_CANCEL_TELEPORTING` | `2048` |
+| `DOTA_MINIMAP_EVENT_RADAR` | `4096` |
+| `DOTA_MINIMAP_EVENT_RADAR_TARGET` | `8192` |
+| `DOTA_MINIMAP_EVENT_MOVE_TO_TARGET` | `16384` |
+
+### DOTAModifierAttribute_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `MODIFIER_ATTRIBUTE_NONE` | `0` |
+| `MODIFIER_ATTRIBUTE_PERMANENT` | `1` |
+| `MODIFIER_ATTRIBUTE_MULTIPLE` | `2` |
+| `MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE` | `4` |
+| `MODIFIER_ATTRIBUTE_AURA_PRIORITY` | `8` |
+| `MODIFIER_ATTRIBUTE_IGNORE_DODGE` | `16` |
+| `MODIFIER_ATTRIBUTE_DUPLICATED` | `32` |
+
+### DOTAMusicStatus_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_MUSIC_STATUS_NONE` | `0` |
+| `DOTA_MUSIC_STATUS_EXPLORATION` | `1` |
+| `DOTA_MUSIC_STATUS_BATTLE` | `2` |
+| `DOTA_MUSIC_STATUS_PRE_GAME_EXPLORATION` | `3` |
+| `DOTA_MUSIC_STATUS_DEAD` | `4` |
+| `DOTA_MUSIC_STATUS_LAST` | `5` |
+
+### DOTAPostGameColumn_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_POST_GAME_COLUMN_LEVEL` | `0` |
+| `DOTA_POST_GAME_COLUMN_ITEMS` | `1` |
+| `DOTA_POST_GAME_COLUMN_KILLS` | `2` |
+| `DOTA_POST_GAME_COLUMN_DEATHS` | `3` |
+| `DOTA_POST_GAME_COLUMN_ASSISTS` | `4` |
+| `DOTA_POST_GAME_COLUMN_NET_WORTH` | `5` |
+| `DOTA_POST_GAME_COLUMN_LAST_HITS` | `6` |
+| `DOTA_POST_GAME_COLUMN_DENIES` | `7` |
+| `DOTA_POST_GAME_COLUMN_DAMAGE` | `8` |
+| `DOTA_POST_GAME_COLUMN_HEALING` | `9` |
+| `DOTA_POST_GAME_COLUMN_MAX` | `10` |
+
+### DOTAPostGameLayout_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_POST_GAME_LAYOUT_DOUBLE_COLUMN` | `0` |
+| `DOTA_POST_GAME_LAYOUT_SINGLE_COLUMN` | `1` |
+| `DOTA_POST_GAME_LAYOUT_MAX` | `2` |
+
+### DOTAProjectileAttachment_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_PROJECTILE_ATTACHMENT_NONE` | `0` |
+| `DOTA_PROJECTILE_ATTACHMENT_ATTACK_1` | `1` |
+| `DOTA_PROJECTILE_ATTACHMENT_ATTACK_2` | `2` |
+| `DOTA_PROJECTILE_ATTACHMENT_HITLOCATION` | `3` |
+| `DOTA_PROJECTILE_ATTACHMENT_ATTACK_3` | `4` |
+| `DOTA_PROJECTILE_ATTACHMENT_ATTACK_4` | `5` |
+| `DOTA_PROJECTILE_ATTACHMENT_LAST` | `6` |
+
+### DOTAScriptInventorySlot_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ITEM_SLOT_1` | `0` |
+| `DOTA_ITEM_SLOT_2` | `1` |
+| `DOTA_ITEM_SLOT_3` | `2` |
+| `DOTA_ITEM_SLOT_4` | `3` |
+| `DOTA_ITEM_SLOT_5` | `4` |
+| `DOTA_ITEM_SLOT_6` | `5` |
+| `DOTA_ITEM_SLOT_7` | `6` |
+| `DOTA_ITEM_SLOT_8` | `7` |
+| `DOTA_ITEM_SLOT_9` | `8` |
+| `DOTA_STASH_SLOT_1` | `9` |
+| `DOTA_STASH_SLOT_2` | `10` |
+| `DOTA_STASH_SLOT_3` | `11` |
+| `DOTA_STASH_SLOT_4` | `12` |
+| `DOTA_STASH_SLOT_5` | `13` |
+| `DOTA_STASH_SLOT_6` | `14` |
+| `DOTA_ITEM_TP_SCROLL` | `15` |
+| `DOTA_ITEM_NEUTRAL_ACTIVE_SLOT` | `16` |
+| `DOTA_ITEM_NEUTRAL_PASSIVE_SLOT` | `17` |
+| `DOTA_ITEM_TRANSIENT_ITEM` | `23` |
+| `DOTA_ITEM_TRANSIENT_RECIPE` | `24` |
+| `DOTA_ITEM_TRANSIENT_CAST_ITEM` | `26` |
+
+### DOTASlotType_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_LOADOUT_TYPE_INVALID` | `-1` |
+| `DOTA_LOADOUT_TYPE_WEAPON` | `0` |
+| `DOTA_LOADOUT_TYPE_OFFHAND_WEAPON` | `1` |
+| `DOTA_LOADOUT_TYPE_WEAPON2` | `2` |
+| `DOTA_LOADOUT_TYPE_OFFHAND_WEAPON2` | `3` |
+| `DOTA_LOADOUT_TYPE_HEAD` | `4` |
+| `DOTA_LOADOUT_TYPE_SHOULDER` | `5` |
+| `DOTA_LOADOUT_TYPE_ARMS` | `6` |
+| `DOTA_LOADOUT_TYPE_ARMOR` | `7` |
+| `DOTA_LOADOUT_TYPE_BELT` | `8` |
+| `DOTA_LOADOUT_TYPE_NECK` | `9` |
+| `DOTA_LOADOUT_TYPE_BACK` | `10` |
+| `DOTA_LOADOUT_TYPE_GLOVES` | `11` |
+| `DOTA_LOADOUT_TYPE_LEGS` | `12` |
+| `DOTA_LOADOUT_TYPE_TAIL` | `13` |
+| `DOTA_LOADOUT_TYPE_MISC` | `14` |
+| `DOTA_LOADOUT_TYPE_COSTUME` | `15` |
+| `DOTA_LOADOUT_TYPE_HERO_BASE` | `16` |
+| `DOTA_LOADOUT_TYPE_BODY_HEAD` | `17` |
+| `DOTA_LOADOUT_TYPE_MOUNT` | `18` |
+| `DOTA_LOADOUT_TYPE_SUMMON` | `19` |
+| `DOTA_LOADOUT_TYPE_SHAPESHIFT` | `20` |
+| `DOTA_LOADOUT_TYPE_TAUNT` | `21` |
+| `DOTA_LOADOUT_TYPE_HERO_EFFIGY` | `22` |
+| `DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS` | `23` |
+| `DOTA_LOADOUT_TYPE_ABILITY_ATTACK` | `24` |
+| `DOTA_LOADOUT_TYPE_ABILITY1` | `25` |
+| `DOTA_LOADOUT_TYPE_ABILITY2` | `26` |
+| `DOTA_LOADOUT_TYPE_ABILITY3` | `27` |
+| `DOTA_LOADOUT_TYPE_ABILITY4` | `28` |
+| `DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE` | `29` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_1` | `30` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_2` | `31` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_3` | `32` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_4` | `33` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_5` | `34` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_6` | `35` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_7` | `36` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_8` | `37` |
+| `DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_9` | `38` |
+| `DOTA_LOADOUT_TYPE_VOICE` | `39` |
+| `DOTA_LOADOUT_PERSONA_1_START` | `40` |
+| `DOTA_LOADOUT_TYPE_WEAPON_PERSONA_1` | `40` |
+| `DOTA_LOADOUT_TYPE_OFFHAND_WEAPON_PERSONA_1` | `41` |
+| `DOTA_LOADOUT_TYPE_WEAPON2_PERSONA_1` | `42` |
+| `DOTA_LOADOUT_TYPE_OFFHAND_WEAPON2_PERSONA_1` | `43` |
+| `DOTA_LOADOUT_TYPE_HEAD_PERSONA_1` | `44` |
+| `DOTA_LOADOUT_TYPE_SHOULDER_PERSONA_1` | `45` |
+| `DOTA_LOADOUT_TYPE_ARMS_PERSONA_1` | `46` |
+| `DOTA_LOADOUT_TYPE_ARMOR_PERSONA_1` | `47` |
+| `DOTA_LOADOUT_TYPE_BELT_PERSONA_1` | `48` |
+| `DOTA_LOADOUT_TYPE_NECK_PERSONA_1` | `49` |
+| `DOTA_LOADOUT_TYPE_BACK_PERSONA_1` | `50` |
+| `DOTA_LOADOUT_TYPE_LEGS_PERSONA_1` | `51` |
+| `DOTA_LOADOUT_TYPE_GLOVES_PERSONA_1` | `52` |
+| `DOTA_LOADOUT_TYPE_TAIL_PERSONA_1` | `53` |
+| `DOTA_LOADOUT_TYPE_MISC_PERSONA_1` | `54` |
+| `DOTA_LOADOUT_TYPE_BODY_HEAD_PERSONA_1` | `55` |
+| `DOTA_LOADOUT_TYPE_MOUNT_PERSONA_1` | `56` |
+| `DOTA_LOADOUT_TYPE_SUMMON_PERSONA_1` | `57` |
+| `DOTA_LOADOUT_TYPE_SHAPESHIFT_PERSONA_1` | `58` |
+| `DOTA_LOADOUT_TYPE_TAUNT_PERSONA_1` | `59` |
+| `DOTA_LOADOUT_TYPE_HERO_EFFIGY_PERSONA_1` | `60` |
+| `DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS_PERSONA_1` | `61` |
+| `DOTA_LOADOUT_TYPE_ABILITY_ATTACK_PERSONA_1` | `62` |
+| `DOTA_LOADOUT_TYPE_ABILITY1_PERSONA_1` | `63` |
+| `DOTA_LOADOUT_TYPE_ABILITY2_PERSONA_1` | `64` |
+| `DOTA_LOADOUT_TYPE_ABILITY3_PERSONA_1` | `65` |
+| `DOTA_LOADOUT_TYPE_ABILITY4_PERSONA_1` | `66` |
+| `DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE_PERSONA_1` | `67` |
+| `DOTA_LOADOUT_PERSONA_1_END` | `68` |
+| `DOTA_LOADOUT_TYPE_VOICE_PERSONA_1` | `68` |
+| `DOTA_LOADOUT_TYPE_PERSONA_SELECTOR` | `69` |
+| `DOTA_LOADOUT_TYPE_COURIER` | `70` |
+| `DOTA_PLAYER_LOADOUT_START` | `70` |
+| `DOTA_LOADOUT_TYPE_ANNOUNCER` | `71` |
+| `DOTA_LOADOUT_TYPE_MEGA_KILLS` | `72` |
+| `DOTA_LOADOUT_TYPE_MUSIC` | `73` |
+| `DOTA_LOADOUT_TYPE_WARD` | `74` |
+| `DOTA_LOADOUT_TYPE_HUD_SKIN` | `75` |
+| `DOTA_LOADOUT_TYPE_LOADING_SCREEN` | `76` |
+| `DOTA_LOADOUT_TYPE_WEATHER` | `77` |
+| `DOTA_LOADOUT_TYPE_HEROIC_STATUE` | `78` |
+| `DOTA_LOADOUT_TYPE_MULTIKILL_BANNER` | `79` |
+| `DOTA_LOADOUT_TYPE_CURSOR_PACK` | `80` |
+| `DOTA_LOADOUT_TYPE_TELEPORT_EFFECT` | `81` |
+| `DOTA_LOADOUT_TYPE_BLINK_EFFECT` | `82` |
+| `DOTA_LOADOUT_TYPE_EMBLEM` | `83` |
+| `DOTA_LOADOUT_TYPE_TERRAIN` | `84` |
+| `DOTA_LOADOUT_TYPE_RADIANT_CREEPS` | `85` |
+| `DOTA_LOADOUT_TYPE_DIRE_CREEPS` | `86` |
+| `DOTA_LOADOUT_TYPE_RADIANT_TOWER` | `87` |
+| `DOTA_LOADOUT_TYPE_DIRE_TOWER` | `88` |
+| `DOTA_LOADOUT_TYPE_VERSUS_SCREEN` | `89` |
+| `DOTA_LOADOUT_TYPE_STREAK_EFFECT` | `90` |
+| `DOTA_LOADOUT_TYPE_KILL_EFFECT` | `91` |
+| `DOTA_LOADOUT_TYPE_DEATH_EFFECT` | `92` |
+| `DOTA_LOADOUT_TYPE_HEAD_EFFECT` | `93` |
+| `DOTA_LOADOUT_TYPE_MAP_EFFECT` | `94` |
+| `DOTA_LOADOUT_TYPE_COURIER_EFFECT` | `95` |
+| `DOTA_LOADOUT_TYPE_RADIANT_SIEGE_CREEPS` | `96` |
+| `DOTA_LOADOUT_TYPE_DIRE_SIEGE_CREEPS` | `97` |
+| `DOTA_LOADOUT_TYPE_ROSHAN` | `98` |
+| `DOTA_LOADOUT_TYPE_TORMENTOR` | `99` |
+| `DOTA_LOADOUT_TYPE_ANCIENT` | `100` |
+| `DOTA_LOADOUT_TYPE_PET_EFFIGY` | `101` |
+| `DOTA_PLAYER_LOADOUT_END` | `101` |
+| `DOTA_LOADOUT_TYPE_NONE` | `102` |
+| `DOTA_LOADOUT_TYPE_COUNT` | `103` |
+
+### DOTASpeechType_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_SPEECH_USER_INVALID` | `0` |
+| `DOTA_SPEECH_USER_SINGLE` | `1` |
+| `DOTA_SPEECH_USER_TEAM` | `2` |
+| `DOTA_SPEECH_USER_TEAM_NEARBY` | `3` |
+| `DOTA_SPEECH_USER_NEARBY` | `4` |
+| `DOTA_SPEECH_USER_ALL` | `5` |
+| `DOTA_SPEECH_GOOD_TEAM` | `6` |
+| `DOTA_SPEECH_BAD_TEAM` | `7` |
+| `DOTA_SPEECH_SPECTATOR` | `8` |
+| `DOTA_SPEECH_USER_TEAM_NOSPECTATOR` | `9` |
+| `DOTA_SPEECH_RECIPIENT_TYPE_MAX` | `10` |
+
+### DOTATeam_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_TEAM_FIRST` | `2` |
+| `DOTA_TEAM_GOODGUYS` | `2` |
+| `DOTA_TEAM_BADGUYS` | `3` |
+| `DOTA_TEAM_NEUTRALS` | `4` |
+| `DOTA_TEAM_NOTEAM` | `5` |
+| `DOTA_TEAM_CUSTOM_1` | `6` |
+| `DOTA_TEAM_CUSTOM_MIN` | `6` |
+| `DOTA_TEAM_CUSTOM_2` | `7` |
+| `DOTA_TEAM_CUSTOM_3` | `8` |
+| `DOTA_TEAM_CUSTOM_COUNT` | `8` |
+| `DOTA_TEAM_CUSTOM_4` | `9` |
+| `DOTA_TEAM_CUSTOM_5` | `10` |
+| `DOTA_TEAM_CUSTOM_6` | `11` |
+| `DOTA_TEAM_CUSTOM_7` | `12` |
+| `DOTA_TEAM_CUSTOM_8` | `13` |
+| `DOTA_TEAM_CUSTOM_MAX` | `13` |
+| `DOTA_TEAM_DRAFT_POOL` | `14` |
+| `DOTA_TEAM_COUNT` | `15` |
+
+### DOTAUnitAttackCapability_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_UNIT_CAP_NO_ATTACK` | `0` |
+| `DOTA_UNIT_CAP_MELEE_ATTACK` | `1` |
+| `DOTA_UNIT_CAP_RANGED_ATTACK` | `2` |
+| `DOTA_UNIT_ATTACK_CAPABILITY_BIT_COUNT` | `3` |
+| `DOTA_UNIT_CAP_RANGED_ATTACK_DIRECTIONAL` | `4` |
+
+### DOTAUnitMoveCapability_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_UNIT_CAP_MOVE_NONE` | `0` |
+| `DOTA_UNIT_CAP_MOVE_GROUND` | `1` |
+| `DOTA_UNIT_CAP_MOVE_FLY` | `2` |
+
+### dotaunitorder_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_UNIT_ORDER_NONE` | `0` |
+| `DOTA_UNIT_ORDER_MOVE_TO_POSITION` | `1` |
+| `DOTA_UNIT_ORDER_MOVE_TO_TARGET` | `2` |
+| `DOTA_UNIT_ORDER_ATTACK_MOVE` | `3` |
+| `DOTA_UNIT_ORDER_ATTACK_TARGET` | `4` |
+| `DOTA_UNIT_ORDER_CAST_POSITION` | `5` |
+| `DOTA_UNIT_ORDER_CAST_TARGET` | `6` |
+| `DOTA_UNIT_ORDER_CAST_TARGET_TREE` | `7` |
+| `DOTA_UNIT_ORDER_CAST_NO_TARGET` | `8` |
+| `DOTA_UNIT_ORDER_CAST_TOGGLE` | `9` |
+| `DOTA_UNIT_ORDER_HOLD_POSITION` | `10` |
+| `DOTA_UNIT_ORDER_TRAIN_ABILITY` | `11` |
+| `DOTA_UNIT_ORDER_DROP_ITEM` | `12` |
+| `DOTA_UNIT_ORDER_GIVE_ITEM` | `13` |
+| `DOTA_UNIT_ORDER_PICKUP_ITEM` | `14` |
+| `DOTA_UNIT_ORDER_PICKUP_RUNE` | `15` |
+| `DOTA_UNIT_ORDER_PURCHASE_ITEM` | `16` |
+| `DOTA_UNIT_ORDER_SELL_ITEM` | `17` |
+| `DOTA_UNIT_ORDER_DISASSEMBLE_ITEM` | `18` |
+| `DOTA_UNIT_ORDER_MOVE_ITEM` | `19` |
+| `DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO` | `20` |
+| `DOTA_UNIT_ORDER_STOP` | `21` |
+| `DOTA_UNIT_ORDER_TAUNT` | `22` |
+| `DOTA_UNIT_ORDER_BUYBACK` | `23` |
+| `DOTA_UNIT_ORDER_GLYPH` | `24` |
+| `DOTA_UNIT_ORDER_EJECT_ITEM_FROM_STASH` | `25` |
+| `DOTA_UNIT_ORDER_CAST_RUNE` | `26` |
+| `DOTA_UNIT_ORDER_PING_ABILITY` | `27` |
+| `DOTA_UNIT_ORDER_MOVE_TO_DIRECTION` | `28` |
+| `DOTA_UNIT_ORDER_PATROL` | `29` |
+| `DOTA_UNIT_ORDER_VECTOR_TARGET_POSITION` | `30` |
+| `DOTA_UNIT_ORDER_RADAR` | `31` |
+| `DOTA_UNIT_ORDER_SET_ITEM_COMBINE_LOCK` | `32` |
+| `DOTA_UNIT_ORDER_CONTINUE` | `33` |
+| `DOTA_UNIT_ORDER_VECTOR_TARGET_CANCELED` | `34` |
+| `DOTA_UNIT_ORDER_CAST_RIVER_PAINT` | `35` |
+| `DOTA_UNIT_ORDER_PREGAME_ADJUST_ITEM_ASSIGNMENT` | `36` |
+| `DOTA_UNIT_ORDER_DROP_ITEM_AT_FOUNTAIN` | `37` |
+| `DOTA_UNIT_ORDER_TAKE_ITEM_FROM_NEUTRAL_ITEM_STASH` | `38` |
+| `DOTA_UNIT_ORDER_MOVE_RELATIVE` | `39` |
+| `DOTA_UNIT_ORDER_CAST_TOGGLE_ALT` | `40` |
+| `DOTA_UNIT_ORDER_CONSUME_ITEM` | `41` |
+| `DOTA_UNIT_ORDER_SET_ITEM_MARK_FOR_SELL` | `42` |
+
+### EDOTA_ModifyGold_Reason
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ModifyGold_Unspecified` | `0` |
+| `DOTA_ModifyGold_Death` | `1` |
+| `DOTA_ModifyGold_Buyback` | `2` |
+| `DOTA_ModifyGold_PurchaseConsumable` | `3` |
+| `DOTA_ModifyGold_PurchaseItem` | `4` |
+| `DOTA_ModifyGold_AbandonedRedistribute` | `5` |
+| `DOTA_ModifyGold_SellItem` | `6` |
+| `DOTA_ModifyGold_AbilityCost` | `7` |
+| `DOTA_ModifyGold_CheatCommand` | `8` |
+| `DOTA_ModifyGold_SelectionPenalty` | `9` |
+| `DOTA_ModifyGold_GameTick` | `10` |
+| `DOTA_ModifyGold_Building` | `11` |
+| `DOTA_ModifyGold_HeroKill` | `12` |
+| `DOTA_ModifyGold_CreepKill` | `13` |
+| `DOTA_ModifyGold_NeutralKill` | `14` |
+| `DOTA_ModifyGold_RoshanKill` | `15` |
+| `DOTA_ModifyGold_CourierKill` | `16` |
+| `DOTA_ModifyGold_BountyRune` | `17` |
+| `DOTA_ModifyGold_SharedGold` | `18` |
+| `DOTA_ModifyGold_AbilityGold` | `19` |
+| `DOTA_ModifyGold_WardKill` | `20` |
+| `DOTA_ModifyGold_CourierKilledByThisPlayer` | `21` |
+
+### EDOTA_ModifyXP_Reason
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_ModifyXP_Unspecified` | `0` |
+| `DOTA_ModifyXP_HeroKill` | `1` |
+| `DOTA_ModifyXP_CreepKill` | `2` |
+| `DOTA_ModifyXP_RoshanKill` | `3` |
+| `DOTA_ModifyXP_TomeOfKnowledge` | `4` |
+| `DOTA_ModifyXP_Outpost` | `5` |
+| `DOTA_ModifyXP_CatchUp` | `6` |
+| `DOTA_ModifyXP_HeroAbility` | `7` |
+| `DOTA_ModifyXP_MAX` | `8` |
+
+### EntityEffects
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `EF_NODRAW` | `32` |
+
+### EntityThinkPhase
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `PRESIM` | `0` |
+| `PRESENSING` | `1` |
+| `POSTSENSING` | `2` |
+
+### EShareAbility
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `ITEM_FULLY_SHAREABLE` | `0` |
+| `ITEM_PARTIALLY_SHAREABLE` | `1` |
+| `ITEM_NOT_SHAREABLE` | `2` |
+
+### FindOrder
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `FIND_ANY_ORDER` | `0` |
+| `FIND_CLOSEST` | `1` |
+| `FIND_FARTHEST` | `2` |
+
+### GameActivity_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `ACT_RESET` | `0` |
+| `ACT_IDLE` | `1` |
+| `ACT_TRANSITION` | `2` |
+| `ACT_COVER` | `3` |
+| `ACT_COVER_MED` | `4` |
+| `ACT_COVER_LOW` | `5` |
+| `ACT_WALK` | `6` |
+| `ACT_WALK_AIM` | `7` |
+| `ACT_WALK_CROUCH` | `8` |
+| `ACT_WALK_CROUCH_AIM` | `9` |
+| `ACT_RUN` | `10` |
+| `ACT_RUN_AIM` | `11` |
+| `ACT_RUN_CROUCH` | `12` |
+| `ACT_RUN_CROUCH_AIM` | `13` |
+| `ACT_RUN_PROTECTED` | `14` |
+| `ACT_SCRIPT_CUSTOM_MOVE` | `15` |
+| `ACT_RANGE_ATTACK1` | `16` |
+| `ACT_RANGE_ATTACK2` | `17` |
+| `ACT_RANGE_ATTACK1_LOW` | `18` |
+| `ACT_RANGE_ATTACK2_LOW` | `19` |
+| `ACT_DIESIMPLE` | `20` |
+| `ACT_DIEBACKWARD` | `21` |
+| `ACT_DIEFORWARD` | `22` |
+| `ACT_DIEVIOLENT` | `23` |
+| `ACT_DIERAGDOLL` | `24` |
+| `ACT_FLY` | `25` |
+| `ACT_HOVER` | `26` |
+| `ACT_GLIDE` | `27` |
+| `ACT_SWIM` | `28` |
+| `ACT_JUMP` | `29` |
+| `ACT_HOP` | `30` |
+| `ACT_LEAP` | `31` |
+| `ACT_LAND` | `32` |
+| `ACT_CLIMB_UP` | `33` |
+| `ACT_CLIMB_DOWN` | `34` |
+| `ACT_CLIMB_DISMOUNT` | `35` |
+| `ACT_SHIPLADDER_UP` | `36` |
+| `ACT_SHIPLADDER_DOWN` | `37` |
+| `ACT_STRAFE_LEFT` | `38` |
+| `ACT_STRAFE_RIGHT` | `39` |
+| `ACT_ROLL_LEFT` | `40` |
+| `ACT_ROLL_RIGHT` | `41` |
+| `ACT_TURN_LEFT` | `42` |
+| `ACT_TURN_RIGHT` | `43` |
+| `ACT_CROUCH` | `44` |
+| `ACT_CROUCHIDLE` | `45` |
+| `ACT_STAND` | `46` |
+| `ACT_USE` | `47` |
+| `ACT_ALIEN_BURROW_IDLE` | `48` |
+| `ACT_ALIEN_BURROW_OUT` | `49` |
+| `ACT_SIGNAL1` | `50` |
+| `ACT_SIGNAL2` | `51` |
+| `ACT_SIGNAL3` | `52` |
+| `ACT_SIGNAL_ADVANCE` | `53` |
+| `ACT_SIGNAL_FORWARD` | `54` |
+| `ACT_SIGNAL_GROUP` | `55` |
+| `ACT_SIGNAL_HALT` | `56` |
+| `ACT_SIGNAL_LEFT` | `57` |
+| `ACT_SIGNAL_RIGHT` | `58` |
+| `ACT_SIGNAL_TAKECOVER` | `59` |
+| `ACT_LOOKBACK_RIGHT` | `60` |
+| `ACT_LOOKBACK_LEFT` | `61` |
+| `ACT_COWER` | `62` |
+| `ACT_SMALL_FLINCH` | `63` |
+| `ACT_BIG_FLINCH` | `64` |
+| `ACT_MELEE_ATTACK1` | `65` |
+| `ACT_MELEE_ATTACK2` | `66` |
+| `ACT_RELOAD` | `67` |
+| `ACT_RELOAD_START` | `68` |
+| `ACT_RELOAD_FINISH` | `69` |
+| `ACT_RELOAD_LOW` | `70` |
+| `ACT_ARM` | `71` |
+| `ACT_DISARM` | `72` |
+| `ACT_DROP_WEAPON` | `73` |
+| `ACT_DROP_WEAPON_SHOTGUN` | `74` |
+| `ACT_PICKUP_GROUND` | `75` |
+| `ACT_PICKUP_RACK` | `76` |
+| `ACT_IDLE_ANGRY` | `77` |
+| `ACT_IDLE_RELAXED` | `78` |
+| `ACT_IDLE_STIMULATED` | `79` |
+| `ACT_IDLE_AGITATED` | `80` |
+| `ACT_IDLE_STEALTH` | `81` |
+| `ACT_IDLE_HURT` | `82` |
+| `ACT_WALK_RELAXED` | `83` |
+| `ACT_WALK_STIMULATED` | `84` |
+| `ACT_WALK_AGITATED` | `85` |
+| `ACT_WALK_STEALTH` | `86` |
+| `ACT_RUN_RELAXED` | `87` |
+| `ACT_RUN_STIMULATED` | `88` |
+| `ACT_RUN_AGITATED` | `89` |
+| `ACT_RUN_STEALTH` | `90` |
+| `ACT_IDLE_AIM_RELAXED` | `91` |
+| `ACT_IDLE_AIM_STIMULATED` | `92` |
+| `ACT_IDLE_AIM_AGITATED` | `93` |
+| `ACT_IDLE_AIM_STEALTH` | `94` |
+| `ACT_WALK_AIM_RELAXED` | `95` |
+| `ACT_WALK_AIM_STIMULATED` | `96` |
+| `ACT_WALK_AIM_AGITATED` | `97` |
+| `ACT_WALK_AIM_STEALTH` | `98` |
+| `ACT_RUN_AIM_RELAXED` | `99` |
+| `ACT_RUN_AIM_STIMULATED` | `100` |
+| `ACT_RUN_AIM_AGITATED` | `101` |
+| `ACT_RUN_AIM_STEALTH` | `102` |
+| `ACT_CROUCHIDLE_STIMULATED` | `103` |
+| `ACT_CROUCHIDLE_AIM_STIMULATED` | `104` |
+| `ACT_CROUCHIDLE_AGITATED` | `105` |
+| `ACT_WALK_HURT` | `106` |
+| `ACT_RUN_HURT` | `107` |
+| `ACT_SPECIAL_ATTACK1` | `108` |
+| `ACT_SPECIAL_ATTACK2` | `109` |
+| `ACT_COMBAT_IDLE` | `110` |
+| `ACT_WALK_SCARED` | `111` |
+| `ACT_RUN_SCARED` | `112` |
+| `ACT_VICTORY_DANCE` | `113` |
+| `ACT_DIE_HEADSHOT` | `114` |
+| `ACT_DIE_CHESTSHOT` | `115` |
+| `ACT_DIE_GUTSHOT` | `116` |
+| `ACT_DIE_BACKSHOT` | `117` |
+| `ACT_FLINCH_HEAD` | `118` |
+| `ACT_FLINCH_CHEST` | `119` |
+| `ACT_FLINCH_STOMACH` | `120` |
+| `ACT_FLINCH_LEFTARM` | `121` |
+| `ACT_FLINCH_RIGHTARM` | `122` |
+| `ACT_FLINCH_LEFTLEG` | `123` |
+| `ACT_FLINCH_RIGHTLEG` | `124` |
+| `ACT_FLINCH_PHYSICS` | `125` |
+| `ACT_FLINCH_HEAD_BACK` | `126` |
+| `ACT_FLINCH_CHEST_BACK` | `127` |
+| `ACT_FLINCH_STOMACH_BACK` | `128` |
+| `ACT_FLINCH_CROUCH_FRONT` | `129` |
+| `ACT_FLINCH_CROUCH_BACK` | `130` |
+| `ACT_FLINCH_CROUCH_LEFT` | `131` |
+| `ACT_FLINCH_CROUCH_RIGHT` | `132` |
+| `ACT_IDLE_ON_FIRE` | `133` |
+| `ACT_WALK_ON_FIRE` | `134` |
+| `ACT_RUN_ON_FIRE` | `135` |
+| `ACT_180_LEFT` | `137` |
+| `ACT_180_RIGHT` | `138` |
+| `ACT_90_LEFT` | `139` |
+| `ACT_90_RIGHT` | `140` |
+| `ACT_STEP_LEFT` | `141` |
+| `ACT_STEP_RIGHT` | `142` |
+| `ACT_STEP_BACK` | `143` |
+| `ACT_STEP_FORE` | `144` |
+| `ACT_GESTURE_RANGE_ATTACK1` | `145` |
+| `ACT_GESTURE_RANGE_ATTACK2` | `146` |
+| `ACT_GESTURE_MELEE_ATTACK1` | `147` |
+| `ACT_GESTURE_MELEE_ATTACK2` | `148` |
+| `ACT_GESTURE_RANGE_ATTACK1_LOW` | `149` |
+| `ACT_GESTURE_RANGE_ATTACK2_LOW` | `150` |
+| `ACT_MELEE_ATTACK_SWING_GESTURE` | `151` |
+| `ACT_GESTURE_SMALL_FLINCH` | `152` |
+| `ACT_GESTURE_BIG_FLINCH` | `153` |
+| `ACT_GESTURE_FLINCH_BLAST` | `154` |
+| `ACT_GESTURE_FLINCH_BLAST_SHOTGUN` | `155` |
+| `ACT_GESTURE_FLINCH_BLAST_DAMAGED` | `156` |
+| `ACT_GESTURE_FLINCH_BLAST_DAMAGED_SHOTGUN` | `157` |
+| `ACT_GESTURE_FLINCH_HEAD` | `158` |
+| `ACT_GESTURE_FLINCH_CHEST` | `159` |
+| `ACT_GESTURE_FLINCH_STOMACH` | `160` |
+| `ACT_GESTURE_FLINCH_LEFTARM` | `161` |
+| `ACT_GESTURE_FLINCH_RIGHTARM` | `162` |
+| `ACT_GESTURE_FLINCH_LEFTLEG` | `163` |
+| `ACT_GESTURE_FLINCH_RIGHTLEG` | `164` |
+| `ACT_GESTURE_TURN_LEFT` | `165` |
+| `ACT_GESTURE_TURN_RIGHT` | `166` |
+| `ACT_GESTURE_TURN_LEFT45` | `167` |
+| `ACT_GESTURE_TURN_RIGHT45` | `168` |
+| `ACT_GESTURE_TURN_LEFT90` | `169` |
+| `ACT_GESTURE_TURN_RIGHT90` | `170` |
+| `ACT_GESTURE_TURN_LEFT45_FLAT` | `171` |
+| `ACT_GESTURE_TURN_RIGHT45_FLAT` | `172` |
+| `ACT_GESTURE_TURN_LEFT90_FLAT` | `173` |
+| `ACT_GESTURE_TURN_RIGHT90_FLAT` | `174` |
+| `ACT_BARNACLE_HIT` | `175` |
+| `ACT_BARNACLE_PULL` | `176` |
+| `ACT_BARNACLE_CHOMP` | `177` |
+| `ACT_BARNACLE_CHEW` | `178` |
+| `ACT_DO_NOT_DISTURB` | `179` |
+| `ACT_SPECIFIC_SEQUENCE` | `180` |
+| `ACT_VM_DEPLOY` | `181` |
+| `ACT_VM_RELOAD_EMPTY` | `182` |
+| `ACT_VM_DRAW` | `183` |
+| `ACT_VM_HOLSTER` | `184` |
+| `ACT_VM_IDLE` | `185` |
+| `ACT_VM_FIDGET` | `186` |
+| `ACT_VM_PULLBACK` | `187` |
+| `ACT_VM_PULLBACK_HIGH` | `188` |
+| `ACT_VM_PULLBACK_LOW` | `189` |
+| `ACT_VM_THROW` | `190` |
+| `ACT_VM_DROP` | `191` |
+| `ACT_VM_PULLPIN` | `192` |
+| `ACT_VM_PRIMARYATTACK` | `193` |
+| `ACT_VM_SECONDARYATTACK` | `194` |
+| `ACT_VM_RELOAD` | `195` |
+| `ACT_VM_DRYFIRE` | `196` |
+| `ACT_VM_HITLEFT` | `197` |
+| `ACT_VM_HITLEFT2` | `198` |
+| `ACT_VM_HITRIGHT` | `199` |
+| `ACT_VM_HITRIGHT2` | `200` |
+| `ACT_VM_HITCENTER` | `201` |
+| `ACT_VM_HITCENTER2` | `202` |
+| `ACT_VM_MISSLEFT` | `203` |
+| `ACT_VM_MISSLEFT2` | `204` |
+| `ACT_VM_MISSRIGHT` | `205` |
+| `ACT_VM_MISSRIGHT2` | `206` |
+| `ACT_VM_MISSCENTER` | `207` |
+| `ACT_VM_MISSCENTER2` | `208` |
+| `ACT_VM_HAULBACK` | `209` |
+| `ACT_VM_SWINGHARD` | `210` |
+| `ACT_VM_SWINGMISS` | `211` |
+| `ACT_VM_SWINGHIT` | `212` |
+| `ACT_VM_IDLE_TO_LOWERED` | `213` |
+| `ACT_VM_IDLE_LOWERED` | `214` |
+| `ACT_VM_LOWERED_TO_IDLE` | `215` |
+| `ACT_VM_RECOIL1` | `216` |
+| `ACT_VM_RECOIL2` | `217` |
+| `ACT_VM_RECOIL3` | `218` |
+| `ACT_VM_PICKUP` | `219` |
+| `ACT_VM_RELEASE` | `220` |
+| `ACT_VM_MAUL_LOOP` | `221` |
+| `ACT_VM_ATTACH_SILENCER` | `222` |
+| `ACT_VM_DETACH_SILENCER` | `223` |
+| `ACT_SLAM_STICKWALL_IDLE` | `224` |
+| `ACT_SLAM_STICKWALL_ND_IDLE` | `225` |
+| `ACT_SLAM_STICKWALL_ATTACH` | `226` |
+| `ACT_SLAM_STICKWALL_ATTACH2` | `227` |
+| `ACT_SLAM_STICKWALL_ND_ATTACH` | `228` |
+| `ACT_SLAM_STICKWALL_ND_ATTACH2` | `229` |
+| `ACT_SLAM_STICKWALL_DETONATE` | `230` |
+| `ACT_SLAM_STICKWALL_DETONATOR_HOLSTER` | `231` |
+| `ACT_SLAM_STICKWALL_DRAW` | `232` |
+| `ACT_SLAM_STICKWALL_ND_DRAW` | `233` |
+| `ACT_SLAM_STICKWALL_TO_THROW` | `234` |
+| `ACT_SLAM_STICKWALL_TO_THROW_ND` | `235` |
+| `ACT_SLAM_STICKWALL_TO_TRIPMINE_ND` | `236` |
+| `ACT_SLAM_THROW_IDLE` | `237` |
+| `ACT_SLAM_THROW_ND_IDLE` | `238` |
+| `ACT_SLAM_THROW_THROW` | `239` |
+| `ACT_SLAM_THROW_THROW2` | `240` |
+| `ACT_SLAM_THROW_THROW_ND` | `241` |
+| `ACT_SLAM_THROW_THROW_ND2` | `242` |
+| `ACT_SLAM_THROW_DRAW` | `243` |
+| `ACT_SLAM_THROW_ND_DRAW` | `244` |
+| `ACT_SLAM_THROW_TO_STICKWALL` | `245` |
+| `ACT_SLAM_THROW_TO_STICKWALL_ND` | `246` |
+| `ACT_SLAM_THROW_DETONATE` | `247` |
+| `ACT_SLAM_THROW_DETONATOR_HOLSTER` | `248` |
+| `ACT_SLAM_THROW_TO_TRIPMINE_ND` | `249` |
+| `ACT_SLAM_TRIPMINE_IDLE` | `250` |
+| `ACT_SLAM_TRIPMINE_DRAW` | `251` |
+| `ACT_SLAM_TRIPMINE_ATTACH` | `252` |
+| `ACT_SLAM_TRIPMINE_ATTACH2` | `253` |
+| `ACT_SLAM_TRIPMINE_TO_STICKWALL_ND` | `254` |
+| `ACT_SLAM_TRIPMINE_TO_THROW_ND` | `255` |
+| `ACT_SLAM_DETONATOR_IDLE` | `256` |
+| `ACT_SLAM_DETONATOR_DRAW` | `257` |
+| `ACT_SLAM_DETONATOR_DETONATE` | `258` |
+| `ACT_SLAM_DETONATOR_HOLSTER` | `259` |
+| `ACT_SLAM_DETONATOR_STICKWALL_DRAW` | `260` |
+| `ACT_SLAM_DETONATOR_THROW_DRAW` | `261` |
+| `ACT_SHOTGUN_RELOAD_START` | `262` |
+| `ACT_SHOTGUN_RELOAD_FINISH` | `263` |
+| `ACT_SHOTGUN_PUMP` | `264` |
+| `ACT_SMG2_IDLE2` | `265` |
+| `ACT_SMG2_FIRE2` | `266` |
+| `ACT_SMG2_DRAW2` | `267` |
+| `ACT_SMG2_RELOAD2` | `268` |
+| `ACT_SMG2_DRYFIRE2` | `269` |
+| `ACT_SMG2_TOAUTO` | `270` |
+| `ACT_SMG2_TOBURST` | `271` |
+| `ACT_PHYSCANNON_UPGRADE` | `272` |
+| `ACT_RANGE_ATTACK_AR1` | `273` |
+| `ACT_RANGE_ATTACK_AR2` | `274` |
+| `ACT_RANGE_ATTACK_AR2_LOW` | `275` |
+| `ACT_RANGE_ATTACK_AR2_GRENADE` | `276` |
+| `ACT_RANGE_ATTACK_HMG1` | `277` |
+| `ACT_RANGE_ATTACK_ML` | `278` |
+| `ACT_RANGE_ATTACK_SMG1` | `279` |
+| `ACT_RANGE_ATTACK_SMG1_LOW` | `280` |
+| `ACT_RANGE_ATTACK_SMG2` | `281` |
+| `ACT_RANGE_ATTACK_SHOTGUN` | `282` |
+| `ACT_RANGE_ATTACK_SHOTGUN_LOW` | `283` |
+| `ACT_RANGE_ATTACK_PISTOL` | `284` |
+| `ACT_RANGE_ATTACK_PISTOL_LOW` | `285` |
+| `ACT_RANGE_ATTACK_SLAM` | `286` |
+| `ACT_RANGE_ATTACK_TRIPWIRE` | `287` |
+| `ACT_RANGE_ATTACK_THROW` | `288` |
+| `ACT_RANGE_ATTACK_SNIPER_RIFLE` | `289` |
+| `ACT_RANGE_ATTACK_RPG` | `290` |
+| `ACT_MELEE_ATTACK_SWING` | `291` |
+| `ACT_RANGE_AIM_LOW` | `292` |
+| `ACT_RANGE_AIM_SMG1_LOW` | `293` |
+| `ACT_RANGE_AIM_PISTOL_LOW` | `294` |
+| `ACT_RANGE_AIM_AR2_LOW` | `295` |
+| `ACT_COVER_PISTOL_LOW` | `296` |
+| `ACT_COVER_SMG1_LOW` | `297` |
+| `ACT_GESTURE_RANGE_ATTACK_AR1` | `298` |
+| `ACT_GESTURE_RANGE_ATTACK_AR2` | `299` |
+| `ACT_GESTURE_RANGE_ATTACK_AR2_GRENADE` | `300` |
+| `ACT_GESTURE_RANGE_ATTACK_HMG1` | `301` |
+| `ACT_GESTURE_RANGE_ATTACK_ML` | `302` |
+| `ACT_GESTURE_RANGE_ATTACK_SMG1` | `303` |
+| `ACT_GESTURE_RANGE_ATTACK_SMG1_LOW` | `304` |
+| `ACT_GESTURE_RANGE_ATTACK_SMG2` | `305` |
+| `ACT_GESTURE_RANGE_ATTACK_SHOTGUN` | `306` |
+| `ACT_GESTURE_RANGE_ATTACK_PISTOL` | `307` |
+| `ACT_GESTURE_RANGE_ATTACK_PISTOL_LOW` | `308` |
+| `ACT_GESTURE_RANGE_ATTACK_SLAM` | `309` |
+| `ACT_GESTURE_RANGE_ATTACK_TRIPWIRE` | `310` |
+| `ACT_GESTURE_RANGE_ATTACK_THROW` | `311` |
+| `ACT_GESTURE_RANGE_ATTACK_SNIPER_RIFLE` | `312` |
+| `ACT_GESTURE_MELEE_ATTACK_SWING` | `313` |
+| `ACT_IDLE_RIFLE` | `314` |
+| `ACT_IDLE_SMG1` | `315` |
+| `ACT_IDLE_ANGRY_SMG1` | `316` |
+| `ACT_IDLE_PISTOL` | `317` |
+| `ACT_IDLE_ANGRY_PISTOL` | `318` |
+| `ACT_IDLE_ANGRY_SHOTGUN` | `319` |
+| `ACT_IDLE_STEALTH_PISTOL` | `320` |
+| `ACT_IDLE_PACKAGE` | `321` |
+| `ACT_WALK_PACKAGE` | `322` |
+| `ACT_IDLE_SUITCASE` | `323` |
+| `ACT_WALK_SUITCASE` | `324` |
+| `ACT_IDLE_SMG1_RELAXED` | `325` |
+| `ACT_IDLE_SMG1_STIMULATED` | `326` |
+| `ACT_WALK_RIFLE_RELAXED` | `327` |
+| `ACT_RUN_RIFLE_RELAXED` | `328` |
+| `ACT_WALK_RIFLE_STIMULATED` | `329` |
+| `ACT_RUN_RIFLE_STIMULATED` | `330` |
+| `ACT_IDLE_AIM_RIFLE_STIMULATED` | `331` |
+| `ACT_WALK_AIM_RIFLE_STIMULATED` | `332` |
+| `ACT_RUN_AIM_RIFLE_STIMULATED` | `333` |
+| `ACT_IDLE_SHOTGUN_RELAXED` | `334` |
+| `ACT_IDLE_SHOTGUN_STIMULATED` | `335` |
+| `ACT_IDLE_SHOTGUN_AGITATED` | `336` |
+| `ACT_WALK_ANGRY` | `337` |
+| `ACT_POLICE_HARASS1` | `338` |
+| `ACT_POLICE_HARASS2` | `339` |
+| `ACT_IDLE_MANNEDGUN` | `340` |
+| `ACT_IDLE_MELEE` | `341` |
+| `ACT_IDLE_ANGRY_MELEE` | `342` |
+| `ACT_IDLE_RPG_RELAXED` | `343` |
+| `ACT_IDLE_RPG` | `344` |
+| `ACT_IDLE_ANGRY_RPG` | `345` |
+| `ACT_COVER_LOW_RPG` | `346` |
+| `ACT_WALK_RPG` | `347` |
+| `ACT_RUN_RPG` | `348` |
+| `ACT_WALK_CROUCH_RPG` | `349` |
+| `ACT_RUN_CROUCH_RPG` | `350` |
+| `ACT_WALK_RPG_RELAXED` | `351` |
+| `ACT_RUN_RPG_RELAXED` | `352` |
+| `ACT_WALK_RIFLE` | `353` |
+| `ACT_WALK_AIM_RIFLE` | `354` |
+| `ACT_WALK_CROUCH_RIFLE` | `355` |
+| `ACT_WALK_CROUCH_AIM_RIFLE` | `356` |
+| `ACT_RUN_RIFLE` | `357` |
+| `ACT_RUN_AIM_RIFLE` | `358` |
+| `ACT_RUN_CROUCH_RIFLE` | `359` |
+| `ACT_RUN_CROUCH_AIM_RIFLE` | `360` |
+| `ACT_RUN_STEALTH_PISTOL` | `361` |
+| `ACT_WALK_AIM_SHOTGUN` | `362` |
+| `ACT_RUN_AIM_SHOTGUN` | `363` |
+| `ACT_WALK_PISTOL` | `364` |
+| `ACT_RUN_PISTOL` | `365` |
+| `ACT_WALK_AIM_PISTOL` | `366` |
+| `ACT_RUN_AIM_PISTOL` | `367` |
+| `ACT_WALK_STEALTH_PISTOL` | `368` |
+| `ACT_WALK_AIM_STEALTH_PISTOL` | `369` |
+| `ACT_RUN_AIM_STEALTH_PISTOL` | `370` |
+| `ACT_RELOAD_PISTOL` | `371` |
+| `ACT_RELOAD_PISTOL_LOW` | `372` |
+| `ACT_RELOAD_SMG1` | `373` |
+| `ACT_RELOAD_SMG1_LOW` | `374` |
+| `ACT_RELOAD_SHOTGUN` | `375` |
+| `ACT_RELOAD_SHOTGUN_LOW` | `376` |
+| `ACT_GESTURE_RELOAD` | `377` |
+| `ACT_GESTURE_RELOAD_PISTOL` | `378` |
+| `ACT_GESTURE_RELOAD_SMG1` | `379` |
+| `ACT_GESTURE_RELOAD_SHOTGUN` | `380` |
+| `ACT_BUSY_LEAN_LEFT` | `381` |
+| `ACT_BUSY_LEAN_LEFT_ENTRY` | `382` |
+| `ACT_BUSY_LEAN_LEFT_EXIT` | `383` |
+| `ACT_BUSY_LEAN_BACK` | `384` |
+| `ACT_BUSY_LEAN_BACK_ENTRY` | `385` |
+| `ACT_BUSY_LEAN_BACK_EXIT` | `386` |
+| `ACT_BUSY_SIT_GROUND` | `387` |
+| `ACT_BUSY_SIT_GROUND_ENTRY` | `388` |
+| `ACT_BUSY_SIT_GROUND_EXIT` | `389` |
+| `ACT_BUSY_SIT_CHAIR` | `390` |
+| `ACT_BUSY_SIT_CHAIR_ENTRY` | `391` |
+| `ACT_BUSY_SIT_CHAIR_EXIT` | `392` |
+| `ACT_BUSY_STAND` | `393` |
+| `ACT_BUSY_QUEUE` | `394` |
+| `ACT_DUCK_DODGE` | `395` |
+| `ACT_DIE_BARNACLE_SWALLOW` | `396` |
+| `ACT_GESTURE_BARNACLE_STRANGLE` | `397` |
+| `ACT_DIE_FRONTSIDE` | `402` |
+| `ACT_DIE_RIGHTSIDE` | `403` |
+| `ACT_DIE_BACKSIDE` | `404` |
+| `ACT_DIE_LEFTSIDE` | `405` |
+| `ACT_DIE_CROUCH_FRONTSIDE` | `406` |
+| `ACT_DIE_CROUCH_RIGHTSIDE` | `407` |
+| `ACT_DIE_CROUCH_BACKSIDE` | `408` |
+| `ACT_DIE_CROUCH_LEFTSIDE` | `409` |
+| `ACT_DIE_INCAP` | `410` |
+| `ACT_DIE_STANDING` | `411` |
+| `ACT_OPEN_DOOR` | `412` |
+| `ACT_DI_ALYX_ZOMBIE_MELEE` | `413` |
+| `ACT_DI_ALYX_ZOMBIE_TORSO_MELEE` | `414` |
+| `ACT_DI_ALYX_HEADCRAB_MELEE` | `415` |
+| `ACT_DI_ALYX_ANTLION` | `416` |
+| `ACT_DI_ALYX_ZOMBIE_SHOTGUN64` | `417` |
+| `ACT_DI_ALYX_ZOMBIE_SHOTGUN26` | `418` |
+| `ACT_READINESS_RELAXED_TO_STIMULATED` | `419` |
+| `ACT_READINESS_RELAXED_TO_STIMULATED_WALK` | `420` |
+| `ACT_READINESS_AGITATED_TO_STIMULATED` | `421` |
+| `ACT_READINESS_STIMULATED_TO_RELAXED` | `422` |
+| `ACT_READINESS_PISTOL_RELAXED_TO_STIMULATED` | `423` |
+| `ACT_READINESS_PISTOL_RELAXED_TO_STIMULATED_WALK` | `424` |
+| `ACT_READINESS_PISTOL_AGITATED_TO_STIMULATED` | `425` |
+| `ACT_READINESS_PISTOL_STIMULATED_TO_RELAXED` | `426` |
+| `ACT_IDLE_CARRY` | `427` |
+| `ACT_WALK_CARRY` | `428` |
+| `ACT_STARTDYING` | `429` |
+| `ACT_DYINGLOOP` | `430` |
+| `ACT_DYINGTODEAD` | `431` |
+| `ACT_RIDE_MANNED_GUN` | `432` |
+| `ACT_VM_SPRINT_ENTER` | `433` |
+| `ACT_VM_SPRINT_IDLE` | `434` |
+| `ACT_VM_SPRINT_LEAVE` | `435` |
+| `ACT_FIRE_START` | `436` |
+| `ACT_FIRE_LOOP` | `437` |
+| `ACT_FIRE_END` | `438` |
+| `ACT_CROUCHING_GRENADEIDLE` | `439` |
+| `ACT_CROUCHING_GRENADEREADY` | `440` |
+| `ACT_CROUCHING_PRIMARYATTACK` | `441` |
+| `ACT_OVERLAY_GRENADEIDLE` | `442` |
+| `ACT_OVERLAY_GRENADEREADY` | `443` |
+| `ACT_OVERLAY_PRIMARYATTACK` | `444` |
+| `ACT_OVERLAY_SHIELD_UP` | `445` |
+| `ACT_OVERLAY_SHIELD_DOWN` | `446` |
+| `ACT_OVERLAY_SHIELD_UP_IDLE` | `447` |
+| `ACT_OVERLAY_SHIELD_ATTACK` | `448` |
+| `ACT_OVERLAY_SHIELD_KNOCKBACK` | `449` |
+| `ACT_SHIELD_UP` | `450` |
+| `ACT_SHIELD_DOWN` | `451` |
+| `ACT_SHIELD_UP_IDLE` | `452` |
+| `ACT_SHIELD_ATTACK` | `453` |
+| `ACT_SHIELD_KNOCKBACK` | `454` |
+| `ACT_CROUCHING_SHIELD_UP` | `455` |
+| `ACT_CROUCHING_SHIELD_DOWN` | `456` |
+| `ACT_CROUCHING_SHIELD_UP_IDLE` | `457` |
+| `ACT_CROUCHING_SHIELD_ATTACK` | `458` |
+| `ACT_CROUCHING_SHIELD_KNOCKBACK` | `459` |
+| `ACT_TURNRIGHT45` | `460` |
+| `ACT_TURNLEFT45` | `461` |
+| `ACT_TURN` | `462` |
+| `ACT_OBJ_ASSEMBLING` | `463` |
+| `ACT_OBJ_DISMANTLING` | `464` |
+| `ACT_OBJ_STARTUP` | `465` |
+| `ACT_OBJ_RUNNING` | `466` |
+| `ACT_OBJ_IDLE` | `467` |
+| `ACT_OBJ_PLACING` | `468` |
+| `ACT_OBJ_DETERIORATING` | `469` |
+| `ACT_OBJ_UPGRADING` | `470` |
+| `ACT_DEPLOY` | `471` |
+| `ACT_DEPLOY_IDLE` | `472` |
+| `ACT_UNDEPLOY` | `473` |
+| `ACT_CROSSBOW_DRAW_UNLOADED` | `474` |
+| `ACT_GAUSS_SPINUP` | `475` |
+| `ACT_GAUSS_SPINCYCLE` | `476` |
+| `ACT_VM_PRIMARYATTACK_SILENCED` | `477` |
+| `ACT_VM_RELOAD_SILENCED` | `478` |
+| `ACT_VM_DRYFIRE_SILENCED` | `479` |
+| `ACT_VM_IDLE_SILENCED` | `480` |
+| `ACT_VM_DRAW_SILENCED` | `481` |
+| `ACT_VM_IDLE_EMPTY_LEFT` | `482` |
+| `ACT_VM_DRYFIRE_LEFT` | `483` |
+| `ACT_VM_IS_DRAW` | `484` |
+| `ACT_VM_IS_HOLSTER` | `485` |
+| `ACT_VM_IS_IDLE` | `486` |
+| `ACT_VM_IS_PRIMARYATTACK` | `487` |
+| `ACT_PLAYER_IDLE_FIRE` | `488` |
+| `ACT_PLAYER_CROUCH_FIRE` | `489` |
+| `ACT_PLAYER_CROUCH_WALK_FIRE` | `490` |
+| `ACT_PLAYER_WALK_FIRE` | `491` |
+| `ACT_PLAYER_RUN_FIRE` | `492` |
+| `ACT_IDLETORUN` | `493` |
+| `ACT_RUNTOIDLE` | `494` |
+| `ACT_VM_DRAW_DEPLOYED` | `495` |
+| `ACT_HL2MP_IDLE_MELEE` | `496` |
+| `ACT_HL2MP_RUN_MELEE` | `497` |
+| `ACT_HL2MP_IDLE_CROUCH_MELEE` | `498` |
+| `ACT_HL2MP_WALK_CROUCH_MELEE` | `499` |
+| `ACT_HL2MP_GESTURE_RANGE_ATTACK_MELEE` | `500` |
+| `ACT_HL2MP_GESTURE_RELOAD_MELEE` | `501` |
+| `ACT_HL2MP_JUMP_MELEE` | `502` |
+| `ACT_MP_STAND_IDLE` | `503` |
+| `ACT_MP_CROUCH_IDLE` | `504` |
+| `ACT_MP_CROUCH_DEPLOYED_IDLE` | `505` |
+| `ACT_MP_CROUCH_DEPLOYED` | `506` |
+| `ACT_MP_DEPLOYED_IDLE` | `507` |
+| `ACT_MP_RUN` | `508` |
+| `ACT_MP_WALK` | `509` |
+| `ACT_MP_AIRWALK` | `510` |
+| `ACT_MP_CROUCHWALK` | `511` |
+| `ACT_MP_SPRINT` | `512` |
+| `ACT_MP_JUMP` | `513` |
+| `ACT_MP_JUMP_START` | `514` |
+| `ACT_MP_JUMP_FLOAT` | `515` |
+| `ACT_MP_JUMP_LAND` | `516` |
+| `ACT_MP_DOUBLEJUMP` | `517` |
+| `ACT_MP_SWIM` | `518` |
+| `ACT_MP_DEPLOYED` | `519` |
+| `ACT_MP_SWIM_DEPLOYED` | `520` |
+| `ACT_MP_VCD` | `521` |
+| `ACT_MP_ATTACK_STAND_PRIMARYFIRE` | `522` |
+| `ACT_MP_ATTACK_STAND_PRIMARYFIRE_DEPLOYED` | `523` |
+| `ACT_MP_ATTACK_STAND_SECONDARYFIRE` | `524` |
+| `ACT_MP_ATTACK_STAND_GRENADE` | `525` |
+| `ACT_MP_ATTACK_CROUCH_PRIMARYFIRE` | `526` |
+| `ACT_MP_ATTACK_CROUCH_PRIMARYFIRE_DEPLOYED` | `527` |
+| `ACT_MP_ATTACK_CROUCH_SECONDARYFIRE` | `528` |
+| `ACT_MP_ATTACK_CROUCH_GRENADE` | `529` |
+| `ACT_MP_ATTACK_SWIM_PRIMARYFIRE` | `530` |
+| `ACT_MP_ATTACK_SWIM_SECONDARYFIRE` | `531` |
+| `ACT_MP_ATTACK_SWIM_GRENADE` | `532` |
+| `ACT_MP_ATTACK_AIRWALK_PRIMARYFIRE` | `533` |
+| `ACT_MP_ATTACK_AIRWALK_SECONDARYFIRE` | `534` |
+| `ACT_MP_ATTACK_AIRWALK_GRENADE` | `535` |
+| `ACT_MP_RELOAD_STAND` | `536` |
+| `ACT_MP_RELOAD_STAND_LOOP` | `537` |
+| `ACT_MP_RELOAD_STAND_END` | `538` |
+| `ACT_MP_RELOAD_CROUCH` | `539` |
+| `ACT_MP_RELOAD_CROUCH_LOOP` | `540` |
+| `ACT_MP_RELOAD_CROUCH_END` | `541` |
+| `ACT_MP_RELOAD_SWIM` | `542` |
+| `ACT_MP_RELOAD_SWIM_LOOP` | `543` |
+| `ACT_MP_RELOAD_SWIM_END` | `544` |
+| `ACT_MP_RELOAD_AIRWALK` | `545` |
+| `ACT_MP_RELOAD_AIRWALK_LOOP` | `546` |
+| `ACT_MP_RELOAD_AIRWALK_END` | `547` |
+| `ACT_MP_ATTACK_STAND_PREFIRE` | `548` |
+| `ACT_MP_ATTACK_STAND_POSTFIRE` | `549` |
+| `ACT_MP_ATTACK_STAND_STARTFIRE` | `550` |
+| `ACT_MP_ATTACK_CROUCH_PREFIRE` | `551` |
+| `ACT_MP_ATTACK_CROUCH_POSTFIRE` | `552` |
+| `ACT_MP_ATTACK_SWIM_PREFIRE` | `553` |
+| `ACT_MP_ATTACK_SWIM_POSTFIRE` | `554` |
+| `ACT_MP_STAND_PRIMARY` | `555` |
+| `ACT_MP_CROUCH_PRIMARY` | `556` |
+| `ACT_MP_RUN_PRIMARY` | `557` |
+| `ACT_MP_WALK_PRIMARY` | `558` |
+| `ACT_MP_AIRWALK_PRIMARY` | `559` |
+| `ACT_MP_CROUCHWALK_PRIMARY` | `560` |
+| `ACT_MP_JUMP_PRIMARY` | `561` |
+| `ACT_MP_JUMP_START_PRIMARY` | `562` |
+| `ACT_MP_JUMP_FLOAT_PRIMARY` | `563` |
+| `ACT_MP_JUMP_LAND_PRIMARY` | `564` |
+| `ACT_MP_SWIM_PRIMARY` | `565` |
+| `ACT_MP_DEPLOYED_PRIMARY` | `566` |
+| `ACT_MP_SWIM_DEPLOYED_PRIMARY` | `567` |
+| `ACT_MP_ATTACK_STAND_PRIMARY` | `568` |
+| `ACT_MP_ATTACK_STAND_PRIMARY_DEPLOYED` | `569` |
+| `ACT_MP_ATTACK_CROUCH_PRIMARY` | `570` |
+| `ACT_MP_ATTACK_CROUCH_PRIMARY_DEPLOYED` | `571` |
+| `ACT_MP_ATTACK_SWIM_PRIMARY` | `572` |
+| `ACT_MP_ATTACK_AIRWALK_PRIMARY` | `573` |
+| `ACT_MP_RELOAD_STAND_PRIMARY` | `574` |
+| `ACT_MP_RELOAD_STAND_PRIMARY_LOOP` | `575` |
+| `ACT_MP_RELOAD_STAND_PRIMARY_END` | `576` |
+| `ACT_MP_RELOAD_CROUCH_PRIMARY` | `577` |
+| `ACT_MP_RELOAD_CROUCH_PRIMARY_LOOP` | `578` |
+| `ACT_MP_RELOAD_CROUCH_PRIMARY_END` | `579` |
+| `ACT_MP_RELOAD_SWIM_PRIMARY` | `580` |
+| `ACT_MP_RELOAD_SWIM_PRIMARY_LOOP` | `581` |
+| `ACT_MP_RELOAD_SWIM_PRIMARY_END` | `582` |
+| `ACT_MP_RELOAD_AIRWALK_PRIMARY` | `583` |
+| `ACT_MP_RELOAD_AIRWALK_PRIMARY_LOOP` | `584` |
+| `ACT_MP_RELOAD_AIRWALK_PRIMARY_END` | `585` |
+| `ACT_MP_ATTACK_STAND_GRENADE_PRIMARY` | `586` |
+| `ACT_MP_ATTACK_CROUCH_GRENADE_PRIMARY` | `587` |
+| `ACT_MP_ATTACK_SWIM_GRENADE_PRIMARY` | `588` |
+| `ACT_MP_ATTACK_AIRWALK_GRENADE_PRIMARY` | `589` |
+| `ACT_MP_STAND_SECONDARY` | `590` |
+| `ACT_MP_CROUCH_SECONDARY` | `591` |
+| `ACT_MP_RUN_SECONDARY` | `592` |
+| `ACT_MP_WALK_SECONDARY` | `593` |
+| `ACT_MP_AIRWALK_SECONDARY` | `594` |
+| `ACT_MP_CROUCHWALK_SECONDARY` | `595` |
+| `ACT_MP_JUMP_SECONDARY` | `596` |
+| `ACT_MP_JUMP_START_SECONDARY` | `597` |
+| `ACT_MP_JUMP_FLOAT_SECONDARY` | `598` |
+| `ACT_MP_JUMP_LAND_SECONDARY` | `599` |
+| `ACT_MP_SWIM_SECONDARY` | `600` |
+| `ACT_MP_ATTACK_STAND_SECONDARY` | `601` |
+| `ACT_MP_ATTACK_CROUCH_SECONDARY` | `602` |
+| `ACT_MP_ATTACK_SWIM_SECONDARY` | `603` |
+| `ACT_MP_ATTACK_AIRWALK_SECONDARY` | `604` |
+| `ACT_MP_RELOAD_STAND_SECONDARY` | `605` |
+| `ACT_MP_RELOAD_STAND_SECONDARY_LOOP` | `606` |
+| `ACT_MP_RELOAD_STAND_SECONDARY_END` | `607` |
+| `ACT_MP_RELOAD_CROUCH_SECONDARY` | `608` |
+| `ACT_MP_RELOAD_CROUCH_SECONDARY_LOOP` | `609` |
+| `ACT_MP_RELOAD_CROUCH_SECONDARY_END` | `610` |
+| `ACT_MP_RELOAD_SWIM_SECONDARY` | `611` |
+| `ACT_MP_RELOAD_SWIM_SECONDARY_LOOP` | `612` |
+| `ACT_MP_RELOAD_SWIM_SECONDARY_END` | `613` |
+| `ACT_MP_RELOAD_AIRWALK_SECONDARY` | `614` |
+| `ACT_MP_RELOAD_AIRWALK_SECONDARY_LOOP` | `615` |
+| `ACT_MP_RELOAD_AIRWALK_SECONDARY_END` | `616` |
+| `ACT_MP_ATTACK_STAND_GRENADE_SECONDARY` | `617` |
+| `ACT_MP_ATTACK_CROUCH_GRENADE_SECONDARY` | `618` |
+| `ACT_MP_ATTACK_SWIM_GRENADE_SECONDARY` | `619` |
+| `ACT_MP_ATTACK_AIRWALK_GRENADE_SECONDARY` | `620` |
+| `ACT_MP_STAND_MELEE` | `621` |
+| `ACT_MP_CROUCH_MELEE` | `622` |
+| `ACT_MP_RUN_MELEE` | `623` |
+| `ACT_MP_WALK_MELEE` | `624` |
+| `ACT_MP_AIRWALK_MELEE` | `625` |
+| `ACT_MP_CROUCHWALK_MELEE` | `626` |
+| `ACT_MP_JUMP_MELEE` | `627` |
+| `ACT_MP_JUMP_START_MELEE` | `628` |
+| `ACT_MP_JUMP_FLOAT_MELEE` | `629` |
+| `ACT_MP_JUMP_LAND_MELEE` | `630` |
+| `ACT_MP_SWIM_MELEE` | `631` |
+| `ACT_MP_ATTACK_STAND_MELEE` | `632` |
+| `ACT_MP_ATTACK_STAND_MELEE_SECONDARY` | `633` |
+| `ACT_MP_ATTACK_CROUCH_MELEE` | `634` |
+| `ACT_MP_ATTACK_CROUCH_MELEE_SECONDARY` | `635` |
+| `ACT_MP_ATTACK_SWIM_MELEE` | `636` |
+| `ACT_MP_ATTACK_AIRWALK_MELEE` | `637` |
+| `ACT_MP_ATTACK_STAND_GRENADE_MELEE` | `638` |
+| `ACT_MP_ATTACK_CROUCH_GRENADE_MELEE` | `639` |
+| `ACT_MP_ATTACK_SWIM_GRENADE_MELEE` | `640` |
+| `ACT_MP_ATTACK_AIRWALK_GRENADE_MELEE` | `641` |
+| `ACT_MP_STAND_ITEM1` | `642` |
+| `ACT_MP_CROUCH_ITEM1` | `643` |
+| `ACT_MP_RUN_ITEM1` | `644` |
+| `ACT_MP_WALK_ITEM1` | `645` |
+| `ACT_MP_AIRWALK_ITEM1` | `646` |
+| `ACT_MP_CROUCHWALK_ITEM1` | `647` |
+| `ACT_MP_JUMP_ITEM1` | `648` |
+| `ACT_MP_JUMP_START_ITEM1` | `649` |
+| `ACT_MP_JUMP_FLOAT_ITEM1` | `650` |
+| `ACT_MP_JUMP_LAND_ITEM1` | `651` |
+| `ACT_MP_SWIM_ITEM1` | `652` |
+| `ACT_MP_ATTACK_STAND_ITEM1` | `653` |
+| `ACT_MP_ATTACK_STAND_ITEM1_SECONDARY` | `654` |
+| `ACT_MP_ATTACK_CROUCH_ITEM1` | `655` |
+| `ACT_MP_ATTACK_CROUCH_ITEM1_SECONDARY` | `656` |
+| `ACT_MP_ATTACK_SWIM_ITEM1` | `657` |
+| `ACT_MP_ATTACK_AIRWALK_ITEM1` | `658` |
+| `ACT_MP_STAND_ITEM2` | `659` |
+| `ACT_MP_CROUCH_ITEM2` | `660` |
+| `ACT_MP_RUN_ITEM2` | `661` |
+| `ACT_MP_WALK_ITEM2` | `662` |
+| `ACT_MP_AIRWALK_ITEM2` | `663` |
+| `ACT_MP_CROUCHWALK_ITEM2` | `664` |
+| `ACT_MP_JUMP_ITEM2` | `665` |
+| `ACT_MP_JUMP_START_ITEM2` | `666` |
+| `ACT_MP_JUMP_FLOAT_ITEM2` | `667` |
+| `ACT_MP_JUMP_LAND_ITEM2` | `668` |
+| `ACT_MP_SWIM_ITEM2` | `669` |
+| `ACT_MP_ATTACK_STAND_ITEM2` | `670` |
+| `ACT_MP_ATTACK_STAND_ITEM2_SECONDARY` | `671` |
+| `ACT_MP_ATTACK_CROUCH_ITEM2` | `672` |
+| `ACT_MP_ATTACK_CROUCH_ITEM2_SECONDARY` | `673` |
+| `ACT_MP_ATTACK_SWIM_ITEM2` | `674` |
+| `ACT_MP_ATTACK_AIRWALK_ITEM2` | `675` |
+| `ACT_MP_GESTURE_FLINCH` | `676` |
+| `ACT_MP_GESTURE_FLINCH_PRIMARY` | `677` |
+| `ACT_MP_GESTURE_FLINCH_SECONDARY` | `678` |
+| `ACT_MP_GESTURE_FLINCH_MELEE` | `679` |
+| `ACT_MP_GESTURE_FLINCH_ITEM1` | `680` |
+| `ACT_MP_GESTURE_FLINCH_ITEM2` | `681` |
+| `ACT_MP_GESTURE_FLINCH_HEAD` | `682` |
+| `ACT_MP_GESTURE_FLINCH_CHEST` | `683` |
+| `ACT_MP_GESTURE_FLINCH_STOMACH` | `684` |
+| `ACT_MP_GESTURE_FLINCH_LEFTARM` | `685` |
+| `ACT_MP_GESTURE_FLINCH_RIGHTARM` | `686` |
+| `ACT_MP_GESTURE_FLINCH_LEFTLEG` | `687` |
+| `ACT_MP_GESTURE_FLINCH_RIGHTLEG` | `688` |
+| `ACT_MP_GRENADE1_DRAW` | `689` |
+| `ACT_MP_GRENADE1_IDLE` | `690` |
+| `ACT_MP_GRENADE1_ATTACK` | `691` |
+| `ACT_MP_GRENADE2_DRAW` | `692` |
+| `ACT_MP_GRENADE2_IDLE` | `693` |
+| `ACT_MP_GRENADE2_ATTACK` | `694` |
+| `ACT_MP_PRIMARY_GRENADE1_DRAW` | `695` |
+| `ACT_MP_PRIMARY_GRENADE1_IDLE` | `696` |
+| `ACT_MP_PRIMARY_GRENADE1_ATTACK` | `697` |
+| `ACT_MP_PRIMARY_GRENADE2_DRAW` | `698` |
+| `ACT_MP_PRIMARY_GRENADE2_IDLE` | `699` |
+| `ACT_MP_PRIMARY_GRENADE2_ATTACK` | `700` |
+| `ACT_MP_SECONDARY_GRENADE1_DRAW` | `701` |
+| `ACT_MP_SECONDARY_GRENADE1_IDLE` | `702` |
+| `ACT_MP_SECONDARY_GRENADE1_ATTACK` | `703` |
+| `ACT_MP_SECONDARY_GRENADE2_DRAW` | `704` |
+| `ACT_MP_SECONDARY_GRENADE2_IDLE` | `705` |
+| `ACT_MP_SECONDARY_GRENADE2_ATTACK` | `706` |
+| `ACT_MP_MELEE_GRENADE1_DRAW` | `707` |
+| `ACT_MP_MELEE_GRENADE1_IDLE` | `708` |
+| `ACT_MP_MELEE_GRENADE1_ATTACK` | `709` |
+| `ACT_MP_MELEE_GRENADE2_DRAW` | `710` |
+| `ACT_MP_MELEE_GRENADE2_IDLE` | `711` |
+| `ACT_MP_MELEE_GRENADE2_ATTACK` | `712` |
+| `ACT_MP_ITEM1_GRENADE1_DRAW` | `713` |
+| `ACT_MP_ITEM1_GRENADE1_IDLE` | `714` |
+| `ACT_MP_ITEM1_GRENADE1_ATTACK` | `715` |
+| `ACT_MP_ITEM1_GRENADE2_DRAW` | `716` |
+| `ACT_MP_ITEM1_GRENADE2_IDLE` | `717` |
+| `ACT_MP_ITEM1_GRENADE2_ATTACK` | `718` |
+| `ACT_MP_ITEM2_GRENADE1_DRAW` | `719` |
+| `ACT_MP_ITEM2_GRENADE1_IDLE` | `720` |
+| `ACT_MP_ITEM2_GRENADE1_ATTACK` | `721` |
+| `ACT_MP_ITEM2_GRENADE2_DRAW` | `722` |
+| `ACT_MP_ITEM2_GRENADE2_IDLE` | `723` |
+| `ACT_MP_ITEM2_GRENADE2_ATTACK` | `724` |
+| `ACT_MP_STAND_BUILDING` | `725` |
+| `ACT_MP_CROUCH_BUILDING` | `726` |
+| `ACT_MP_RUN_BUILDING` | `727` |
+| `ACT_MP_WALK_BUILDING` | `728` |
+| `ACT_MP_AIRWALK_BUILDING` | `729` |
+| `ACT_MP_CROUCHWALK_BUILDING` | `730` |
+| `ACT_MP_JUMP_BUILDING` | `731` |
+| `ACT_MP_JUMP_START_BUILDING` | `732` |
+| `ACT_MP_JUMP_FLOAT_BUILDING` | `733` |
+| `ACT_MP_JUMP_LAND_BUILDING` | `734` |
+| `ACT_MP_SWIM_BUILDING` | `735` |
+| `ACT_MP_ATTACK_STAND_BUILDING` | `736` |
+| `ACT_MP_ATTACK_CROUCH_BUILDING` | `737` |
+| `ACT_MP_ATTACK_SWIM_BUILDING` | `738` |
+| `ACT_MP_ATTACK_AIRWALK_BUILDING` | `739` |
+| `ACT_MP_ATTACK_STAND_GRENADE_BUILDING` | `740` |
+| `ACT_MP_ATTACK_CROUCH_GRENADE_BUILDING` | `741` |
+| `ACT_MP_ATTACK_SWIM_GRENADE_BUILDING` | `742` |
+| `ACT_MP_ATTACK_AIRWALK_GRENADE_BUILDING` | `743` |
+| `ACT_MP_STAND_PDA` | `744` |
+| `ACT_MP_CROUCH_PDA` | `745` |
+| `ACT_MP_RUN_PDA` | `746` |
+| `ACT_MP_WALK_PDA` | `747` |
+| `ACT_MP_AIRWALK_PDA` | `748` |
+| `ACT_MP_CROUCHWALK_PDA` | `749` |
+| `ACT_MP_JUMP_PDA` | `750` |
+| `ACT_MP_JUMP_START_PDA` | `751` |
+| `ACT_MP_JUMP_FLOAT_PDA` | `752` |
+| `ACT_MP_JUMP_LAND_PDA` | `753` |
+| `ACT_MP_SWIM_PDA` | `754` |
+| `ACT_MP_ATTACK_STAND_PDA` | `755` |
+| `ACT_MP_ATTACK_SWIM_PDA` | `756` |
+| `ACT_MP_GESTURE_VC_HANDMOUTH` | `757` |
+| `ACT_MP_GESTURE_VC_FINGERPOINT` | `758` |
+| `ACT_MP_GESTURE_VC_FISTPUMP` | `759` |
+| `ACT_MP_GESTURE_VC_THUMBSUP` | `760` |
+| `ACT_MP_GESTURE_VC_NODYES` | `761` |
+| `ACT_MP_GESTURE_VC_NODNO` | `762` |
+| `ACT_MP_GESTURE_VC_HANDMOUTH_PRIMARY` | `763` |
+| `ACT_MP_GESTURE_VC_FINGERPOINT_PRIMARY` | `764` |
+| `ACT_MP_GESTURE_VC_FISTPUMP_PRIMARY` | `765` |
+| `ACT_MP_GESTURE_VC_THUMBSUP_PRIMARY` | `766` |
+| `ACT_MP_GESTURE_VC_NODYES_PRIMARY` | `767` |
+| `ACT_MP_GESTURE_VC_NODNO_PRIMARY` | `768` |
+| `ACT_MP_GESTURE_VC_HANDMOUTH_SECONDARY` | `769` |
+| `ACT_MP_GESTURE_VC_FINGERPOINT_SECONDARY` | `770` |
+| `ACT_MP_GESTURE_VC_FISTPUMP_SECONDARY` | `771` |
+| `ACT_MP_GESTURE_VC_THUMBSUP_SECONDARY` | `772` |
+| `ACT_MP_GESTURE_VC_NODYES_SECONDARY` | `773` |
+| `ACT_MP_GESTURE_VC_NODNO_SECONDARY` | `774` |
+| `ACT_MP_GESTURE_VC_HANDMOUTH_MELEE` | `775` |
+| `ACT_MP_GESTURE_VC_FINGERPOINT_MELEE` | `776` |
+| `ACT_MP_GESTURE_VC_FISTPUMP_MELEE` | `777` |
+| `ACT_MP_GESTURE_VC_THUMBSUP_MELEE` | `778` |
+| `ACT_MP_GESTURE_VC_NODYES_MELEE` | `779` |
+| `ACT_MP_GESTURE_VC_NODNO_MELEE` | `780` |
+| `ACT_MP_GESTURE_VC_HANDMOUTH_ITEM1` | `781` |
+| `ACT_MP_GESTURE_VC_FINGERPOINT_ITEM1` | `782` |
+| `ACT_MP_GESTURE_VC_FISTPUMP_ITEM1` | `783` |
+| `ACT_MP_GESTURE_VC_THUMBSUP_ITEM1` | `784` |
+| `ACT_MP_GESTURE_VC_NODYES_ITEM1` | `785` |
+| `ACT_MP_GESTURE_VC_NODNO_ITEM1` | `786` |
+| `ACT_MP_GESTURE_VC_HANDMOUTH_ITEM2` | `787` |
+| `ACT_MP_GESTURE_VC_FINGERPOINT_ITEM2` | `788` |
+| `ACT_MP_GESTURE_VC_FISTPUMP_ITEM2` | `789` |
+| `ACT_MP_GESTURE_VC_THUMBSUP_ITEM2` | `790` |
+| `ACT_MP_GESTURE_VC_NODYES_ITEM2` | `791` |
+| `ACT_MP_GESTURE_VC_NODNO_ITEM2` | `792` |
+| `ACT_MP_GESTURE_VC_HANDMOUTH_BUILDING` | `793` |
+| `ACT_MP_GESTURE_VC_FINGERPOINT_BUILDING` | `794` |
+| `ACT_MP_GESTURE_VC_FISTPUMP_BUILDING` | `795` |
+| `ACT_MP_GESTURE_VC_THUMBSUP_BUILDING` | `796` |
+| `ACT_MP_GESTURE_VC_NODYES_BUILDING` | `797` |
+| `ACT_MP_GESTURE_VC_NODNO_BUILDING` | `798` |
+| `ACT_MP_GESTURE_VC_HANDMOUTH_PDA` | `799` |
+| `ACT_MP_GESTURE_VC_FINGERPOINT_PDA` | `800` |
+| `ACT_MP_GESTURE_VC_FISTPUMP_PDA` | `801` |
+| `ACT_MP_GESTURE_VC_THUMBSUP_PDA` | `802` |
+| `ACT_MP_GESTURE_VC_NODYES_PDA` | `803` |
+| `ACT_MP_GESTURE_VC_NODNO_PDA` | `804` |
+| `ACT_VM_UNUSABLE` | `805` |
+| `ACT_VM_UNUSABLE_TO_USABLE` | `806` |
+| `ACT_VM_USABLE_TO_UNUSABLE` | `807` |
+| `ACT_PRIMARY_VM_DRAW` | `808` |
+| `ACT_PRIMARY_VM_HOLSTER` | `809` |
+| `ACT_PRIMARY_VM_IDLE` | `810` |
+| `ACT_PRIMARY_VM_PULLBACK` | `811` |
+| `ACT_PRIMARY_VM_PRIMARYATTACK` | `812` |
+| `ACT_PRIMARY_VM_SECONDARYATTACK` | `813` |
+| `ACT_PRIMARY_VM_RELOAD` | `814` |
+| `ACT_PRIMARY_VM_DRYFIRE` | `815` |
+| `ACT_PRIMARY_VM_IDLE_TO_LOWERED` | `816` |
+| `ACT_PRIMARY_VM_IDLE_LOWERED` | `817` |
+| `ACT_PRIMARY_VM_LOWERED_TO_IDLE` | `818` |
+| `ACT_SECONDARY_VM_DRAW` | `819` |
+| `ACT_SECONDARY_VM_HOLSTER` | `820` |
+| `ACT_SECONDARY_VM_IDLE` | `821` |
+| `ACT_SECONDARY_VM_PULLBACK` | `822` |
+| `ACT_SECONDARY_VM_PRIMARYATTACK` | `823` |
+| `ACT_SECONDARY_VM_SECONDARYATTACK` | `824` |
+| `ACT_SECONDARY_VM_RELOAD` | `825` |
+| `ACT_SECONDARY_VM_DRYFIRE` | `826` |
+| `ACT_SECONDARY_VM_IDLE_TO_LOWERED` | `827` |
+| `ACT_SECONDARY_VM_IDLE_LOWERED` | `828` |
+| `ACT_SECONDARY_VM_LOWERED_TO_IDLE` | `829` |
+| `ACT_MELEE_VM_DRAW` | `830` |
+| `ACT_MELEE_VM_HOLSTER` | `831` |
+| `ACT_MELEE_VM_IDLE` | `832` |
+| `ACT_MELEE_VM_PULLBACK` | `833` |
+| `ACT_MELEE_VM_PRIMARYATTACK` | `834` |
+| `ACT_MELEE_VM_SECONDARYATTACK` | `835` |
+| `ACT_MELEE_VM_RELOAD` | `836` |
+| `ACT_MELEE_VM_DRYFIRE` | `837` |
+| `ACT_MELEE_VM_IDLE_TO_LOWERED` | `838` |
+| `ACT_MELEE_VM_IDLE_LOWERED` | `839` |
+| `ACT_MELEE_VM_LOWERED_TO_IDLE` | `840` |
+| `ACT_PDA_VM_DRAW` | `841` |
+| `ACT_PDA_VM_HOLSTER` | `842` |
+| `ACT_PDA_VM_IDLE` | `843` |
+| `ACT_PDA_VM_PULLBACK` | `844` |
+| `ACT_PDA_VM_PRIMARYATTACK` | `845` |
+| `ACT_PDA_VM_SECONDARYATTACK` | `846` |
+| `ACT_PDA_VM_RELOAD` | `847` |
+| `ACT_PDA_VM_DRYFIRE` | `848` |
+| `ACT_PDA_VM_IDLE_TO_LOWERED` | `849` |
+| `ACT_PDA_VM_IDLE_LOWERED` | `850` |
+| `ACT_PDA_VM_LOWERED_TO_IDLE` | `851` |
+| `ACT_ITEM1_VM_DRAW` | `852` |
+| `ACT_ITEM1_VM_HOLSTER` | `853` |
+| `ACT_ITEM1_VM_IDLE` | `854` |
+| `ACT_ITEM1_VM_PULLBACK` | `855` |
+| `ACT_ITEM1_VM_PRIMARYATTACK` | `856` |
+| `ACT_ITEM1_VM_SECONDARYATTACK` | `857` |
+| `ACT_ITEM1_VM_RELOAD` | `858` |
+| `ACT_ITEM1_VM_DRYFIRE` | `859` |
+| `ACT_ITEM1_VM_IDLE_TO_LOWERED` | `860` |
+| `ACT_ITEM1_VM_IDLE_LOWERED` | `861` |
+| `ACT_ITEM1_VM_LOWERED_TO_IDLE` | `862` |
+| `ACT_ITEM2_VM_DRAW` | `863` |
+| `ACT_ITEM2_VM_HOLSTER` | `864` |
+| `ACT_ITEM2_VM_IDLE` | `865` |
+| `ACT_ITEM2_VM_PULLBACK` | `866` |
+| `ACT_ITEM2_VM_PRIMARYATTACK` | `867` |
+| `ACT_ITEM2_VM_SECONDARYATTACK` | `868` |
+| `ACT_ITEM2_VM_RELOAD` | `869` |
+| `ACT_ITEM2_VM_DRYFIRE` | `870` |
+| `ACT_ITEM2_VM_IDLE_TO_LOWERED` | `871` |
+| `ACT_ITEM2_VM_IDLE_LOWERED` | `872` |
+| `ACT_ITEM2_VM_LOWERED_TO_IDLE` | `873` |
+| `ACT_RELOAD_SUCCEED` | `874` |
+| `ACT_RELOAD_FAIL` | `875` |
+| `ACT_WALK_AIM_AUTOGUN` | `876` |
+| `ACT_RUN_AIM_AUTOGUN` | `877` |
+| `ACT_IDLE_AUTOGUN` | `878` |
+| `ACT_IDLE_AIM_AUTOGUN` | `879` |
+| `ACT_RELOAD_AUTOGUN` | `880` |
+| `ACT_CROUCH_IDLE_AUTOGUN` | `881` |
+| `ACT_RANGE_ATTACK_AUTOGUN` | `882` |
+| `ACT_JUMP_AUTOGUN` | `883` |
+| `ACT_IDLE_AIM_PISTOL` | `884` |
+| `ACT_WALK_AIM_DUAL` | `885` |
+| `ACT_RUN_AIM_DUAL` | `886` |
+| `ACT_IDLE_DUAL` | `887` |
+| `ACT_IDLE_AIM_DUAL` | `888` |
+| `ACT_RELOAD_DUAL` | `889` |
+| `ACT_CROUCH_IDLE_DUAL` | `890` |
+| `ACT_RANGE_ATTACK_DUAL` | `891` |
+| `ACT_JUMP_DUAL` | `892` |
+| `ACT_IDLE_AIM_SHOTGUN` | `893` |
+| `ACT_CROUCH_IDLE_SHOTGUN` | `894` |
+| `ACT_IDLE_AIM_RIFLE` | `895` |
+| `ACT_CROUCH_IDLE_RIFLE` | `896` |
+| `ACT_RANGE_ATTACK_RIFLE` | `897` |
+| `ACT_SLEEP` | `898` |
+| `ACT_WAKE` | `899` |
+| `ACT_FLICK_LEFT` | `900` |
+| `ACT_FLICK_LEFT_MIDDLE` | `901` |
+| `ACT_FLICK_RIGHT_MIDDLE` | `902` |
+| `ACT_FLICK_RIGHT` | `903` |
+| `ACT_SPINAROUND` | `904` |
+| `ACT_PREP_TO_FIRE` | `905` |
+| `ACT_FIRE` | `906` |
+| `ACT_FIRE_RECOVER` | `907` |
+| `ACT_SPRAY` | `908` |
+| `ACT_PREP_EXPLODE` | `909` |
+| `ACT_EXPLODE` | `910` |
+| `ACT_SCRIPT_CUSTOM_0` | `911` |
+| `ACT_SCRIPT_CUSTOM_1` | `912` |
+| `ACT_SCRIPT_CUSTOM_2` | `913` |
+| `ACT_SCRIPT_CUSTOM_3` | `914` |
+| `ACT_SCRIPT_CUSTOM_4` | `915` |
+| `ACT_SCRIPT_CUSTOM_5` | `916` |
+| `ACT_SCRIPT_CUSTOM_6` | `917` |
+| `ACT_SCRIPT_CUSTOM_7` | `918` |
+| `ACT_SCRIPT_CUSTOM_8` | `919` |
+| `ACT_SCRIPT_CUSTOM_9` | `920` |
+| `ACT_SCRIPT_CUSTOM_10` | `921` |
+| `ACT_SCRIPT_CUSTOM_11` | `922` |
+| `ACT_SCRIPT_CUSTOM_12` | `923` |
+| `ACT_SCRIPT_CUSTOM_13` | `924` |
+| `ACT_SCRIPT_CUSTOM_14` | `925` |
+| `ACT_SCRIPT_CUSTOM_15` | `926` |
+| `ACT_SCRIPT_CUSTOM_16` | `927` |
+| `ACT_SCRIPT_CUSTOM_17` | `928` |
+| `ACT_SCRIPT_CUSTOM_18` | `929` |
+| `ACT_SCRIPT_CUSTOM_19` | `930` |
+| `ACT_SCRIPT_CUSTOM_20` | `931` |
+| `ACT_SCRIPT_CUSTOM_21` | `932` |
+| `ACT_SCRIPT_CUSTOM_22` | `933` |
+| `ACT_SCRIPT_CUSTOM_23` | `934` |
+| `ACT_SCRIPT_CUSTOM_24` | `935` |
+| `ACT_SCRIPT_CUSTOM_25` | `936` |
+| `ACT_SCRIPT_CUSTOM_26` | `937` |
+| `ACT_SCRIPT_CUSTOM_27` | `938` |
+| `ACT_SCRIPT_CUSTOM_28` | `939` |
+| `ACT_SCRIPT_CUSTOM_29` | `940` |
+| `ACT_SCRIPT_CUSTOM_30` | `941` |
+| `ACT_SCRIPT_CUSTOM_31` | `942` |
+| `ACT_VR_PISTOL_LAST_SHOT` | `943` |
+| `ACT_VR_PISTOL_SLIDE_RELEASE` | `944` |
+| `ACT_VR_PISTOL_CLIP_OUT_CHAMBERED` | `945` |
+| `ACT_VR_PISTOL_CLIP_OUT_SLIDE_BACK` | `946` |
+| `ACT_VR_PISTOL_CLIP_IN_CHAMBERED` | `947` |
+| `ACT_VR_PISTOL_CLIP_IN_SLIDE_BACK` | `948` |
+| `ACT_VR_PISTOL_IDLE_SLIDE_BACK` | `949` |
+| `ACT_VR_PISTOL_IDLE_SLIDE_BACK_CLIP_READY` | `950` |
+| `ACT_RAGDOLL_RECOVERY_FRONT` | `951` |
+| `ACT_RAGDOLL_RECOVERY_BACK` | `952` |
+| `ACT_RAGDOLL_RECOVERY_LEFT` | `953` |
+| `ACT_RAGDOLL_RECOVERY_RIGHT` | `954` |
+| `ACT_GRABBITYGLOVES_GRAB` | `955` |
+| `ACT_GRABBITYGLOVES_RELEASE` | `956` |
+| `ACT_GRABBITYGLOVES_GRAB_IDLE` | `957` |
+| `ACT_GRABBITYGLOVES_ACTIVE` | `958` |
+| `ACT_GRABBITYGLOVES_ACTIVE_IDLE` | `959` |
+| `ACT_GRABBITYGLOVES_DEACTIVATE` | `960` |
+| `ACT_GRABBITYGLOVES_PULL` | `961` |
+| `ACT_HEADCRAB_SMOKE_BOMB` | `962` |
+| `ACT_HEADCRAB_SPIT` | `963` |
+| `ACT_ZOMBIE_TRIP` | `964` |
+| `ACT_ZOMBIE_LUNGE` | `965` |
+| `ACT_NEUTRAL_REF_POSE` | `966` |
+| `ACT_ANTLION_SCUTTLE_FORWARD` | `967` |
+| `ACT_ANTLION_SCUTTLE_BACK` | `968` |
+| `ACT_ANTLION_SCUTTLE_LEFT` | `969` |
+| `ACT_ANTLION_SCUTTLE_RIGHT` | `970` |
+| `ACT_VR_PISTOL_EMPTY_CLIP_IN_SLIDE_BACK` | `971` |
+| `ACT_VR_SHOTGUN_IDLE` | `972` |
+| `ACT_VR_SHOTGUN_OPEN_CHAMBER` | `973` |
+| `ACT_VR_SHOTGUN_RELOAD_1` | `974` |
+| `ACT_VR_SHOTGUN_RELOAD_2` | `975` |
+| `ACT_VR_SHOTGUN_RELOAD_3` | `976` |
+| `ACT_VR_SHOTGUN_CLOSE_CHAMBER` | `977` |
+| `ACT_VR_SHOTGUN_TRIGGER_SQUEEZE` | `978` |
+| `ACT_VR_SHOTGUN_SHOOT` | `979` |
+| `ACT_VR_SHOTGUN_SLIDE_BACK` | `980` |
+| `ACT_VR_SHOTGUN_SLIDE_FORWARD` | `981` |
+| `ACT_VR_PISTOL_LONG_CLIP_IN_CHAMBERED` | `982` |
+| `ACT_VR_PISTOL_LONG_CLIP_IN_SLIDE_BACK` | `983` |
+| `ACT_VR_PISTOL_BURST_TOGGLE` | `984` |
+| `ACT_VR_PISTOL_LOW_KICK` | `985` |
+| `ACT_VR_PISTOL_BURST_ATTACK` | `986` |
+| `ACT_VR_SHOTGUN_GRENADE_TWIST` | `987` |
+| `ACT_DIE_STAND` | `988` |
+| `ACT_DIE_STAND_HEADSHOT` | `989` |
+| `ACT_DIE_CROUCH` | `990` |
+| `ACT_DIE_CROUCH_HEADSHOT` | `991` |
+| `ACT_CSGO_NULL` | `992` |
+| `ACT_CSGO_DEFUSE` | `993` |
+| `ACT_CSGO_DEFUSE_WITH_KIT` | `994` |
+| `ACT_CSGO_FLASHBANG_REACTION` | `995` |
+| `ACT_CSGO_FIRE_PRIMARY` | `996` |
+| `ACT_CSGO_FIRE_PRIMARY_OPT_1` | `997` |
+| `ACT_CSGO_FIRE_PRIMARY_OPT_2` | `998` |
+| `ACT_CSGO_FIRE_SECONDARY` | `999` |
+| `ACT_CSGO_FIRE_SECONDARY_OPT_1` | `1000` |
+| `ACT_CSGO_FIRE_SECONDARY_OPT_2` | `1001` |
+| `ACT_CSGO_RELOAD` | `1002` |
+| `ACT_CSGO_RELOAD_START` | `1003` |
+| `ACT_CSGO_RELOAD_LOOP` | `1004` |
+| `ACT_CSGO_RELOAD_END` | `1005` |
+| `ACT_CSGO_OPERATE` | `1006` |
+| `ACT_CSGO_DEPLOY` | `1007` |
+| `ACT_CSGO_CATCH` | `1008` |
+| `ACT_CSGO_SILENCER_DETACH` | `1009` |
+| `ACT_CSGO_SILENCER_ATTACH` | `1010` |
+| `ACT_CSGO_TWITCH` | `1011` |
+| `ACT_CSGO_TWITCH_BUYZONE` | `1012` |
+| `ACT_CSGO_PLANT_BOMB` | `1013` |
+| `ACT_CSGO_IDLE_TURN_BALANCEADJUST` | `1014` |
+| `ACT_CSGO_IDLE_ADJUST_STOPPEDMOVING` | `1015` |
+| `ACT_CSGO_ALIVE_LOOP` | `1016` |
+| `ACT_CSGO_FLINCH` | `1017` |
+| `ACT_CSGO_FLINCH_HEAD` | `1018` |
+| `ACT_CSGO_FLINCH_MOLOTOV` | `1019` |
+| `ACT_CSGO_JUMP` | `1020` |
+| `ACT_CSGO_FALL` | `1021` |
+| `ACT_CSGO_CLIMB_LADDER` | `1022` |
+| `ACT_CSGO_LAND_LIGHT` | `1023` |
+| `ACT_CSGO_LAND_HEAVY` | `1024` |
+| `ACT_CSGO_EXIT_LADDER_TOP` | `1025` |
+| `ACT_CSGO_EXIT_LADDER_BOTTOM` | `1026` |
+| `ACT_CSGO_PARACHUTE` | `1027` |
+| `ACT_CSGO_TAUNT` | `1028` |
+| `ACT_DOTA_IDLE` | `1500` |
+| `ACT_DOTA_IDLE_RARE` | `1501` |
+| `ACT_DOTA_RUN` | `1502` |
+| `ACT_DOTA_ATTACK` | `1503` |
+| `ACT_DOTA_ATTACK2` | `1504` |
+| `ACT_DOTA_ATTACK_EVENT` | `1505` |
+| `ACT_DOTA_DIE` | `1506` |
+| `ACT_DOTA_FLINCH` | `1507` |
+| `ACT_DOTA_FLAIL` | `1508` |
+| `ACT_DOTA_DISABLED` | `1509` |
+| `ACT_DOTA_CAST_ABILITY_1` | `1510` |
+| `ACT_DOTA_CAST_ABILITY_2` | `1511` |
+| `ACT_DOTA_CAST_ABILITY_3` | `1512` |
+| `ACT_DOTA_CAST_ABILITY_4` | `1513` |
+| `ACT_DOTA_CAST_ABILITY_5` | `1514` |
+| `ACT_DOTA_CAST_ABILITY_6` | `1515` |
+| `ACT_DOTA_OVERRIDE_ABILITY_1` | `1516` |
+| `ACT_DOTA_OVERRIDE_ABILITY_2` | `1517` |
+| `ACT_DOTA_OVERRIDE_ABILITY_3` | `1518` |
+| `ACT_DOTA_OVERRIDE_ABILITY_4` | `1519` |
+| `ACT_DOTA_CHANNEL_ABILITY_1` | `1520` |
+| `ACT_DOTA_CHANNEL_ABILITY_2` | `1521` |
+| `ACT_DOTA_CHANNEL_ABILITY_3` | `1522` |
+| `ACT_DOTA_CHANNEL_ABILITY_4` | `1523` |
+| `ACT_DOTA_CHANNEL_ABILITY_5` | `1524` |
+| `ACT_DOTA_CHANNEL_ABILITY_6` | `1525` |
+| `ACT_DOTA_CHANNEL_END_ABILITY_1` | `1526` |
+| `ACT_DOTA_CHANNEL_END_ABILITY_2` | `1527` |
+| `ACT_DOTA_CHANNEL_END_ABILITY_3` | `1528` |
+| `ACT_DOTA_CHANNEL_END_ABILITY_4` | `1529` |
+| `ACT_DOTA_CHANNEL_END_ABILITY_5` | `1530` |
+| `ACT_DOTA_CHANNEL_END_ABILITY_6` | `1531` |
+| `ACT_DOTA_CONSTANT_LAYER` | `1532` |
+| `ACT_DOTA_CAPTURE` | `1533` |
+| `ACT_DOTA_SPAWN` | `1534` |
+| `ACT_DOTA_KILLTAUNT` | `1535` |
+| `ACT_DOTA_TAUNT` | `1536` |
+| `ACT_DOTA_THIRST` | `1537` |
+| `ACT_DOTA_CAST_DRAGONBREATH` | `1538` |
+| `ACT_DOTA_ECHO_SLAM` | `1539` |
+| `ACT_DOTA_CAST_ABILITY_1_END` | `1540` |
+| `ACT_DOTA_CAST_ABILITY_2_END` | `1541` |
+| `ACT_DOTA_CAST_ABILITY_3_END` | `1542` |
+| `ACT_DOTA_CAST_ABILITY_4_END` | `1543` |
+| `ACT_MIRANA_LEAP_END` | `1544` |
+| `ACT_WAVEFORM_START` | `1545` |
+| `ACT_WAVEFORM_END` | `1546` |
+| `ACT_DOTA_CAST_ABILITY_ROT` | `1547` |
+| `ACT_DOTA_DIE_SPECIAL` | `1548` |
+| `ACT_DOTA_RATTLETRAP_BATTERYASSAULT` | `1549` |
+| `ACT_DOTA_RATTLETRAP_POWERCOGS` | `1550` |
+| `ACT_DOTA_RATTLETRAP_HOOKSHOT_START` | `1551` |
+| `ACT_DOTA_RATTLETRAP_HOOKSHOT_LOOP` | `1552` |
+| `ACT_DOTA_RATTLETRAP_HOOKSHOT_END` | `1553` |
+| `ACT_STORM_SPIRIT_OVERLOAD_RUN_OVERRIDE` | `1554` |
+| `ACT_DOTA_TINKER_REARM1` | `1555` |
+| `ACT_DOTA_TINKER_REARM2` | `1556` |
+| `ACT_DOTA_TINKER_REARM3` | `1557` |
+| `ACT_TINY_AVALANCHE` | `1558` |
+| `ACT_TINY_TOSS` | `1559` |
+| `ACT_TINY_GROWL` | `1560` |
+| `ACT_DOTA_WEAVERBUG_ATTACH` | `1561` |
+| `ACT_DOTA_CAST_WILD_AXES_END` | `1562` |
+| `ACT_DOTA_CAST_LIFE_BREAK_START` | `1563` |
+| `ACT_DOTA_CAST_LIFE_BREAK_END` | `1564` |
+| `ACT_DOTA_NIGHTSTALKER_TRANSITION` | `1565` |
+| `ACT_DOTA_LIFESTEALER_RAGE` | `1566` |
+| `ACT_DOTA_LIFESTEALER_OPEN_WOUNDS` | `1567` |
+| `ACT_DOTA_SAND_KING_BURROW_IN` | `1568` |
+| `ACT_DOTA_SAND_KING_BURROW_OUT` | `1569` |
+| `ACT_DOTA_EARTHSHAKER_TOTEM_ATTACK` | `1570` |
+| `ACT_DOTA_WHEEL_LAYER` | `1571` |
+| `ACT_DOTA_ALCHEMIST_CHEMICAL_RAGE_START` | `1572` |
+| `ACT_DOTA_ALCHEMIST_CONCOCTION` | `1573` |
+| `ACT_DOTA_JAKIRO_LIQUIDFIRE_START` | `1574` |
+| `ACT_DOTA_JAKIRO_LIQUIDFIRE_LOOP` | `1575` |
+| `ACT_DOTA_LIFESTEALER_INFEST` | `1576` |
+| `ACT_DOTA_LIFESTEALER_INFEST_END` | `1577` |
+| `ACT_DOTA_LASSO_LOOP` | `1578` |
+| `ACT_DOTA_ALCHEMIST_CONCOCTION_THROW` | `1579` |
+| `ACT_DOTA_ALCHEMIST_CHEMICAL_RAGE_END` | `1580` |
+| `ACT_DOTA_CAST_COLD_SNAP` | `1581` |
+| `ACT_DOTA_CAST_GHOST_WALK` | `1582` |
+| `ACT_DOTA_CAST_TORNADO` | `1583` |
+| `ACT_DOTA_CAST_EMP` | `1584` |
+| `ACT_DOTA_CAST_ALACRITY` | `1585` |
+| `ACT_DOTA_CAST_CHAOS_METEOR` | `1586` |
+| `ACT_DOTA_CAST_SUN_STRIKE` | `1587` |
+| `ACT_DOTA_CAST_FORGE_SPIRIT` | `1588` |
+| `ACT_DOTA_CAST_ICE_WALL` | `1589` |
+| `ACT_DOTA_CAST_DEAFENING_BLAST` | `1590` |
+| `ACT_DOTA_VICTORY` | `1591` |
+| `ACT_DOTA_DEFEAT` | `1592` |
+| `ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE` | `1593` |
+| `ACT_DOTA_SPIRIT_BREAKER_CHARGE_END` | `1594` |
+| `ACT_DOTA_TELEPORT` | `1595` |
+| `ACT_DOTA_TELEPORT_END` | `1596` |
+| `ACT_DOTA_CAST_REFRACTION` | `1597` |
+| `ACT_DOTA_CAST_ABILITY_7` | `1598` |
+| `ACT_DOTA_CANCEL_SIREN_SONG` | `1599` |
+| `ACT_DOTA_CHANNEL_ABILITY_7` | `1600` |
+| `ACT_DOTA_LOADOUT` | `1601` |
+| `ACT_DOTA_FORCESTAFF_END` | `1602` |
+| `ACT_DOTA_POOF_END` | `1603` |
+| `ACT_DOTA_SLARK_POUNCE` | `1604` |
+| `ACT_DOTA_MAGNUS_SKEWER_START` | `1605` |
+| `ACT_DOTA_MAGNUS_SKEWER_END` | `1606` |
+| `ACT_DOTA_MEDUSA_STONE_GAZE` | `1607` |
+| `ACT_DOTA_RELAX_START` | `1608` |
+| `ACT_DOTA_RELAX_LOOP` | `1609` |
+| `ACT_DOTA_RELAX_END` | `1610` |
+| `ACT_DOTA_CENTAUR_STAMPEDE` | `1611` |
+| `ACT_DOTA_BELLYACHE_START` | `1612` |
+| `ACT_DOTA_BELLYACHE_LOOP` | `1613` |
+| `ACT_DOTA_BELLYACHE_END` | `1614` |
+| `ACT_DOTA_ROQUELAIRE_LAND` | `1615` |
+| `ACT_DOTA_ROQUELAIRE_LAND_IDLE` | `1616` |
+| `ACT_DOTA_GREEVIL_CAST` | `1617` |
+| `ACT_DOTA_GREEVIL_OVERRIDE_ABILITY` | `1618` |
+| `ACT_DOTA_GREEVIL_HOOK_START` | `1619` |
+| `ACT_DOTA_GREEVIL_HOOK_END` | `1620` |
+| `ACT_DOTA_GREEVIL_BLINK_BONE` | `1621` |
+| `ACT_DOTA_IDLE_SLEEPING` | `1622` |
+| `ACT_DOTA_INTRO` | `1623` |
+| `ACT_DOTA_GESTURE_POINT` | `1624` |
+| `ACT_DOTA_GESTURE_ACCENT` | `1625` |
+| `ACT_DOTA_SLEEPING_END` | `1626` |
+| `ACT_DOTA_AMBUSH` | `1627` |
+| `ACT_DOTA_ITEM_LOOK` | `1628` |
+| `ACT_DOTA_STARTLE` | `1629` |
+| `ACT_DOTA_FRUSTRATION` | `1630` |
+| `ACT_DOTA_TELEPORT_REACT` | `1631` |
+| `ACT_DOTA_TELEPORT_END_REACT` | `1632` |
+| `ACT_DOTA_SHRUG` | `1633` |
+| `ACT_DOTA_RELAX_LOOP_END` | `1634` |
+| `ACT_DOTA_PRESENT_ITEM` | `1635` |
+| `ACT_DOTA_IDLE_IMPATIENT` | `1636` |
+| `ACT_DOTA_SHARPEN_WEAPON` | `1637` |
+| `ACT_DOTA_SHARPEN_WEAPON_OUT` | `1638` |
+| `ACT_DOTA_IDLE_SLEEPING_END` | `1639` |
+| `ACT_DOTA_BRIDGE_DESTROY` | `1640` |
+| `ACT_DOTA_TAUNT_SNIPER` | `1641` |
+| `ACT_DOTA_DEATH_BY_SNIPER` | `1642` |
+| `ACT_DOTA_LOOK_AROUND` | `1643` |
+| `ACT_DOTA_CAGED_CREEP_RAGE` | `1644` |
+| `ACT_DOTA_CAGED_CREEP_RAGE_OUT` | `1645` |
+| `ACT_DOTA_CAGED_CREEP_SMASH` | `1646` |
+| `ACT_DOTA_CAGED_CREEP_SMASH_OUT` | `1647` |
+| `ACT_DOTA_IDLE_IMPATIENT_SWORD_TAP` | `1648` |
+| `ACT_DOTA_INTRO_LOOP` | `1649` |
+| `ACT_DOTA_BRIDGE_THREAT` | `1650` |
+| `ACT_DOTA_DAGON` | `1651` |
+| `ACT_DOTA_CAST_ABILITY_2_ES_ROLL_START` | `1652` |
+| `ACT_DOTA_CAST_ABILITY_2_ES_ROLL` | `1653` |
+| `ACT_DOTA_CAST_ABILITY_2_ES_ROLL_END` | `1654` |
+| `ACT_DOTA_NIAN_PIN_START` | `1655` |
+| `ACT_DOTA_NIAN_PIN_LOOP` | `1656` |
+| `ACT_DOTA_NIAN_PIN_END` | `1657` |
+| `ACT_DOTA_LEAP_STUN` | `1658` |
+| `ACT_DOTA_LEAP_SWIPE` | `1659` |
+| `ACT_DOTA_NIAN_INTRO_LEAP` | `1660` |
+| `ACT_DOTA_AREA_DENY` | `1661` |
+| `ACT_DOTA_NIAN_PIN_TO_STUN` | `1662` |
+| `ACT_DOTA_RAZE_1` | `1663` |
+| `ACT_DOTA_RAZE_2` | `1664` |
+| `ACT_DOTA_RAZE_3` | `1665` |
+| `ACT_DOTA_UNDYING_DECAY` | `1666` |
+| `ACT_DOTA_UNDYING_SOUL_RIP` | `1667` |
+| `ACT_DOTA_UNDYING_TOMBSTONE` | `1668` |
+| `ACT_DOTA_WHIRLING_AXES_RANGED` | `1669` |
+| `ACT_DOTA_SHALLOW_GRAVE` | `1670` |
+| `ACT_DOTA_COLD_FEET` | `1671` |
+| `ACT_DOTA_ICE_VORTEX` | `1672` |
+| `ACT_DOTA_CHILLING_TOUCH` | `1673` |
+| `ACT_DOTA_ENFEEBLE` | `1674` |
+| `ACT_DOTA_FATAL_BONDS` | `1675` |
+| `ACT_DOTA_MIDNIGHT_PULSE` | `1676` |
+| `ACT_DOTA_ANCESTRAL_SPIRIT` | `1677` |
+| `ACT_DOTA_THUNDER_STRIKE` | `1678` |
+| `ACT_DOTA_KINETIC_FIELD` | `1679` |
+| `ACT_DOTA_STATIC_STORM` | `1680` |
+| `ACT_DOTA_MINI_TAUNT` | `1681` |
+| `ACT_DOTA_ARCTIC_BURN_END` | `1682` |
+| `ACT_DOTA_LOADOUT_RARE` | `1683` |
+| `ACT_DOTA_SWIM` | `1684` |
+| `ACT_DOTA_FLEE` | `1685` |
+| `ACT_DOTA_TROT` | `1686` |
+| `ACT_DOTA_SHAKE` | `1687` |
+| `ACT_DOTA_SWIM_IDLE` | `1688` |
+| `ACT_DOTA_WAIT_IDLE` | `1689` |
+| `ACT_DOTA_GREET` | `1690` |
+| `ACT_DOTA_TELEPORT_COOP_START` | `1691` |
+| `ACT_DOTA_TELEPORT_COOP_WAIT` | `1692` |
+| `ACT_DOTA_TELEPORT_COOP_END` | `1693` |
+| `ACT_DOTA_TELEPORT_COOP_EXIT` | `1694` |
+| `ACT_DOTA_SHOPKEEPER_PET_INTERACT` | `1695` |
+| `ACT_DOTA_ITEM_PICKUP` | `1696` |
+| `ACT_DOTA_ITEM_DROP` | `1697` |
+| `ACT_DOTA_CAPTURE_PET` | `1698` |
+| `ACT_DOTA_PET_WARD_OBSERVER` | `1699` |
+| `ACT_DOTA_PET_WARD_SENTRY` | `1700` |
+| `ACT_DOTA_PET_LEVEL` | `1701` |
+| `ACT_DOTA_CAST_BURROW_END` | `1702` |
+| `ACT_DOTA_LIFESTEALER_ASSIMILATE` | `1703` |
+| `ACT_DOTA_LIFESTEALER_EJECT` | `1704` |
+| `ACT_DOTA_ATTACK_EVENT_BASH` | `1705` |
+| `ACT_DOTA_CAPTURE_RARE` | `1706` |
+| `ACT_DOTA_AW_MAGNETIC_FIELD` | `1707` |
+| `ACT_DOTA_CAST_GHOST_SHIP` | `1708` |
+| `ACT_DOTA_FXANIM` | `1709` |
+| `ACT_DOTA_VICTORY_START` | `1710` |
+| `ACT_DOTA_DEFEAT_START` | `1711` |
+| `ACT_DOTA_DP_SPIRIT_SIPHON` | `1712` |
+| `ACT_DOTA_TRICKS_END` | `1713` |
+| `ACT_DOTA_ES_STONE_CALLER` | `1714` |
+| `ACT_DOTA_MK_STRIKE` | `1715` |
+| `ACT_DOTA_VERSUS` | `1716` |
+| `ACT_DOTA_CAPTURE_CARD` | `1717` |
+| `ACT_DOTA_MK_SPRING_SOAR` | `1718` |
+| `ACT_DOTA_MK_SPRING_END` | `1719` |
+| `ACT_DOTA_MK_TREE_SOAR` | `1720` |
+| `ACT_DOTA_MK_TREE_END` | `1721` |
+| `ACT_DOTA_MK_FUR_ARMY` | `1722` |
+| `ACT_DOTA_MK_SPRING_CAST` | `1723` |
+| `ACT_DOTA_NECRO_GHOST_SHROUD` | `1724` |
+| `ACT_DOTA_OVERRIDE_ARCANA` | `1725` |
+| `ACT_DOTA_SLIDE` | `1726` |
+| `ACT_DOTA_SLIDE_LOOP` | `1727` |
+| `ACT_DOTA_GENERIC_CHANNEL_1` | `1728` |
+| `ACT_DOTA_GS_SOUL_CHAIN` | `1729` |
+| `ACT_DOTA_GS_INK_CREATURE` | `1730` |
+| `ACT_DOTA_TRANSITION` | `1731` |
+| `ACT_DOTA_BLINK_DAGGER` | `1732` |
+| `ACT_DOTA_BLINK_DAGGER_END` | `1733` |
+| `ACT_DOTA_CUSTOM_TOWER_ATTACK` | `1734` |
+| `ACT_DOTA_CUSTOM_TOWER_IDLE` | `1735` |
+| `ACT_DOTA_CUSTOM_TOWER_DIE` | `1736` |
+| `ACT_DOTA_CAST_COLD_SNAP_ORB` | `1737` |
+| `ACT_DOTA_CAST_GHOST_WALK_ORB` | `1738` |
+| `ACT_DOTA_CAST_TORNADO_ORB` | `1739` |
+| `ACT_DOTA_CAST_EMP_ORB` | `1740` |
+| `ACT_DOTA_CAST_ALACRITY_ORB` | `1741` |
+| `ACT_DOTA_CAST_CHAOS_METEOR_ORB` | `1742` |
+| `ACT_DOTA_CAST_SUN_STRIKE_ORB` | `1743` |
+| `ACT_DOTA_CAST_FORGE_SPIRIT_ORB` | `1744` |
+| `ACT_DOTA_CAST_ICE_WALL_ORB` | `1745` |
+| `ACT_DOTA_CAST_DEAFENING_BLAST_ORB` | `1746` |
+| `ACT_DOTA_NOTICE` | `1747` |
+| `ACT_DOTA_CAST_ABILITY_2_ALLY` | `1748` |
+| `ACT_DOTA_SHUFFLE_L` | `1749` |
+| `ACT_DOTA_SHUFFLE_R` | `1750` |
+| `ACT_DOTA_OVERRIDE_LOADOUT` | `1751` |
+| `ACT_DOTA_TAUNT_SPECIAL` | `1752` |
+| `ACT_DOTA_TELEPORT_START` | `1753` |
+| `ACT_DOTA_GENERIC_CHANNEL_1_START` | `1754` |
+| `ACT_DOTA_CUSTOM_TOWER_IDLE_RARE` | `1755` |
+| `ACT_DOTA_CUSTOM_TOWER_TAUNT` | `1756` |
+| `ACT_DOTA_CUSTOM_TOWER_HIGH_FIVE` | `1757` |
+| `ACT_DOTA_ATTACK_SPECIAL` | `1758` |
+| `ACT_DOTA_TRANSITION_IDLE` | `1759` |
+| `ACT_DOTA_PIERCE_THE_VEIL` | `1760` |
+| `ACT_DOTA_RUN_RARE` | `1761` |
+| `ACT_DOTA_VIPER_DIVE` | `1762` |
+| `ACT_DOTA_VIPER_DIVE_END` | `1763` |
+| `ACT_DOTA_MK_STRIKE_END` | `1764` |
+| `ACT_DOTA_SHADOW_VAULT` | `1765` |
+| `ACT_DOTA_KEZ_KATANA_ULT_START` | `1766` |
+| `ACT_DOTA_KEZ_KATANA_ULT_CHAIN_A` | `1767` |
+| `ACT_DOTA_KEZ_KATANA_ULT_CHAIN_B` | `1768` |
+| `ACT_DOTA_KEZ_KATANA_ULT_END` | `1769` |
+| `ACT_DOTA_KEZ_KATANA_IMPALE` | `1770` |
+| `ACT_DOTA_KEZ_KATANA_IMPALE_FAST` | `1771` |
+| `ACT_DOTA_UNICYCLE` | `1772` |
+| `ACT_DOTA_UNICYCLE_END` | `1773` |
+| `ACT_DOTA_LARGO_ULT_STRUM_SUCCESS` | `1774` |
+| `ACT_DOTA_LARGO_ULT_STRUM_FAIL` | `1775` |
+| `ACT_DOTA_MVP_SCREEN` | `1776` |
+| `ACT_DOTA_LARGO_ULT_TOGGLE_ON` | `1777` |
+| `ACT_DOTA_LARGO_ULT_TOGGLE_OFF` | `1778` |
+| `ACT_DOTA_RUN_STATUE` | `1779` |
+| `ACT_DOTA_CAST1_STATUE` | `1780` |
+| `ACT_DOTA_CAST2_STATUE` | `1781` |
+| `ACT_DOTA_STUN_STATUE` | `1782` |
+| `ACT_DOTA_FLAIL_STATUE` | `1783` |
+| `ACT_DOTA_SPAWN_STATUE` | `1784` |
+| `ACT_DOTA_TELEPORT_END_STATUE` | `1785` |
+| `ACT_DOTA_ATTACK_STATUE` | `1786` |
+| `ACT_DOTA_FORCESTAFF_STATUE` | `1787` |
+| `ACT_DOTA_TELEPORT_STATUE` | `1788` |
+| `ACT_DOTA_VICTORY_STATUE` | `1789` |
+| `ACT_DOTA_TAUNT_STATUE` | `1790` |
+| `ACT_DOTA_IDLE_STATUE` | `1791` |
+| `ACT_DOTA_DISABLED_END` | `1792` |
+| `ACT_DOTA_VOODOO_REST` | `1793` |
+| `ACT_DOTA_CYCLONE` | `1794` |
+| `ACT_DOTA_IMPALE` | `1795` |
+| `ACT_DOTA_TORRENT` | `1796` |
+| `ACT_DOTA_RADIANT_CREEP_HAMMER` | `1798` |
+| `ACT_DOTA_RELAX_IN` | `1799` |
+| `ACT_DOTA_RELAX_OUT` | `1800` |
+| `ACT_DOTA_CAST_FENCE` | `1801` |
+| `ACT_DOTA_SPWN` | `1802` |
+| `ACT_DOTA_CAST3_STATUE` | `1803` |
+| `ACT_DOTA_CAST4_STATUE` | `1804` |
+| `ACT_DOTA_CAST5_STATUE` | `1805` |
+
+### LuaModifierType
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `LUA_MODIFIER_MOTION_NONE` | `0` |
+| `LUA_MODIFIER_MOTION_HORIZONTAL` | `1` |
+| `LUA_MODIFIER_MOTION_VERTICAL` | `2` |
+| `LUA_MODIFIER_MOTION_BOTH` | `3` |
+| `LUA_MODIFIER_INVALID` | `4` |
+
+### modifierfunction
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE` | `0` |
+| `MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_TARGET` | `1` |
+| `MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_PROC` | `2` |
+| `MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_POST_CRIT` | `3` |
+| `MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE` | `4` |
+| `MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL` | `5` |
+| `MODIFIER_PROPERTY_PROCATTACK_CONVERT_PHYSICAL_TO_MAGICAL` | `6` |
+| `MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL` | `7` |
+| `MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PURE` | `8` |
+| `MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL_TARGET` | `9` |
+| `MODIFIER_PROPERTY_PROCATTACK_FEEDBACK` | `10` |
+| `MODIFIER_PROPERTY_OVERRIDE_ATTACK_DAMAGE` | `11` |
+| `MODIFIER_PROPERTY_PRE_ATTACK` | `12` |
+| `MODIFIER_PROPERTY_INVISIBILITY_LEVEL` | `13` |
+| `MODIFIER_PROPERTY_INVISIBILITY_ATTACK_BEHAVIOR_EXCEPTION` | `14` |
+| `MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY` | `15` |
+| `MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT` | `16` |
+| `MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE` | `17` |
+| `MODIFIER_PROPERTY_MOVESPEED_MIN_OVERRIDE` | `18` |
+| `MODIFIER_PROPERTY_MOVESPEED_MAX_OVERRIDE` | `19` |
+| `MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE` | `20` |
+| `MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE` | `21` |
+| `MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE` | `22` |
+| `MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE_2` | `23` |
+| `MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE` | `24` |
+| `MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE_2` | `25` |
+| `MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE` | `26` |
+| `MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MIN` | `27` |
+| `MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MAX` | `28` |
+| `MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT` | `29` |
+| `MODIFIER_PROPERTY_MOVESPEED_LIMIT` | `30` |
+| `MODIFIER_PROPERTY_ATTACKSPEED_BASE_OVERRIDE` | `31` |
+| `MODIFIER_PROPERTY_FIXED_ATTACK_RATE` | `32` |
+| `MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT` | `33` |
+| `MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT` | `34` |
+| `MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT` | `35` |
+| `MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT` | `36` |
+| `MODIFIER_PROPERTY_HEALTHCOST_REDUCTION_CONSTANT` | `37` |
+| `MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT` | `38` |
+| `MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST` | `39` |
+| `MODIFIER_PROPERTY_BASE_ATTACK_TIME_PERCENTAGE` | `40` |
+| `MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT` | `41` |
+| `MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE` | `42` |
+| `MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE` | `43` |
+| `MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION` | `44` |
+| `MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY` | `45` |
+| `MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE` | `46` |
+| `MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE` | `47` |
+| `MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE` | `48` |
+| `MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_TARGET` | `49` |
+| `MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE` | `50` |
+| `MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET` | `51` |
+| `MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE` | `52` |
+| `MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE` | `53` |
+| `MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE` | `54` |
+| `MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE_UNIQUE` | `55` |
+| `MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE` | `56` |
+| `MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE_UNIQUE` | `57` |
+| `MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE` | `58` |
+| `MODIFIER_PROPERTY_MP_RESTORE_AMPLIFY_PERCENTAGE` | `59` |
+| `MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE` | `60` |
+| `MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE` | `61` |
+| `MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE` | `62` |
+| `MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE` | `63` |
+| `MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT` | `64` |
+| `MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT` | `65` |
+| `MODIFIER_PROPERTY_EVASION_CONSTANT` | `66` |
+| `MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT` | `67` |
+| `MODIFIER_PROPERTY_STATUS_RESISTANCE` | `68` |
+| `MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING` | `69` |
+| `MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER` | `70` |
+| `MODIFIER_PROPERTY_AVOID_DAMAGE` | `71` |
+| `MODIFIER_PROPERTY_AVOID_SPELL` | `72` |
+| `MODIFIER_PROPERTY_MISS_PERCENTAGE` | `73` |
+| `MODIFIER_PROPERTY_PHYSICAL_ARMOR_BASE_PERCENTAGE` | `74` |
+| `MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE` | `75` |
+| `MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS` | `76` |
+| `MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE` | `77` |
+| `MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE` | `78` |
+| `MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_POST` | `79` |
+| `MODIFIER_PROPERTY_MIN_PHYSICAL_ARMOR` | `80` |
+| `MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR` | `81` |
+| `MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION` | `82` |
+| `MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION` | `83` |
+| `MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS` | `84` |
+| `MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS` | `85` |
+| `MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_UNIQUE` | `86` |
+| `MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE` | `87` |
+| `MODIFIER_PROPERTY_BASE_MANA_REGEN` | `88` |
+| `MODIFIER_PROPERTY_MANA_REGEN_CONSTANT` | `89` |
+| `MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE` | `90` |
+| `MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE` | `91` |
+| `MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT` | `92` |
+| `MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE` | `93` |
+| `MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE` | `94` |
+| `MODIFIER_PROPERTY_HEALTH_BONUS` | `95` |
+| `MODIFIER_PROPERTY_MANA_BONUS` | `96` |
+| `MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS` | `97` |
+| `MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS` | `98` |
+| `MODIFIER_PROPERTY_EXTRA_MANA_BONUS` | `99` |
+| `MODIFIER_PROPERTY_EXTRA_MANA_BONUS_PERCENTAGE` | `100` |
+| `MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE` | `101` |
+| `MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE` | `102` |
+| `MODIFIER_PROPERTY_STATS_STRENGTH_BONUS` | `103` |
+| `MODIFIER_PROPERTY_STATS_AGILITY_BONUS` | `104` |
+| `MODIFIER_PROPERTY_STATS_INTELLECT_BONUS` | `105` |
+| `MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE` | `106` |
+| `MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE` | `107` |
+| `MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE` | `108` |
+| `MODIFIER_PROPERTY_STATS_INTELLECT_NONE` | `109` |
+| `MODIFIER_PROPERTY_CAST_RANGE_BONUS` | `110` |
+| `MODIFIER_PROPERTY_CAST_RANGE_BONUS_PERCENTAGE` | `111` |
+| `MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET` | `112` |
+| `MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING` | `113` |
+| `MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE` | `114` |
+| `MODIFIER_PROPERTY_ATTACK_RANGE_BONUS` | `115` |
+| `MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE` | `116` |
+| `MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE` | `117` |
+| `MODIFIER_PROPERTY_MAX_ATTACK_RANGE` | `118` |
+| `MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS` | `119` |
+| `MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE` | `120` |
+| `MODIFIER_PROPERTY_PROJECTILE_NAME` | `121` |
+| `MODIFIER_PROPERTY_REINCARNATION` | `122` |
+| `MODIFIER_PROPERTY_REINCARNATION_SUPPRESS_FX` | `123` |
+| `MODIFIER_PROPERTY_RESPAWNTIME` | `124` |
+| `MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE` | `125` |
+| `MODIFIER_PROPERTY_RESPAWNTIME_STACKING` | `126` |
+| `MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE` | `127` |
+| `MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING` | `128` |
+| `MODIFIER_PROPERTY_CASTTIME_PERCENTAGE` | `129` |
+| `MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE` | `130` |
+| `MODIFIER_PROPERTY_MANACOST_PERCENTAGE` | `131` |
+| `MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING` | `132` |
+| `MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE` | `133` |
+| `MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE_STACKING` | `134` |
+| `MODIFIER_PROPERTY_DEATHGOLDCOST` | `135` |
+| `MODIFIER_PROPERTY_PERCENTAGE_DEATHGOLDCOST` | `136` |
+| `MODIFIER_PROPERTY_EXP_RATE_BOOST` | `137` |
+| `MODIFIER_PROPERTY_GOLD_RATE_BOOST` | `138` |
+| `MODIFIER_PROPERTY_KILL_ASSIST_GOLD_BOOST` | `139` |
+| `MODIFIER_PROPERTY_CONVERT_EXP_TO_GOLD_PCT` | `140` |
+| `MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE` | `141` |
+| `MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE` | `142` |
+| `MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK` | `143` |
+| `MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK` | `144` |
+| `MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL` | `145` |
+| `MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_BONUS` | `146` |
+| `MODIFIER_PROPERTY_INNATE_DAMAGE_BLOCK_PCT_OVERRIDE` | `147` |
+| `MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR` | `148` |
+| `MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK` | `149` |
+| `MODIFIER_PROPERTY_OVERRIDE_ANIMATION` | `150` |
+| `MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE` | `151` |
+| `MODIFIER_PROPERTY_ABSORB_SPELL` | `152` |
+| `MODIFIER_PROPERTY_REFLECT_SPELL` | `153` |
+| `MODIFIER_PROPERTY_DISABLE_AUTOATTACK` | `154` |
+| `MODIFIER_PROPERTY_BONUS_DAY_VISION` | `155` |
+| `MODIFIER_PROPERTY_BONUS_DAY_VISION_PERCENTAGE` | `156` |
+| `MODIFIER_PROPERTY_BONUS_NIGHT_VISION` | `157` |
+| `MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE` | `158` |
+| `MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE` | `159` |
+| `MODIFIER_PROPERTY_FIXED_DAY_VISION` | `160` |
+| `MODIFIER_PROPERTY_FIXED_NIGHT_VISION` | `161` |
+| `MODIFIER_PROPERTY_MIN_HEALTH` | `162` |
+| `MODIFIER_PROPERTY_MIN_MANA` | `163` |
+| `MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL` | `164` |
+| `MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL` | `165` |
+| `MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE` | `166` |
+| `MODIFIER_PROPERTY_IS_ILLUSION` | `167` |
+| `MODIFIER_PROPERTY_ILLUSION_LABEL` | `168` |
+| `MODIFIER_PROPERTY_STRONG_ILLUSION` | `169` |
+| `MODIFIER_PROPERTY_SUPER_ILLUSION` | `170` |
+| `MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE` | `171` |
+| `MODIFIER_PROPERTY_XP_DURING_DEATH` | `172` |
+| `MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE` | `173` |
+| `MODIFIER_PROPERTY_TURN_RATE_OVERRIDE` | `174` |
+| `MODIFIER_PROPERTY_DISABLE_HEALING` | `175` |
+| `MODIFIER_PROPERTY_DISABLE_MANA_GAIN` | `176` |
+| `MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK` | `177` |
+| `MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK` | `178` |
+| `MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL` | `179` |
+| `MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH` | `180` |
+| `MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER` | `181` |
+| `MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER` | `182` |
+| `MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING` | `183` |
+| `MODIFIER_PROPERTY_DODGE_PROJECTILE` | `184` |
+| `MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK` | `185` |
+| `MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER` | `186` |
+| `MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW` | `187` |
+| `MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION` | `188` |
+| `MODIFIER_PROPERTY_PHYSICAL_ARMOR_PIERCING_PERCENTAGE_TARGET` | `189` |
+| `MODIFIER_PROPERTY_MAGICAL_ARMOR_PIERCING_PERCENTAGE_TARGET` | `190` |
+| `MODIFIER_PROPERTY_CRITICAL_STRIKE_BONUS` | `191` |
+| `MODIFIER_PROPERTY_CONVERT_ATTACK_PHYSICAL_TO_PURE` | `192` |
+| `MODIFIER_PROPERTY_BUFF_AMPLIFICATION` | `193` |
+| `MODIFIER_EVENT_ON_SPELL_TARGET_READY` | `194` |
+| `MODIFIER_EVENT_ON_ATTACK_RECORD` | `195` |
+| `MODIFIER_EVENT_ON_ATTACK_START` | `196` |
+| `MODIFIER_EVENT_ON_ATTACK` | `197` |
+| `MODIFIER_EVENT_ON_ATTACK_LANDED` | `198` |
+| `MODIFIER_EVENT_ON_ATTACK_FAIL` | `199` |
+| `MODIFIER_EVENT_ON_ATTACK_ALLIED` | `200` |
+| `MODIFIER_EVENT_ON_PROJECTILE_DODGE` | `201` |
+| `MODIFIER_EVENT_ON_ORDER` | `202` |
+| `MODIFIER_EVENT_ON_ORDER_RECEIVED` | `203` |
+| `MODIFIER_EVENT_ON_UNIT_MOVED` | `204` |
+| `MODIFIER_EVENT_ON_ABILITY_START` | `205` |
+| `MODIFIER_EVENT_ON_ABILITY_EXECUTED` | `206` |
+| `MODIFIER_EVENT_ON_ABILITY_FULLY_CAST` | `207` |
+| `MODIFIER_EVENT_ON_BREAK_INVISIBILITY` | `208` |
+| `MODIFIER_EVENT_ON_ABILITY_END_CHANNEL` | `209` |
+| `MODIFIER_EVENT_ON_PROCESS_UPGRADE` | `210` |
+| `MODIFIER_EVENT_ON_REFRESH` | `211` |
+| `MODIFIER_EVENT_ON_TAKEDAMAGE` | `212` |
+| `MODIFIER_EVENT_ON_DEATH_PREVENTED` | `213` |
+| `MODIFIER_EVENT_ON_STATE_CHANGED` | `214` |
+| `MODIFIER_EVENT_ON_ORB_EFFECT` | `215` |
+| `MODIFIER_EVENT_ON_PROCESS_CLEAVE` | `216` |
+| `MODIFIER_EVENT_ON_DAMAGE_CALCULATED` | `217` |
+| `MODIFIER_EVENT_ON_MAGIC_DAMAGE_CALCULATED` | `218` |
+| `MODIFIER_EVENT_ON_ATTACKED` | `219` |
+| `MODIFIER_EVENT_ON_DEATH` | `220` |
+| `MODIFIER_EVENT_ON_DEATH_COMPLETED` | `221` |
+| `MODIFIER_EVENT_ON_RESPAWN` | `222` |
+| `MODIFIER_EVENT_ON_SPENT_MANA` | `223` |
+| `MODIFIER_EVENT_ON_SPENT_HEALTH` | `224` |
+| `MODIFIER_EVENT_ON_SPENT_ITEM_CHARGE` | `225` |
+| `MODIFIER_EVENT_ON_TELEPORTING` | `226` |
+| `MODIFIER_EVENT_ON_TELEPORTED` | `227` |
+| `MODIFIER_EVENT_ON_SET_LOCATION` | `228` |
+| `MODIFIER_EVENT_ON_HEALTH_GAINED` | `229` |
+| `MODIFIER_EVENT_ON_MANA_GAINED` | `230` |
+| `MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT` | `231` |
+| `MODIFIER_EVENT_ON_HERO_KILLED` | `232` |
+| `MODIFIER_EVENT_ON_HEAL_RECEIVED` | `233` |
+| `MODIFIER_EVENT_ON_REDIRECT_HEALTH_GAIN` | `234` |
+| `MODIFIER_EVENT_ON_BUILDING_KILLED` | `235` |
+| `MODIFIER_EVENT_ON_MODEL_CHANGED` | `236` |
+| `MODIFIER_EVENT_ON_MODIFIER_ADDED` | `237` |
+| `MODIFIER_EVENT_ON_MODIFIER_REMOVED` | `238` |
+| `MODIFIER_EVENT_ON_SCEPTER_UPGRADE_SELECTED` | `239` |
+| `MODIFIER_EVENT_ON_SHARD_UPGRADE_SELECTED` | `240` |
+| `MODIFIER_PROPERTY_TOOLTIP` | `241` |
+| `MODIFIER_PROPERTY_MODEL_CHANGE` | `242` |
+| `MODIFIER_PROPERTY_MODEL_SCALE` | `243` |
+| `MODIFIER_PROPERTY_MODEL_SCALE_ANIMATE_TIME` | `244` |
+| `MODIFIER_PROPERTY_MODEL_SCALE_USE_IN_OUT_EASE` | `245` |
+| `MODIFIER_PROPERTY_MODEL_SCALE_CONSTANT` | `246` |
+| `MODIFIER_PROPERTY_IS_SCEPTER` | `247` |
+| `MODIFIER_PROPERTY_IS_SHARD` | `248` |
+| `MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION` | `249` |
+| `MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS` | `250` |
+| `MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND` | `251` |
+| `MODIFIER_PROPERTY_LIFETIME_FRACTION` | `252` |
+| `MODIFIER_PROPERTY_PROVIDES_FOW_POSITION` | `253` |
+| `MODIFIER_PROPERTY_SPELLS_REQUIRE_HP` | `254` |
+| `MODIFIER_PROPERTY_CONVERT_MANA_COST_TO_HEALTH_COST` | `255` |
+| `MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP` | `256` |
+| `MODIFIER_PROPERTY_DISABLE_TURNING` | `257` |
+| `MODIFIER_PROPERTY_IGNORE_CAST_ANGLE` | `258` |
+| `MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE` | `259` |
+| `MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL` | `260` |
+| `MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE` | `261` |
+| `MODIFIER_PROPERTY_ABILITY_LAYOUT` | `262` |
+| `MODIFIER_EVENT_ON_DOMINATED` | `263` |
+| `MODIFIER_EVENT_ON_KILL` | `264` |
+| `MODIFIER_EVENT_ON_ASSIST` | `265` |
+| `MODIFIER_PROPERTY_TEMPEST_DOUBLE` | `266` |
+| `MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE` | `267` |
+| `MODIFIER_EVENT_ON_ATTACK_FINISHED` | `268` |
+| `MODIFIER_PROPERTY_IGNORE_COOLDOWN` | `269` |
+| `MODIFIER_PROPERTY_CAN_ATTACK_TREES` | `270` |
+| `MODIFIER_PROPERTY_VISUAL_Z_DELTA` | `271` |
+| `MODIFIER_PROPERTY_VISUAL_Z_SPEED_BASE_OVERRIDE` | `272` |
+| `MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION` | `273` |
+| `MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER` | `274` |
+| `MODIFIER_PROPERTY_TOOLTIP2` | `275` |
+| `MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY` | `276` |
+| `MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT` | `277` |
+| `MODIFIER_PROPERTY_SUPPRESS_TELEPORT` | `278` |
+| `MODIFIER_EVENT_ON_ATTACK_CANCELLED` | `279` |
+| `MODIFIER_PROPERTY_SUPPRESS_CLEAVE` | `280` |
+| `MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS` | `281` |
+| `MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE` | `282` |
+| `MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE` | `283` |
+| `MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET` | `284` |
+| `MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE` | `285` |
+| `MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE` | `286` |
+| `MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING` | `287` |
+| `MODIFIER_PROPERTY_SPELL_REDIRECT_TARGET` | `288` |
+| `MODIFIER_PROPERTY_TURN_RATE_CONSTANT` | `289` |
+| `MODIFIER_PROPERTY_PACK_RAT` | `290` |
+| `MODIFIER_PROPERTY_PHYSICALDAMAGEOUTGOING_PERCENTAGE` | `291` |
+| `MODIFIER_PROPERTY_KNOCKBACK_AMPLIFICATION_PERCENTAGE` | `292` |
+| `MODIFIER_PROPERTY_HEALTHBAR_PIPS` | `293` |
+| `MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT` | `294` |
+| `MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY` | `295` |
+| `MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS` | `296` |
+| `MODIFIER_PROPERTY_FAIL_ATTACK` | `297` |
+| `MODIFIER_PROPERTY_PREREDUCE_INCOMING_DAMAGE_MULT` | `298` |
+| `MODIFIER_PROPERTY_SUPPRESS_FULLSCREEN_DEATH_FX` | `299` |
+| `MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST` | `300` |
+| `MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE` | `301` |
+| `MODIFIER_PROPERTY_TICK_GOLD_MULTIPLIER` | `302` |
+| `MODIFIER_PROPERTY_SLOW_RESISTANCE_UNIQUE` | `303` |
+| `MODIFIER_PROPERTY_SLOW_RESISTANCE_STACKING` | `304` |
+| `MODIFIER_PROPERTY_SLOW_RESISTANCE_APPLIES_TO_ATTACKS` | `305` |
+| `MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE` | `306` |
+| `MODIFIER_PROPERTY_PROJECTILE_SPEED` | `307` |
+| `MODIFIER_PROPERTY_PROJECTILE_SPEED_TARGET` | `308` |
+| `MODIFIER_PROPERTY_BECOME_STRENGTH` | `309` |
+| `MODIFIER_PROPERTY_BECOME_AGILITY` | `310` |
+| `MODIFIER_PROPERTY_BECOME_INTELLIGENCE` | `311` |
+| `MODIFIER_PROPERTY_BECOME_UNIVERSAL` | `312` |
+| `MODIFIER_EVENT_ON_FORCE_PROC_MAGIC_STICK` | `313` |
+| `MODIFIER_EVENT_ON_DAMAGE_HPLOSS` | `314` |
+| `MODIFIER_PROPERTY_SHARE_XPRUNE` | `315` |
+| `MODIFIER_PROPERTY_XP_FOUNTAIN_COUNTDOWN_TIME_OVERRIDE` | `316` |
+| `MODIFIER_PROPERTY_NO_FREE_TP_SCROLL_ON_DEATH` | `317` |
+| `MODIFIER_PROPERTY_HAS_BONUS_NEUTRAL_ITEM_CHOICE` | `318` |
+| `MODIFIER_PROPERTY_HAS_BONUS_NEUTRAL_ITEM_PASSIVE` | `319` |
+| `MODIFIER_PROPERTY_PRESERVE_NEUTRAL_ITEM_PASSIVES` | `320` |
+| `MODIFIER_PROPERTY_FORCE_MAX_HEALTH` | `321` |
+| `MODIFIER_PROPERTY_FORCE_MAX_MANA` | `322` |
+| `MODIFIER_PROPERTY_AOE_BONUS_CONSTANT` | `323` |
+| `MODIFIER_PROPERTY_AOE_BONUS_CONSTANT_STACKING` | `324` |
+| `MODIFIER_EVENT_ON_TAKEDAMAGE_POST_UNAVOIDABLE_BLOCK` | `325` |
+| `MODIFIER_EVENT_ON_MUTE_DAMAGE_ABILITIES` | `326` |
+| `MODIFIER_PROPERTY_SUPPRESS_CRIT` | `327` |
+| `MODIFIER_PROPERTY_ABILITY_POINTS` | `328` |
+| `MODIFIER_PROPERTY_BUYBACK_PENALTY_PERCENT` | `329` |
+| `MODIFIER_PROPERTY_ITEM_SELLBACK_COST` | `330` |
+| `MODIFIER_PROPERTY_DISASSEMBLE_ANYTHING` | `331` |
+| `MODIFIER_PROPERTY_FIXED_MANA_REGEN` | `332` |
+| `MODIFIER_PROPERTY_BONUS_UPHILL_MISS_CHANCE` | `333` |
+| `MODIFIER_PROPERTY_CREEP_DENY_PERCENT` | `334` |
+| `MODIFIER_PROPERTY_ATTACKSPEED_ABSOLUTE_MAX` | `335` |
+| `MODIFIER_PROPERTY_FOW_TEAM` | `336` |
+| `MODIFIER_EVENT_ON_HERO_BEGIN_DYING` | `337` |
+| `MODIFIER_PROPERTY_BONUS_LOTUS_HEAL` | `338` |
+| `MODIFIER_PROPERTY_BASE_HP_REGEN_PER_STR_BONUS_PERCENTAGE` | `339` |
+| `MODIFIER_PROPERTY_BASE_ARMOR_PER_AGI_BONUS_PERCENTAGE` | `340` |
+| `MODIFIER_PROPERTY_BASE_ATTACKSPEED_PER_AGI_BONUS_PERCENTAGE` | `341` |
+| `MODIFIER_PROPERTY_BASE_MP_REGEN_PER_INT_BONUS_PERCENTAGE` | `342` |
+| `MODIFIER_PROPERTY_BASE_MRES_PER_INT_BONUS_PERCENTAGE` | `343` |
+| `MODIFIER_EVENT_ON_DAY_STARTED` | `344` |
+| `MODIFIER_EVENT_ON_NIGHT_STARTED` | `345` |
+| `MODIFIER_PROPERTY_CREATE_BONUS_ILLUSION_CHANCE` | `346` |
+| `MODIFIER_PROPERTY_CREATE_BONUS_ILLUSION_COUNT` | `347` |
+| `MODIFIER_PROPERTY_PSEUDORANDOM_BONUS` | `348` |
+| `MODIFIER_PROPERTY_ATTACK_HEIGHT_BONUS` | `349` |
+| `MODIFIER_PROPERTY_SKIP_ATTACK_REGULATOR` | `350` |
+| `MODIFIER_PROPERTY_MISS_PERCENTAGE_TARGET` | `351` |
+| `MODIFIER_PROPERTY_ADDITIONAL_NEUTRAL_ITEM_DROPS` | `352` |
+| `MODIFIER_PROPERTY_KILL_STREAK_BONUS_GOLD_PERCENTAGE` | `353` |
+| `MODIFIER_PROPERTY_HP_REGEN_MULTIPLIER_PRE_AMPLIFICATION` | `354` |
+| `MODIFIER_PROPERTY_HEROFACET_OVERRIDE` | `355` |
+| `MODIFIER_EVENT_ON_TREE_CUT_DOWN` | `356` |
+| `MODIFIER_EVENT_ON_CLEAVE_ATTACK_LANDED` | `357` |
+| `MODIFIER_PROPERTY_MIN_ATTRIBUTE_LEVEL` | `358` |
+| `MODIFIER_PROPERTY_TIER_TOKEN_REROLL` | `359` |
+| `MODIFIER_PROPERTY_VISION_DEGREES_RESTRICTION` | `360` |
+| `MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_STACKING` | `361` |
+| `MODIFIER_PROPERTY_INVENTORY_SLOT_RESTRICTED` | `362` |
+| `MODIFIER_EVENT_ON_TIER_TOKEN_REROLLED` | `363` |
+| `MODIFIER_PROPERTY_REDIRECT_SPELL` | `364` |
+| `MODIFIER_PROPERTY_BASEATTACK_POSTBONUS` | `365` |
+| `MODIFIER_EVENT_ON_FOW_TEAM_CHANGED` | `366` |
+| `MODIFIER_PROPERTY_SUPPRESS_ATTACK_PROCS` | `367` |
+| `MODIFIER_EVENT_ON_ABILITY_TOGGLED` | `368` |
+| `MODIFIER_PROPERTY_AVOID_ATTACK_PROCS` | `369` |
+| `MODIFIER_EVENT_ON_RUNE_SPAWN` | `370` |
+| `MODIFIER_PROPERTY_PHYSICAL_LIFESTEAL` | `371` |
+| `MODIFIER_PROPERTY_MAGICAL_LIFESTEAL` | `372` |
+| `MODIFIER_EVENT_ON_PURE_DAMAGE_CALCULATED` | `373` |
+| `MODIFIER_EVENT_NEUTRAL_TRINKET_OPTIONS` | `374` |
+| `MODIFIER_EVENT_NEUTRAL_ENHANCEMENT_OPTIONS` | `375` |
+| `MODIFIER_PROPERTY_MOVESPEED_MAX_BONUS_CONSTANT` | `376` |
+| `MODIFIER_PROPERTY_MOVESPEED_POST_MULTIPLIER_BONUS_CONSTANT` | `377` |
+| `MODIFIER_PROPERTY_FORBID_ILLUSIONS` | `378` |
+| `MODIFIER_PROPERTY_MANACOST_OVERRIDE` | `379` |
+| `MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION` | `380` |
+| `MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION_UNIQUE` | `381` |
+| `MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE_UNIQUE` | `382` |
+| `MODIFIER_PROPERTY_REDIRECT_HEALTH_GAIN` | `383` |
+| `MODIFIER_PROPERTY_SUPPRESS_INCOMING_CRIT` | `384` |
+| `MODIFIER_PROPERTY_UPGRADE_NEUTRAL_ARTIFACTS` | `385` |
+| `MODIFIER_PROPERTY_SUPPRESS_INVALID_MOVE_ATTACK_ORDERS` | `386` |
+| `MODIFIER_PROPERTY_CONSUMABLE_USE_SPEED` | `387` |
+| `MODIFIER_PROPERTY_REQUIRED_LEVEL` | `388` |
+| `MODIFIER_EVENT_ON_MODIFIER_REFRESHED` | `389` |
+| `MODIFIER_EVENT_ON_ABILITY_SWAPPED` | `390` |
+| `MODIFIER_PROPERTY_OVERRIDE_CREEP_BOUNTY` | `391` |
+| `MODIFIER_PROPERTY_OVERRIDE_BASE_DAMAGE` | `392` |
+| `MODIFIER_PROPERTY_UNTARGETABLE_FROM` | `393` |
+| `MODIFIER_PROPERTY_UNTARGETABLE_TO` | `394` |
+| `MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ITEMS` | `395` |
+| `MODIFIER_EVENT_ON_PURGE` | `396` |
+| `MODIFIER_EVENT_ON_ILLUSION_CREATED` | `397` |
+| `MODIFIER_PROPERTY_HEROLEVELSCALE` | `398` |
+| `MODIFIER_FUNCTION_LAST` | `399` |
+| `MODIFIER_FUNCTION_INVALID` | `65535` |
+
+### modifierpriority
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `MODIFIER_PRIORITY_LOW` | `0` |
+| `MODIFIER_PRIORITY_NORMAL` | `1` |
+| `MODIFIER_PRIORITY_HIGH` | `2` |
+| `MODIFIER_PRIORITY_ULTRA` | `3` |
+| `MODIFIER_PRIORITY_SUPER_ULTRA` | `4` |
+
+### modifierremove
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_BUFF_REMOVE_ALL` | `0` |
+| `DOTA_BUFF_REMOVE_ENEMY` | `1` |
+| `DOTA_BUFF_REMOVE_ALLY` | `2` |
+
+### modifierstate
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `MODIFIER_STATE_ROOTED` | `0` |
+| `MODIFIER_STATE_DISARMED` | `1` |
+| `MODIFIER_STATE_ATTACK_IMMUNE` | `2` |
+| `MODIFIER_STATE_SILENCED` | `3` |
+| `MODIFIER_STATE_MUTED` | `4` |
+| `MODIFIER_STATE_STUNNED` | `5` |
+| `MODIFIER_STATE_HEXED` | `6` |
+| `MODIFIER_STATE_INVISIBLE` | `7` |
+| `MODIFIER_STATE_INVULNERABLE` | `8` |
+| `MODIFIER_STATE_MAGIC_IMMUNE` | `9` |
+| `MODIFIER_STATE_PROVIDES_VISION` | `10` |
+| `MODIFIER_STATE_NIGHTMARED` | `11` |
+| `MODIFIER_STATE_BLOCK_DISABLED` | `12` |
+| `MODIFIER_STATE_EVADE_DISABLED` | `13` |
+| `MODIFIER_STATE_UNSELECTABLE` | `14` |
+| `MODIFIER_STATE_CANNOT_TARGET_ENEMIES` | `15` |
+| `MODIFIER_STATE_CANNOT_TARGET_BUILDINGS` | `16` |
+| `MODIFIER_STATE_CANNOT_MISS` | `17` |
+| `MODIFIER_STATE_SPECIALLY_DENIABLE` | `18` |
+| `MODIFIER_STATE_FROZEN` | `19` |
+| `MODIFIER_STATE_COMMAND_RESTRICTED` | `20` |
+| `MODIFIER_STATE_NOT_ON_MINIMAP` | `21` |
+| `MODIFIER_STATE_LOW_ATTACK_PRIORITY` | `22` |
+| `MODIFIER_STATE_NO_HEALTH_BAR` | `23` |
+| `MODIFIER_STATE_NO_HEALTH_BAR_FOR_ENEMIES` | `24` |
+| `MODIFIER_STATE_NO_HEALTH_BAR_FOR_OTHER_PLAYERS` | `25` |
+| `MODIFIER_STATE_FLYING` | `26` |
+| `MODIFIER_STATE_NO_UNIT_COLLISION` | `27` |
+| `MODIFIER_STATE_NO_TEAM_MOVE_TO` | `28` |
+| `MODIFIER_STATE_NO_TEAM_SELECT` | `29` |
+| `MODIFIER_STATE_PASSIVES_DISABLED` | `30` |
+| `MODIFIER_STATE_DOMINATED` | `31` |
+| `MODIFIER_STATE_BLIND` | `32` |
+| `MODIFIER_STATE_OUT_OF_GAME` | `33` |
+| `MODIFIER_STATE_FAKE_ALLY` | `34` |
+| `MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY` | `35` |
+| `MODIFIER_STATE_TRUESIGHT_IMMUNE` | `36` |
+| `MODIFIER_STATE_UNTARGETABLE` | `37` |
+| `MODIFIER_STATE_UNTARGETABLE_ALLIED` | `38` |
+| `MODIFIER_STATE_UNTARGETABLE_ENEMY` | `39` |
+| `MODIFIER_STATE_UNTARGETABLE_SELF` | `40` |
+| `MODIFIER_STATE_IGNORING_MOVE_AND_ATTACK_ORDERS` | `41` |
+| `MODIFIER_STATE_ALLOW_PATHING_THROUGH_TREES` | `42` |
+| `MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES` | `43` |
+| `MODIFIER_STATE_UNSLOWABLE` | `44` |
+| `MODIFIER_STATE_TETHERED` | `45` |
+| `MODIFIER_STATE_IGNORING_STOP_ORDERS` | `46` |
+| `MODIFIER_STATE_FEARED` | `47` |
+| `MODIFIER_STATE_TAUNTED` | `48` |
+| `MODIFIER_STATE_CANNOT_BE_MOTION_CONTROLLED` | `49` |
+| `MODIFIER_STATE_FORCED_FLYING_VISION` | `50` |
+| `MODIFIER_STATE_ATTACK_ALLIES` | `51` |
+| `MODIFIER_STATE_ALLOW_PATHING_THROUGH_CLIFFS` | `52` |
+| `MODIFIER_STATE_ALLOW_PATHING_THROUGH_POWER_COGS` | `53` |
+| `MODIFIER_STATE_SPECIALLY_UNDENIABLE` | `54` |
+| `MODIFIER_STATE_ALLOW_PATHING_THROUGH_OBSTRUCTIONS` | `55` |
+| `MODIFIER_STATE_DEBUFF_IMMUNE` | `56` |
+| `MODIFIER_STATE_ALLOW_PATHING_THROUGH_BASE_BLOCKER` | `57` |
+| `MODIFIER_STATE_IGNORING_MOVE_ORDERS` | `58` |
+| `MODIFIER_STATE_ATTACKS_ARE_MELEE` | `59` |
+| `MODIFIER_STATE_CAN_USE_BACKPACK_ITEMS` | `60` |
+| `MODIFIER_STATE_CASTS_IGNORE_CHANNELING` | `61` |
+| `MODIFIER_STATE_ATTACKS_DONT_REVEAL` | `62` |
+| `MODIFIER_STATE_NEUTRALS_DONT_ATTACK` | `63` |
+| `MODIFIER_STATE_LAST` | `64` |
+
+### ParticleAttachment_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `PATTACH_INVALID` | `-1` |
+| `PATTACH_ABSORIGIN` | `0` |
+| `PATTACH_ABSORIGIN_FOLLOW` | `1` |
+| `PATTACH_CUSTOMORIGIN` | `2` |
+| `PATTACH_CUSTOMORIGIN_FOLLOW` | `3` |
+| `PATTACH_POINT` | `4` |
+| `PATTACH_POINT_FOLLOW` | `5` |
+| `PATTACH_EYES_FOLLOW` | `6` |
+| `PATTACH_OVERHEAD_FOLLOW` | `7` |
+| `PATTACH_WORLDORIGIN` | `8` |
+| `PATTACH_ROOTBONE_FOLLOW` | `9` |
+| `PATTACH_RENDERORIGIN_FOLLOW` | `10` |
+| `PATTACH_MAIN_VIEW` | `11` |
+| `PATTACH_WATERWAKE` | `12` |
+| `PATTACH_CENTER_FOLLOW` | `13` |
+| `PATTACH_CUSTOM_GAME_STATE_1` | `14` |
+| `PATTACH_HEALTHBAR` | `15` |
+| `MAX_PATTACH_TYPES` | `16` |
+
+### PseudoRandom
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_PSEUDO_RANDOM_NONE` | `0` |
+| `DOTA_PSEUDO_RANDOM_MAGNUS_SHARD` | `1` |
+| `DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT` | `2` |
+| `DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_DAGGER` | `3` |
+| `DOTA_PSEUDO_RANDOM_PHANTOMLANCER_JUXTAPOSE` | `4` |
+| `DOTA_PSEUDO_RANDOM_TINY_CRAGGY` | `5` |
+| `DOTA_PSEUDO_RANDOM_COLD_REBUKE` | `6` |
+| `DOTA_PSEUDO_RANDOM_WOLF_CRIT` | `7` |
+| `DOTA_PSEUDO_RANDOM_AXE_HELIX` | `8` |
+| `DOTA_PSEUDO_RANDOM_AXE_HELIX_ATTACK` | `9` |
+| `DOTA_PSEUDO_RANDOM_LEGION_MOMENT` | `10` |
+| `DOTA_PSEUDO_RANDOM_SLARDAR_BASH` | `11` |
+| `DOTA_PSEUDO_RANDOM_OD_ESSENCE` | `12` |
+| `DOTA_PSEUDO_RANDOM_DROW_MARKSMANSHIP` | `13` |
+| `DOTA_PSEUDO_RANDOM_OGRE_MAGI_FIREBLAST` | `14` |
+| `DOTA_PSEUDO_RANDOM_OGRE_ITEM_MULTICAST` | `15` |
+| `DOTA_PSEUDO_RANDOM_SPIRITBREAKER_GREATERBASH` | `16` |
+| `DOTA_PSEUDO_RANDOM_LONE_DRUID_ENTANGLE` | `17` |
+| `DOTA_PSEUDO_RANDOM_FACELESS_BASH` | `18` |
+| `DOTA_PSEUDO_RANDOM_FACELESS_EVADE_SPELL` | `19` |
+| `DOTA_PSEUDO_RANDOM_FACELESS_EVADE_ATTACK` | `20` |
+| `DOTA_PSEUDO_RANDOM_FACELESS_VOID_BACKTRACK` | `21` |
+| `DOTA_PSEUDO_RANDOM_BREWMASTER_CRIT` | `22` |
+| `DOTA_PSEUDO_RANDOM_BREWMASTER_CINDER_BREW` | `23` |
+| `DOTA_PSEUDO_RANDOM_SNIPER_HEADSHOT` | `24` |
+| `DOTA_PSEUDO_RANDOM_ATOS` | `25` |
+| `DOTA_PSEUDO_RANDOM_JUGG_CRIT` | `26` |
+| `DOTA_PSEUDO_RANDOM_DAZZLE_SCEPTER` | `27` |
+| `DOTA_PSEUDO_RANDOM_CHAOS_CRIT` | `28` |
+| `DOTA_PSEUDO_RANDOM_LYCAN_CRIT` | `29` |
+| `DOTA_PSEUDO_RANDOM_TUSK_CRIT` | `30` |
+| `DOTA_PSEUDO_RANDOM_CM_FREEZING_FIELD` | `31` |
+| `DOTA_PSEUDO_RANDOM_GENERIC_BASHER` | `32` |
+| `DOTA_PSEUDO_RANDOM_SKELETONKING_CRIT` | `33` |
+| `DOTA_PSEUDO_RANDOM_SKELETONKING_CRIT_MORTAL` | `34` |
+| `DOTA_PSEUDO_RANDOM_ITEM_GREATERCRIT` | `35` |
+| `DOTA_PSEUDO_RANDOM_ITEM_LESSERCRIT` | `36` |
+| `DOTA_PSEUDO_RANDOM_ITEM_BASHER` | `37` |
+| `DOTA_PSEUDO_RANDOM_ITEM_SOLAR_CREST` | `38` |
+| `DOTA_PSEUDO_RANDOM_ITEM_JAVELIN_ACCURACY` | `39` |
+| `DOTA_PSEUDO_RANDOM_ITEM_TRIDENT` | `40` |
+| `DOTA_PSEUDO_RANDOM_ITEM_ABYSSAL` | `41` |
+| `DOTA_PSEUDO_RANDOM_ITEM_ABYSSAL_BLOCK` | `42` |
+| `DOTA_PSEUDO_RANDOM_ITEM_STOUT` | `43` |
+| `DOTA_PSEUDO_RANDOM_ITEM_VANGUARD` | `44` |
+| `DOTA_PSEUDO_RANDOM_ITEM_CRIMSON_GUARD` | `45` |
+| `DOTA_PSEUDO_RANDOM_ITEM_PMS` | `46` |
+| `DOTA_PSEUDO_RANDOM_ITEM_HALBRED_MAIM` | `47` |
+| `DOTA_PSEUDO_RANDOM_ITEM_SANGEYASHA_MAIM` | `48` |
+| `DOTA_PSEUDO_RANDOM_ITEM_SANGEKAYA_MAIM` | `49` |
+| `DOTA_PSEUDO_RANDOM_ITEM_SANGE_MAIM` | `50` |
+| `DOTA_PSEUDO_RANDOM_ITEM_BUTTERFLY` | `51` |
+| `DOTA_PSEUDO_RANDOM_ITEM_MAELSTROM` | `52` |
+| `DOTA_PSEUDO_RANDOM_ITEM_MJOLLNIR` | `53` |
+| `DOTA_PSEUDO_RANDOM_ITEM_MJOLLNIR_STATIC` | `54` |
+| `DOTA_PSEUDO_RANDOM_ITEM_MKB` | `55` |
+| `DOTA_PSEUDO_RANDOM_ITEM_SILVER_EDGE` | `56` |
+| `DOTA_PSEUDO_RANDOM_ITEM_NAGINATA` | `57` |
+| `DOTA_PSEUDO_RANDOM_TROLL_BASH` | `58` |
+| `DOTA_PSEUDO_RANDOM_RIKI_SMOKE_SCREEN` | `59` |
+| `DOTA_PSEUDO_RANDOM_CHAOS_DOUBLE_CRIT` | `60` |
+| `DOTA_PSEUDO_RANDOM_CHAOS_TRIPLE_CRIT` | `61` |
+| `DOTA_PSEUDO_RANDOM_GENERIC_EVASION` | `62` |
+| `DOTA_PSEUDO_RANDOM_GENERIC_HEIGHT_MISS` | `63` |
+| `DOTA_PSEUDO_RANDOM_GENERIC_MISS` | `64` |
+| `DOTA_PSEUDO_RANDOM_ARMADILLO_HEARTPIERCER` | `65` |
+| `DOTA_PSEUDO_RANDOM_MARS_SHIELD` | `66` |
+| `DOTA_PSEUDO_RANDOM_CHAOS_KNIGHT_INNATE_REFUND` | `67` |
+| `DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER1` | `68` |
+| `DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER2` | `69` |
+| `DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER3` | `70` |
+| `DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER4` | `71` |
+| `DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER5` | `72` |
+| `DOTA_PSEUDO_RANDOM_MARS_BULWARK` | `73` |
+| `DOTA_PSEUDO_RANDOM_MUERTA_GUNSLINGER` | `74` |
+| `DOTA_PSEUDO_RANDOM_TROLL_FERVOR_SHARD` | `75` |
+| `DOTA_PSEUDO_RANDOM_SNAPFIRE_GLANCING` | `76` |
+| `DOTA_PSEUDO_RANDOM_PANGOLIER_PARRY` | `77` |
+| `DOTA_PSEUDO_RANDOM_HOODWINK_REDIRECT` | `78` |
+| `DOTA_PSEUDO_RANDOM_KEZ_SAI` | `79` |
+| `DOTA_PSEUDO_RANDOM_CHAOS_KNIGHT_HAVOC` | `80` |
+| `DOTA_PSEUDO_RANDOM_LARGO_FROGSTOMP` | `81` |
+| `DOTA_PSEUDO_RANDOM_NAGA_RIPTIDE` | `82` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GENERIC` | `83` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1` | `84` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_2` | `85` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_3` | `86` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_4` | `87` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_5` | `88` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_6` | `89` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_7` | `90` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_8` | `91` |
+| `DOTA_PSEUDO_RANDOM_CUSTOM_GAME_9` | `92` |
+
+### quest_text_replace_values_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE` | `0` |
+| `QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE` | `1` |
+| `QUEST_TEXT_REPLACE_VALUE_ROUND` | `2` |
+| `QUEST_TEXT_REPLACE_VALUE_REWARD` | `3` |
+| `QUEST_NUM_TEXT_REPLACE_VALUES` | `4` |
+
+### ShowGenericPopupType
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DOTA_SHOWGENERICPOPUP_TINT_SCREEN` | `1` |
+| `DOTA_SHOWGENERICPOPUP_SHOW_NO_OTHER_DIALOGS` | `2` |
+
+### SourceEngineAnimationEvent
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `AE_EMPTY` | `0` |
+| `AE_CL_PLAYSOUND` | `1` |
+| `AE_CL_PLAYSOUND_ATTACHMENT` | `2` |
+| `AE_CL_PLAYSOUND_POSITION` | `3` |
+| `AE_SV_PLAYSOUND` | `4` |
+| `AE_CL_STOPSOUND` | `5` |
+| `AE_CL_PLAYSOUND_LOOPING` | `6` |
+| `AE_CL_CREATE_PARTICLE_EFFECT` | `7` |
+| `AE_CL_STOP_PARTICLE_EFFECT` | `8` |
+| `AE_CL_CREATE_PARTICLE_EFFECT_CFG` | `9` |
+| `AE_SV_CREATE_PARTICLE_EFFECT_CFG` | `10` |
+| `AE_SV_STOP_PARTICLE_EFFECT` | `11` |
+| `AE_FOOTSTEP` | `12` |
+| `AE_CL_STOP_RAGDOLL_CONTROL` | `13` |
+| `AE_CL_ENABLE_BODYGROUP` | `14` |
+| `AE_CL_DISABLE_BODYGROUP` | `15` |
+| `AE_BODYGROUP_SET_VALUE` | `16` |
+| `AE_WEAPON_PERFORM_ATTACK` | `17` |
+| `AE_FIRE_INPUT` | `18` |
+| `AE_CL_CLOTH_ATTR` | `19` |
+| `AE_CL_CLOTH_GROUND_OFFSET` | `20` |
+| `AE_CL_CLOTH_STIFFEN` | `21` |
+| `AE_CL_CLOTH_EFFECT` | `22` |
+| `AE_CL_CREATE_ANIM_SCOPE_PROP` | `23` |
+| `AE_SV_IKLOCK` | `24` |
+| `AE_PULSE_GRAPH` | `25` |
+| `AE_DISABLE_PLATFORM` | `26` |
+| `AE_ENABLE_PLATFORM_PLAYER_FOLLOWS_YAW` | `27` |
+| `AE_ENABLE_PLATFORM_PLAYER_IGNORES_YAW` | `28` |
+| `AE_DESTRUCTIBLE_PART_DESTROY` | `29` |
+| `AE_CL_SUPPRESS_EVENTS_WITH_TAG` | `30` |
+| `AE_CL_HIDE_PARTICLE_EFFECT` | `31` |
+| `AE_CL_SHOW_PARTICLE_EFFECT` | `32` |
+| `AE_CL_ADD_PARTICLE_EFFECT_CP` | `33` |
+| `AE_CL_SPEECH` | `34` |
+| `AE_CL_PANORAMA_EVENT` | `35` |
+| `AE_CL_DOTA_PLAY_STATUS_EFFECT` | `36` |
+| `AE_CL_DOTA_STOP_STATUS_EFFECT` | `37` |
+| `AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT` | `38` |
+| `AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT` | `39` |
+| `AE_DOTA_PET_ITEM_PICKUP` | `40` |
+| `AE_DOTA_PET_ITEM_DROP` | `41` |
+| `AE_DOTA_SUPPRESS_CONSTANT_LAYER` | `42` |
+| `AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL` | `43` |
+| `AE_DOTA_CREATE_CLINKZ_ATTACK` | `44` |
+| `AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB` | `45` |
+| `AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES` | `46` |
+| `AE_DOTA_SWITCH_ATTACK_COMBO` | `47` |
+| `AE_EF_NODRAW` | `48` |
+| `AE_EF_DRAW` | `49` |
+| `AE_DOTA_PLAY_SOUND_ATTACK` | `50` |
+| `AE_CL_CREATE_PARTICLE_BRASS` | `51` |
+
+### SourceEngineDamageTypes
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `DMG_GENERIC` | `0` |
+| `DMG_CRUSH` | `1` |
+| `DMG_BULLET` | `2` |
+| `DMG_SLASH` | `4` |
+| `DMG_BURN` | `8` |
+| `DMG_VEHICLE` | `16` |
+| `DMG_FALL` | `32` |
+| `DMG_BLAST` | `64` |
+| `DMG_CLUB` | `128` |
+| `DMG_SHOCK` | `256` |
+| `DMG_SONIC` | `512` |
+| `DMG_ENERGYBEAM` | `1024` |
+| `DMG_PREVENT_PHYSICS_FORCE` | `2048` |
+| `DMG_NEVERGIB` | `4096` |
+| `DMG_ALWAYSGIB` | `8192` |
+| `DMG_DROWN` | `16384` |
+| `DMG_PARALYZE` | `32768` |
+| `DMG_NERVEGAS` | `65536` |
+| `DMG_POISON` | `131072` |
+| `DMG_RADIATION` | `262144` |
+
+### SourceEngineSoundData
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `EMPTY` | `0` |
+| `SINGLE_SHOT` | `2` |
+| `DOUBLE_SHOT` | `3` |
+| `MELEE_MISS` | `4` |
+| `MELEE_HIT` | `5` |
+| `MELEE_HIT_WORLD` | `6` |
+| `SPECIAL1` | `9` |
+| `SPECIAL2` | `10` |
+| `SPECIAL3` | `11` |
+
+### subquest_text_replace_values_t
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE` | `0` |
+| `SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE` | `1` |
+| `SUBQUEST_NUM_TEXT_REPLACE_VALUES` | `2` |
+
+### UnitFilterResult
+
+**Compile members only:** values are inlined at compile time.
+
+| Member | Value |
+| --- | --- |
+| `UF_SUCCESS` | `0` |
+| `UF_FAIL_FRIENDLY` | `1` |
+| `UF_FAIL_ENEMY` | `2` |
+| `UF_FAIL_HERO` | `3` |
+| `UF_FAIL_CONSIDERED_HERO` | `4` |
+| `UF_FAIL_CREEP` | `5` |
+| `UF_FAIL_BUILDING` | `6` |
+| `UF_FAIL_COURIER` | `7` |
+| `UF_FAIL_OTHER` | `8` |
+| `UF_FAIL_ANCIENT` | `9` |
+| `UF_FAIL_ILLUSION` | `10` |
+| `UF_FAIL_SUMMONED` | `11` |
+| `UF_FAIL_DOMINATED` | `12` |
+| `UF_FAIL_MELEE` | `13` |
+| `UF_FAIL_RANGED` | `14` |
+| `UF_FAIL_DEAD` | `15` |
+| `UF_FAIL_MAGIC_IMMUNE_ALLY` | `16` |
+| `UF_FAIL_MAGIC_IMMUNE_ENEMY` | `17` |
+| `UF_FAIL_INVULNERABLE` | `18` |
+| `UF_FAIL_IN_FOW` | `19` |
+| `UF_FAIL_INVISIBLE` | `20` |
+| `UF_FAIL_NOT_PLAYER_CONTROLLED` | `21` |
+| `UF_FAIL_ATTACK_IMMUNE` | `22` |
+| `UF_FAIL_CUSTOM` | `23` |
+| `UF_FAIL_INVALID_LOCATION` | `24` |
+| `UF_FAIL_DISABLE_HELP` | `25` |
+| `UF_FAIL_OUT_OF_WORLD` | `26` |
+| `UF_FAIL_NIGHTMARED` | `27` |
+| `UF_FAIL_OBSTRUCTED` | `28` |
+
+## Compatibility aliases
+
+| Alias | Target | Description |
+| --- | --- | --- |
+| <a name="abilitybehavior"></a>`AbilityBehavior` | `DOTA_ABILITY_BEHAVIOR` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="abilitylearnresult"></a>`AbilityLearnResult` | `AbilityLearnResult_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="abilityspeaktrigger"></a>`AbilitySpeakTrigger` | `DOTAAbilitySpeakTrigger_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="abilitytypes"></a>`AbilityTypes` | `ABILITY_TYPES` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="attackrecord"></a>`AttackRecord` | `attackfail` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="clickbehaviors"></a>`ClickBehaviors` | `CLICK_BEHAVIORS` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="connectionstate"></a>`ConnectionState` | `DOTAConnectionState_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="customcameraeventflags"></a>`CustomCameraEventFlags` | `DOTACustomCameraEventFlags_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="damagecategory"></a>`DamageCategory` | `DamageCategory_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="damageflag"></a>`DamageFlag` | `DOTADamageFlag_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="damagetypes"></a>`DamageTypes` | `DAMAGE_TYPES` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="defaultuielement"></a>`DefaultUiElement` | `DotaDefaultUIElement_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="dotateam"></a>`DotaTeam` | `DOTATeam_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="gameactivity"></a>`GameActivity` | `GameActivity_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="gamestate"></a>`GameState` | `DOTA_GameState` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="gcteam"></a>`GcTeam` | `DOTA_GC_TEAM` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="heropickstate"></a>`HeroPickState` | `DOTA_HeroPickState` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="hudvisibility"></a>`HudVisibility` | `DOTAHUDVisibility_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="invalidorders"></a>`InvalidOrders` | `DOTA_INVALID_ORDERS` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="inventoryflags"></a>`InventoryFlags` | `DOTAInventoryFlags_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="inventoryslot"></a>`InventorySlot` | `DOTAScriptInventorySlot_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="itemshareability"></a>`ItemShareability` | `EShareAbility` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="loadouttype"></a>`LoadoutType` | `DOTASlotType_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="luamodifiermotiontype"></a>`LuaModifierMotionType` | `LuaModifierType` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="minimapeventtype"></a>`MinimapEventType` | `DOTAMinimapEvent_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="modifierattribute"></a>`ModifierAttribute` | `DOTAModifierAttribute_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="modifierfunction"></a>`ModifierFunction` | `modifierfunction` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="modifierpriority"></a>`ModifierPriority` | `modifierpriority` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="modifierremove"></a>`ModifierRemove` | `modifierremove` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="modifierstate"></a>`ModifierState` | `modifierstate` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="modifygoldreason"></a>`ModifyGoldReason` | `EDOTA_ModifyGold_Reason` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="modifyxpreason"></a>`ModifyXpReason` | `EDOTA_ModifyXP_Reason` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="motioncontrollerpriority"></a>`MotionControllerPriority` | `DOTA_MOTION_CONTROLLER_PRIORITY` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="musicstatus"></a>`MusicStatus` | `DOTAMusicStatus_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="overheadalert"></a>`OverheadAlert` | `DOTA_OVERHEAD_ALERT` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="particleattachment"></a>`ParticleAttachment` | `ParticleAttachment_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="postgamecolumn"></a>`PostGameColumn` | `DOTAPostGameColumn_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="postgamelayout"></a>`PostGameLayout` | `DOTAPostGameLayout_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="projectileattachment"></a>`ProjectileAttachment` | `DOTAProjectileAttachment_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="questtextreplacevalue"></a>`QuestTextReplaceValue` | `quest_text_replace_values_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="runetype"></a>`RuneType` | `DOTA_RUNES` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="shoptype"></a>`ShopType` | `DOTA_SHOP_TYPE` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="speechtype"></a>`SpeechType` | `DOTASpeechType_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="subquesttextreplacevalue"></a>`SubquestTextReplaceValue` | `subquest_text_replace_values_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="unitattackcapability"></a>`UnitAttackCapability` | `DOTAUnitAttackCapability_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="unitmovecapability"></a>`UnitMoveCapability` | `DOTAUnitMoveCapability_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="unitorder"></a>`UnitOrder` | `dotaunitorder_t` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="unittargetflags"></a>`UnitTargetFlags` | `DOTA_UNIT_TARGET_FLAGS` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="unittargetteam"></a>`UnitTargetTeam` | `DOTA_UNIT_TARGET_TEAM` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |
+| <a name="unittargettype"></a>`UnitTargetType` | `DOTA_UNIT_TARGET_TYPE` | **Deprecated:** Normalized enum name. Defined only for library compatibility.<br> |

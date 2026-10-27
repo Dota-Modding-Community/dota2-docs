@@ -1,0 +1,6 @@
+[submodule "dota-data"]
+	path = dota-data
+	url = https://github.com/ModDota/dota-data
+[submodule "TypeScriptDeclarations"]
+	path = TypeScriptDeclarations
+	url = https://github.com/ModDota/TypeScriptDeclarations
